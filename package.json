@@ -1,0 +1,6 @@
+{
+  "name": "talee-prati-bdg",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=18" }
+}
