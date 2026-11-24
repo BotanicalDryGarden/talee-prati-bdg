@@ -145,7 +145,7 @@ dialog::backdrop{background:rgb(0 0 0/.45)}
 .mcal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;margin-bottom:14px}
 .mcal .dh{font-size:12px;font-weight:600;color:var(--muted);text-align:center}
 .mcal .dh.su{color:var(--sun)}
-.mcell{border:1px solid var(--line);border-radius:9px;min-height:62px;padding:5px;background:var(--surface);font:inherit;color:inherit;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:1px}
+.mcell{border:1px solid var(--line);border-radius:9px;min-height:70px;padding:5px;background:var(--surface);font:inherit;color:inherit;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:1px}
 .mcell.e{border:0;background:none;cursor:default}
 .mcell .dn{font-size:12px;font-weight:600}
 .mcell .t{font-family:var(--font-display);font-size:17px;color:var(--brand);font-variant-numeric:tabular-nums}
@@ -160,20 +160,227 @@ dialog::backdrop{background:rgb(0 0 0/.45)}
 select{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px}
 textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px;width:100%;min-height:60px;resize:vertical}
 @media (max-width:600px){.mcell{min-height:54px;padding:3px}.mcell .t{font-size:14px}.mcell .m{font-size:9px}}
+.back{font:inherit;font-size:14px;font-weight:600;background:none;border:0;color:var(--brand-ink);opacity:.9;padding:0 0 6px;cursor:pointer}
+/* menu: stile Botanical (Pantone 323 su fondo kraft) */
+body.menu{background:var(--bg)}
+:root{--salvia:#d6dfcb;--salvia-ink:#0f3d3f}
+body.menu header.top{text-align:center;padding:22px 16px 18px}
+.tile::after{content:'';position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--brand)}
+body.menu .hrow{justify-content:center}
+body.menu .brandline{letter-spacing:.18em}
+body.menu h1{font-size:clamp(26px,6vw,34px)}
+body.menu #backBtn{position:absolute;left:16px;top:18px}
+header.top .wrap{position:relative}
+#vMenu{display:flex;flex-direction:column;min-height:calc(100dvh - var(--hh,96px));padding:14px 16px 18px;max-width:760px;margin:0 auto}
+.tiles{flex:1;display:flex;flex-direction:column;gap:14px}
+.tile{flex:1;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;font:inherit;color:var(--brand);background:var(--surface);border:1px solid var(--line) !important;border:0;border-radius:18px;padding:22px 20px;cursor:pointer;min-height:120px;box-shadow:0 1px 2px rgb(0 0 0/.12)}
+.tile:hover{border-color:var(--brand) !important;box-shadow:0 4px 14px rgb(0 101 107/.15)}
+
+.tile:active{transform:scale(.99)}
+.tile .tt{position:relative;font-family:var(--font-display);font-size:clamp(28px,7vw,40px);line-height:1.1}
+.tile .td{position:relative;font-size:15px;color:var(--muted)}
+.tile svg{position:absolute;right:-18px;bottom:-22px;width:150px;height:150px;opacity:.13;pointer-events:none}
+.tile svg.l{right:auto;left:-26px;top:-30px;bottom:auto;transform:scaleX(-1) rotate(160deg);width:110px;height:110px;opacity:.09}
+[hidden]{display:none!important}
+.inshead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin:10px 0 6px}.inshead .sub{margin:0}.inshead .link{white-space:nowrap;padding-top:0}
+.vcard{border:1px solid var(--line);border-radius:12px;margin-bottom:8px;background:var(--surface)}
+.vcard.dirty{border-color:var(--brand)}
+.vhead{width:100%;display:flex;justify-content:space-between;align-items:center;gap:10px;font:inherit;color:inherit;background:none;border:0;padding:12px;text-align:left;cursor:pointer;min-height:56px}
+.vhead .vn{font-weight:600;font-size:15px}.vhead small{display:block;font-weight:400;color:var(--muted);font-size:12px;margin-top:2px}
+.vhead .vt{white-space:nowrap;font-variant-numeric:tabular-nums}.vhead .vt b{font-size:18px;color:var(--brand)}.vhead .tl{font-size:12px;color:var(--muted)}
+.vhead::after{content:'›';font-size:20px;color:var(--muted);transition:transform .15s}
+.vcard.open .vhead::after{transform:rotate(90deg)}
+.vbody{display:none;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0 12px 12px}
+.vcard.open .vbody{display:grid}
+.pin{display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid var(--line);border-radius:10px;padding:6px 6px 6px 10px;font-size:14px}
+.pin input{width:70px;text-align:center;font-size:17px;padding:8px 4px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.dayline{margin:8px 0 0;font-size:14px}
+.vcard.open .vbody{display:block}
+.pstrip{display:flex;gap:6px;overflow-x:auto;padding:2px 0 6px;scroll-snap-type:x proximity}
+.pcol{flex:0 0 auto;display:flex;flex-direction:column;align-items:stretch;gap:4px;min-width:62px;scroll-snap-align:start}
+.pname{font-size:12px;font-weight:600;text-align:center;white-space:nowrap}
+.pname i{font-style:normal;font-weight:700;font-size:10px;color:var(--brand-ink);background:var(--brand);border-radius:99px;padding:0 5px;margin-left:2px;vertical-align:1px}
+.pcol input{width:64px;align-self:center;text-align:center;font-size:17px;padding:8px 2px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.pcol input:not(:placeholder-shown){border-color:var(--brand);background:color-mix(in srgb,var(--brand) 7%,var(--surface))}
+.paddb{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;font:inherit;font-size:11px;color:var(--brand);background:none;border:1px dashed var(--brand);border-radius:8px;cursor:pointer;min-height:62px}.paddb span{font-size:20px;line-height:1}
+.addp[hidden]{display:none!important}
+.pcol input::-webkit-inner-spin-button,.pcol input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}.pcol input{-moz-appearance:textfield}
+.orebox{margin-top:16px;padding:16px;border:2px solid var(--brand);border-radius:14px;text-align:center;background:color-mix(in srgb,var(--brand) 5%,var(--surface))}
+.orebox label{display:block;font-weight:700;font-size:17px;margin-bottom:10px}
+.orebox input{width:140px;font:inherit;font-size:30px;font-weight:600;text-align:center;padding:10px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink)}
+.orebox .sub{margin-top:10px}
+.notebox{margin-top:14px}.notebox summary{cursor:pointer;color:var(--brand);font-weight:600;padding:6px 0;list-style:none}.notebox summary::-webkit-details-marker{display:none}.notebox textarea{margin-top:6px}
+.tabs{flex-wrap:wrap;gap:2px}.tabs button{flex:1 1 auto;padding-left:6px;padding-right:6px;font-size:14px;white-space:nowrap}
+@media (max-width:380px){.tabs button{font-size:13px;padding-left:4px;padding-right:4px}}
+#plaList .su{color:var(--sun)}
+#vCycles{padding:16px}
+.cyhint{margin:0 0 10px}
+.ctiles{display:grid;gap:10px}
+@media (min-width:700px){.ctiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ctile{display:flex;flex-direction:column;gap:6px;text-align:left;font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;cursor:pointer}
+.ctile:hover{border-color:var(--brand)}
+.ctile.now{border:2px solid var(--brand)}
+.cth{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.ctile .ct{font-family:var(--font-display);font-size:22px;color:var(--brand)}
+.cnow{font-size:12px;font-weight:700;background:var(--brand);color:var(--brand-ink);border-radius:99px;padding:3px 9px}
+.ctile .cs{font-size:13px;color:var(--muted)}
+.cbar{height:6px;background:var(--track);border-radius:99px;overflow:hidden}.cbar i{display:block;height:100%;background:var(--brand)}
+.ctile .cn{font-size:14px;font-variant-numeric:tabular-nums}
+.ctile.add{border-style:dashed;align-items:center;text-align:center;justify-content:center;min-height:96px}
+.cnote{margin:0 0 6px}
+.ctot{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 8px}.ctot div{border:2px solid var(--brand);border-radius:12px;padding:10px;text-align:center}.ctot b{display:block;font-family:var(--font-display);font-size:26px;color:var(--brand);font-variant-numeric:tabular-nums}.ctot span{font-size:13px;color:var(--muted)}.ctot .neg b{color:var(--over)}
+.vtit{font-size:15px;margin:16px 0 8px}
+.vgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+@media (min-width:620px){.vgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media (min-width:900px){.vgrid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.vbox{border:1px solid var(--line);border-radius:10px;padding:7px 9px;display:flex;flex-direction:column;gap:4px}
+.vbn{font-size:12.5px;font-weight:600;line-height:1.2;min-height:2.4em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.vbb{height:5px;background:var(--track);border-radius:99px;overflow:hidden}.vbb i{display:block;height:100%;background:var(--brand)}
+.vbr{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;font-variant-numeric:tabular-nums}.vbr span:first-child{color:var(--muted)}.vbr b{color:var(--ink)}
+.vbl{font-weight:700}.vbox.pos .vbl{color:var(--warn)}.vbox.neg .vbl{color:var(--over)}.vbox.zero .vbl{color:var(--ok)}.vbox.neg .vbb i,.vbox.zero .vbb i{background:var(--ok)}
+.vleg{margin:6px 0 0;font-size:12px}
+.vtitrow{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px;margin:16px 0 8px}.vtitrow .vtit{margin:0}
+.vsw button{font-size:12px;padding:5px 10px}
+.vtr th,.vtr td{font-size:12px;white-space:nowrap}.vtr thead th{max-width:90px;white-space:normal;line-height:1.15;vertical-align:bottom}
+.vtr th.v{position:sticky;left:0;background:var(--surface);z-index:1;box-shadow:1px 0 0 var(--line)}
+.vtr td.pos{color:var(--warn);font-weight:700}.vtr td.neg{color:var(--over);font-weight:700}.vtr td.zero{color:var(--ok);font-weight:700}
+.vbars{display:flex;flex-direction:column;gap:5px}
+.vbar{display:grid;grid-template-columns:105px minmax(0,1fr) auto 38px;gap:8px;align-items:center;font-size:12.5px}
+.vbn2{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vtrack{position:relative;height:12px;background:transparent}.vtrack i{position:absolute;left:0;top:0;bottom:0;border-radius:4px}.vtrack .vt{background:var(--track)}.vtrack .vf{background:var(--brand);top:3px;bottom:3px}.vtrack .vf.ok{background:var(--ok)}
+.vnum{font-variant-numeric:tabular-nums;color:var(--muted)}.vnum b{color:var(--ink)}
+.vbar .vbl{text-align:right;font-variant-numeric:tabular-nums}.vbar .vbl.pos{color:var(--warn)}.vbar .vbl.neg{color:var(--over)}.vbar .vbl.zero{color:var(--ok)}.vdet{margin:0 0 10px}.vdet summary{cursor:pointer;color:var(--brand);font-weight:600;padding:6px 0}
+#monStats{grid-template-columns:repeat(2,minmax(0,1fr))}@media (min-width:600px){#monStats{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.two .plain,.two select,.field select{width:100%;min-width:0}
+.riep td,.riep th{font-size:13px}
+.vxd th.v{position:sticky;left:0;background:var(--surface);z-index:1;box-shadow:1px 0 0 var(--line);min-width:130px;max-width:150px;white-space:normal}.vxd td,.vxd th{font-size:12px}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pp{display:inline-flex;gap:8px;align-items:baseline;border:1px solid var(--line);border-radius:99px;padding:6px 12px;font-size:14px}.pp b{font-variant-numeric:tabular-nums}
+#calRiep h3{font-size:15px;margin:0 0 8px}
+.daydet{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.dv{border-bottom:1px solid var(--line);padding-bottom:6px}.dvh{display:flex;justify-content:space-between;font-weight:600}.dv .meta{font-size:13px;color:var(--muted)}
+.tgtlist{display:flex;flex-direction:column;gap:4px;max-height:46vh;overflow:auto;margin:6px 0;border:1px solid var(--line);border-radius:10px;padding:6px 10px}
+.tgtrow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:4px 0;border-bottom:1px solid var(--line);font-size:14px}.tgtrow:last-child{border-bottom:0}
+.tgtrow input{width:90px;text-align:center;font:inherit;font-size:16px;padding:7px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.tgttot{margin:6px 0;font-size:15px}
+.chk{display:flex;gap:8px;align-items:flex-start;font-size:14px;margin:8px 0}
+.plagrid{display:grid;padding:0;margin-top:6px}
+.platot{margin-top:10px;font-size:15px}
+.matbox{margin-top:16px;padding:14px;border:1px solid var(--line);border-radius:14px;background:color-mix(in srgb,var(--brand) 4%,var(--surface))}.matbox h3{margin:0 0 4px;font-size:16px}
+.matore{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;font-weight:600}.matore input{width:110px;font:inherit;font-size:22px;text-align:center;padding:8px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+.mini{font-size:14px;margin:12px 0 4px}
+.spform{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.spform .field{margin:0}.spform input[type=date],.spform select,.spform .plain{width:100%}
+.spchips{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px}.pchip.sm{padding:5px 10px;font-size:13px;min-height:32px}
+.spform .field:first-child{grid-column:1/-1}
+.spdays{margin:12px 0;font-size:15px}
+#spReset[hidden]+#spSave{grid-column:1/-1}.spdays .neg{color:var(--sun)}
+.sprow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.sprow .meta{font-size:13px;color:var(--muted)}
+.spbtn{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.btn.sm{padding:6px 10px;font-size:13px;min-height:34px;width:auto}
+@media (max-width:480px){.spform{grid-template-columns:1fr}}
+.hm{display:flex;align-items:center;justify-content:center;gap:6px}.hm input{width:84px;font:inherit;font-size:28px;font-weight:600;text-align:center;padding:8px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink)}.hm span{font-size:15px;color:var(--muted);margin-right:6px}
+.hm.sm input{width:64px;font-size:20px;padding:6px}.hm.sm span{font-size:13px;margin-right:2px}
+.orebox .hm input{width:84px}
+.hm input::-webkit-inner-spin-button,.hm input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}.hm input{-moz-appearance:textfield}.prow2.mat{color:var(--muted);font-size:14px}
+.varbar{display:flex;gap:8px;align-items:center}.varbar .filter{flex:1;min-width:0}.varbar .btn{white-space:nowrap;padding:10px 14px;width:auto}
+#addVarIns{display:block;margin:2px 0 0}
+.addp{grid-column:1/-1;display:flex;gap:8px;align-items:center}.addp input{flex:1;font:inherit;font-size:16px;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);min-width:0}.addp .btn{padding:9px 14px}.addp .link{padding:4px 0}
+.back{display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:15px;font-weight:600;color:var(--brand-ink);background:color-mix(in srgb,var(--brand-ink) 14%,transparent);border:1px solid color-mix(in srgb,var(--brand-ink) 40%,transparent);border-radius:999px;padding:7px 14px 7px 10px;margin:0 0 10px;cursor:pointer;opacity:1}
+.back:hover{background:color-mix(in srgb,var(--brand-ink) 24%,transparent)}
+.back .ar{font-size:20px;line-height:1;margin-top:-2px}
+body.menu #backBtn{top:14px}
+.whosec{margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:12px;background:color-mix(in srgb,var(--brand) 5%,var(--surface))}
+.whohead{display:flex;justify-content:space-between;align-items:center;gap:8px}.whohead h3{margin:0;font-size:15px}
+.pchip.who b{font-weight:700;margin-left:4px;opacity:.8}
+.pchip.add{border-style:dashed;color:var(--brand)}
+.plist{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.prow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--line)}
+.drow{border-bottom:1px solid var(--line)}
+.drow summary{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 2px;cursor:pointer;list-style:none;font-size:16px}
+.drow summary::-webkit-details-marker{display:none}
+.drow summary::after{content:'›';color:var(--muted);font-size:20px;margin-left:6px;transition:transform .15s}
+.drow[open] summary::after{transform:rotate(90deg)}
+.drow summary .dt{margin-left:auto;font-variant-numeric:tabular-nums}.drow summary .dt b{font-size:18px}
+.drow .su{color:var(--sun)}
+.ddet{padding:0 2px 12px}.ddet .meta{font-size:13px;color:var(--muted)}
+.ddet ul{list-style:none;margin:6px 0 0;padding:0}.ddet li{display:flex;justify-content:space-between;gap:10px;padding:4px 0;font-size:14px;border-top:1px dashed var(--line)}
+.pbox{background:color-mix(in srgb,var(--brand) 6%,var(--surface));border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:14px}
+.pbox h3{margin:0 0 6px;font-size:15px}
+.pday{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:10px}
+.pdh{display:flex;justify-content:space-between;font-weight:600;padding-bottom:6px;border-bottom:1px solid var(--line);margin-bottom:4px}.pdh .su{color:var(--sun)}
+.prow2{display:flex;justify-content:space-between;padding:5px 0;font-size:15px;font-variant-numeric:tabular-nums}
+.qsave{width:100%;margin-top:12px;position:sticky;bottom:10px;z-index:3;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.spdet{margin-top:18px;border-top:1px solid var(--line);padding-top:12px}.spdet summary{cursor:pointer;font-weight:600;color:var(--petrol,#00656b);padding:6px 0}
+.spdet[open] summary{margin-bottom:10px}
+.qsave:disabled{position:static;box-shadow:none}
+.qrow{display:flex;flex-wrap:wrap;align-items:center;gap:0 10px;border-bottom:1px solid var(--line);padding:2px 0}
+.qrow.on{background:#eef5f4;border-radius:10px;border-bottom-color:transparent;margin:2px 0}
+.qtick{flex:1;display:flex;align-items:center;gap:12px;background:none;border:0;padding:11px 8px;text-align:left;font:inherit;color:inherit;cursor:pointer;min-width:0}
+.qbox{flex:none;width:26px;height:26px;border:2px solid var(--petrol,#00656b);border-radius:7px;display:grid;place-items:center;font-weight:700;color:#fff;font-size:16px}
+.qrow.on .qbox{background:var(--petrol,#00656b)}
+.qname{display:flex;flex-direction:column;min-width:0}.qname .sub{font-size:12px}
+.qrow .qn{width:96px;text-align:center;font-size:16px;padding:8px 4px;margin-right:8px}
+.linkbtn{background:none;border:0;color:var(--petrol,#00656b);font:inherit;font-weight:600;padding:10px 0;cursor:pointer}
+.qdayrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.qdayrow input[type=date]{min-width:170px}
+.qmode{margin:14px 0 6px}
+#qProdBox input[type=date]{width:100%;box-sizing:border-box}
+.qarr{margin-left:auto;color:var(--muted);font-size:14px}
+.qrow .qname .sub b{color:var(--ink,#1d2b2a)}
+.qdays{flex-basis:100%;padding:0 10px 12px 46px}
+.qdrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:5px 0}.qdrow .qn{width:90px;margin:0;padding:6px 4px;font-size:15px}
+.qdrow .qother{padding:5px 8px;font-size:13px}
+.qrow.open{background:#f6f9f8;border-radius:10px}.qrow.on.open{background:#eef5f4}
+.qdays{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.qdays>.sub,.qdays>.qdrow.on,.qdays>.qdrow:last-child{flex-basis:100%}.qdays .qdrow{margin:0}
+.qbig{display:grid;grid-template-columns:1fr auto;align-items:center;width:100%;text-align:left;background:var(--brand);color:#fff;border:0;border-radius:18px;padding:18px 20px;margin:0 0 16px;font:inherit;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.qbig .qbt{font-size:20px;font-weight:700}.qbig .qbs{grid-column:1;font-size:14px;opacity:.9;margin-top:4px}.qbig .qba{grid-row:1/3;grid-column:2;font-size:32px;line-height:1}
+.vcard.oggi{border-left:5px solid var(--brand)}
+.vcard.done{opacity:.6}.vcard.done.open{opacity:1}
+.vsep{margin:14px 0 6px;font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.btn.pending{background:#d9822b;border-color:#d9822b;color:#fff}
+.ptrow{display:grid;grid-template-columns:1fr 78px 78px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--line)}
+.plagrid.nd .ptrow{grid-template-columns:1fr 70px 70px 70px}
+.ptrow.ph{border-bottom:0;padding-bottom:0}.ptrow.ph span{font-size:13px;font-weight:700;color:var(--brand);text-align:center}
+.ptrow .ptn{font-size:15px;font-weight:600}
+.ptrow input{width:100%;box-sizing:border-box;text-align:center;font-size:17px;padding:8px 4px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.tipi{font-size:13px;color:var(--muted);font-weight:400}
+#plaGrid.plagrid{display:block!important;grid-template-columns:none}
+#plaGrid .ptrow{grid-column:auto}
+.prestat{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}.ps{border-radius:10px;padding:8px 4px;text-align:center}.ps b{display:block;font-size:22px}.ps span{font-size:11px}
+.ps.late{background:#fdecea;color:#b3261e}.ps.soon{background:#fff1e0;color:#a85a00}.ps.fine{background:#e6f2ef;color:#00656b}.ps.ok{background:#eef0ef;color:#5b6664}
+.preurg{background:#fff1e0;border-radius:10px;padding:10px 12px;font-size:14px;margin-bottom:8px}.preurg.nd{background:#eef0ef}
+.fcrow{border:1px solid var(--line);border-left:6px solid #c9cfcd;border-radius:12px;padding:10px 12px;margin-bottom:8px}
+.fcrow.late{border-left-color:#d93025;background:#fff8f7}.fcrow.soon{border-left-color:#e8892b}.fcrow.fine{border-left-color:#00656b}.fcrow.ok{opacity:.6}
+.fch{display:flex;justify-content:space-between;gap:8px;align-items:baseline}.fcq{font-size:14px;font-weight:600;white-space:nowrap}
+.fcm{font-size:14px;margin:4px 0}.fcrow.late .fcm b{color:#b3261e}
+.fcc{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)}.pcin{width:80px;padding:5px 6px;font-size:15px;text-align:center}
+.vbar.vhd{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.03em}.vbar.vhd .vnum,.vbar.vhd .vbl{color:var(--muted)}.vbar.vhd .vbl{white-space:nowrap}
+.vbar.vhd{grid-template-columns:105px minmax(0,1fr) auto 60px}.vbar{grid-template-columns:105px minmax(0,1fr) auto 60px}
+.vbar.vtotr{border-top:2px solid var(--brand);padding-top:7px;margin-top:3px;font-size:14px;font-weight:700}.vbar.vtotr .vnum b{font-size:15px}
+.vtotbox{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.vtotbox div{border:2px solid var(--brand);border-radius:12px;padding:10px 6px;text-align:center}.vtotbox span{display:block;font-size:12px;color:var(--muted)}.vtotbox b{font-size:22px;color:var(--brand)}.vtotbox .neg b{color:var(--over)}
 </style>
 </head>
 <body>
+
 <header class="top">
   <div class="wrap">
     <div class="hrow">
-      <div><div class="brandline">Botanical Dry Garden</div><h1>Talee prati alternativi</h1></div>
+      <div><button class="back" id="backBtn" hidden><span class="ar" aria-hidden="true">‹</span><span id="backLbl">Indietro</span></button><div class="brandline" id="brandLine">Botanical Dry Garden</div><h1 id="pageTitle">Talee prati alternativi</h1></div>
       <button class="exp" id="expBtn">Esporta report</button>
     </div>
     <div class="camp" id="camps" role="group" aria-label="Ciclo di produzione"></div>
   </div>
 </header>
 
-<main class="wrap">
+<section class="wrap" id="vMenu" hidden>
+  <div class="tiles" id="tiles"></div>
+</section>
+<section class="wrap" id="vCycles" hidden>
+  <p class="sub cyhint">Scegli il ciclo di produzione. Ogni ciclo dura due mesi.</p>
+  <div class="ctiles" id="ctiles"></div>
+</section>
+<section class="wrap" id="vVuota" hidden>
+  <div class="card"><h2 id="vuotaTitle">Sezione vuota</h2><p class="sub" style="margin:6px 0 0">Questa sezione è ancora vuota: la riempiamo con i dati che mi darai.</p></div>
+</section>
+
+<main class="wrap" id="appMain">
   <section class="card" id="sumCard">
     <div class="row"><h2 id="campTitle">Caricamento…</h2></div>
     <div class="sub" id="campSub"></div>
@@ -190,56 +397,118 @@ textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px soli
 
   <div class="tabs" role="group" aria-label="Sezione">
     <button id="tabIns" aria-pressed="true">Inserisci</button>
+    <button id="tabPla" aria-pressed="false">Plateau terriccio</button>
     <button id="tabCal" aria-pressed="false">Calendario</button>
     <button id="tabVar" aria-pressed="false">Varietà</button>
     <button id="tabSto" aria-pressed="false">Storico</button>
+    <button id="tabSpe" aria-pressed="false">Spedizioni</button>
+    <button id="tabPre" aria-pressed="false">Previsione</button>
   </div>
 
   <section class="card" id="vIns">
     <div class="row" style="align-items:flex-end">
-      <div class="field" style="flex:1"><label for="insDate">Giorno</label><input type="date" id="insDate"></div>
+      <div class="field" style="flex:1"><label for="insDate">Giorno</label><div class="qdayrow"><input type="date" id="insDate"><div class="mchips" id="insDayChips"></div></div></div>
     </div>
     <div id="insInfo"></div>
-    <p class="sub" style="margin:10px 0 4px">Scrivi quante talee hai fatto per ogni varietà, poi premi Salva. Le righe vuote non vengono registrate.</p>
+    <div class="inshead" id="whoSec">
+      <p class="sub" id="insHint">Tocca una varietà e scrivi quante talee ha fatto ogni persona: il totale si calcola da solo. Per correggere cambia il numero, per annullare metti 0. Poi premi Salva.</p>
+      <button class="link" id="manageP">Gestisci nomi</button>
+    </div>
     <div id="insList"></div>
-
-    <div class="sec">
-      <h3>Chi ha fatto le talee</h3>
-      <div class="people" id="pTal"></div>
-      <div class="extra" id="xTal"></div>
-      <button class="link" id="addTal">+ aggiungi un altro nome</button>
-      <div class="field" style="max-width:260px"><label for="insOre">Ore impiegate per le talee (giornata)</label><input type="number" class="plain" id="insOre" inputmode="decimal" min="0" step="0.5" placeholder="es. 5"></div>
-      <div class="live" id="insLive"></div>
+    <button class="link" id="addVarIns">+ Aggiungi varietà</button>
+    <div class="dayline" id="whoDay"></div>
+    <div id="insExtra">
+    <details class="notebox" id="noteBox"><summary>+ Note aggiuntive (facoltative)</summary><textarea id="insNote" aria-label="Note aggiuntive" placeholder="es. talee per cantiere"></textarea></details>
+    <div class="orebox">
+      <label for="insOreH">Ore impiegate per le talee oggi</label>
+      <div class="hm"><input type="number" id="insOreH" inputmode="numeric" min="0" step="1" placeholder="0" aria-label="Ore"><span>ore</span><input type="number" id="insOreM" inputmode="numeric" min="0" max="59" step="1" placeholder="0" aria-label="Minuti"><span>min</span></div>
+      <div class="sub" id="insLive" hidden></div>
     </div>
-
-    <div class="sec">
-      <h3>Chi ha riempito i plateau di terra</h3>
-      <div class="people" id="pPla"></div>
-      <div class="extra" id="xPla"></div>
-      <button class="link" id="addPla">+ aggiungi un altro nome</button>
-    </div>
-
-    <div class="field sec"><label for="insNote">Note aggiuntive (facoltative)</label><textarea id="insNote" placeholder="es. talee per cantiere"></textarea></div>
     <div class="sticky"><button class="btn" id="saveBtn" disabled>Salva</button></div>
+    </div>
+  </section>
+
+  <section class="card" id="vPla" hidden>
+    <div class="field"><label for="plaDate">Giorno</label><div class="qdayrow"><input type="date" id="plaDate"><div class="mchips" id="plaDayChips"></div></div></div>
+    <div id="plaInfo"></div>
+    <div class="inshead"><p class="sub">Scrivi quanti plateau di terriccio ha riempito ogni persona: il totale del giorno si calcola da solo. Per correggere cambia il numero, per annullare metti 0.</p><button class="link" id="manageP2">Gestisci nomi</button></div>
+    <div class="vbody plagrid" id="plaGrid"></div>
+    <div class="platot" id="plaTot"></div>
+    <div class="orebox">
+      <label for="plaOreH">Tempo impiegato per riempire i plateau oggi</label>
+      <div class="hm"><input type="number" id="plaOreH" inputmode="numeric" min="0" step="1" placeholder="0" aria-label="Ore"><span>ore</span><input type="number" id="plaOreM" inputmode="numeric" min="0" max="59" step="1" placeholder="0" aria-label="Minuti"><span>min</span></div>
+    </div>
+    <div class="matbox">
+      <h3>Presa del materiale</h3>
+      <p class="sub" style="margin:0 0 8px">Spunta chi è andato a prendere il materiale oggi e quanto tempo ci ha messo.</p>
+      <div class="people" id="matP"></div>
+      <div class="addp" id="matAdd"></div>
+      <div class="matore"><label for="matOreH">Tempo impiegato</label><div class="hm sm"><input type="number" id="matOreH" inputmode="numeric" min="0" step="1" placeholder="0" aria-label="Ore"><span>ore</span><input type="number" id="matOreM" inputmode="numeric" min="0" max="59" step="1" placeholder="0" aria-label="Minuti"><span>min</span></div></div>
+    </div>
+    <div class="sticky"><button class="btn" id="plaSave" disabled>Salva</button></div>
+    <div class="sec"><h3 id="plaMonthT">Riepilogo del mese</h3><div class="mstats" id="plaMonth"></div><div id="plaMonthP"></div></div>
+    <div class="sec"><h3>Ultimi giorni</h3><div id="plaList"></div></div>
   </section>
 
   <section class="card" id="vCal" hidden>
     <div class="mchips" id="monChips" role="group" aria-label="Mese"></div>
+    <div id="calTot"></div>
     <div class="mstats" id="monStats"></div>
     <div id="monNotes"></div>
     <div class="mcal" id="monCal"></div>
     <p class="sub" style="margin:0 0 10px" id="calHint"></p>
-    <div class="grid-wrap"><table class="grid" id="calTable"></table></div>
-    <div id="cycBox" class="sec"></div>
+    <div id="calRiep"></div>
   </section>
 
   <section class="card" id="vVar" hidden>
-    <input class="filter" id="varFilter" type="search" placeholder="Cerca varietà" aria-label="Cerca varietà">
+    <div class="varbar"><input class="filter" id="varFilter" type="search" placeholder="Cerca varietà" aria-label="Cerca varietà"><button class="btn" id="addVarBtn">+ Aggiungi varietà</button></div>
+    <button class="btn ghost" id="tgtBtn" style="width:100%;margin-top:8px">Quantità da produrre in questo ciclo</button>
     <div class="list" id="varList" style="margin-top:8px"></div>
+  </section>
+
+  <section class="card" id="vSpe" hidden>
+    <h3 style="margin:0 0 4px">Registra spedizioni</h3>
+    <div class="field" style="margin:8px 0 0"><label for="qDay">Spedite il</label><div class="qdayrow"><input type="date" id="qDay"><div class="mchips" id="qDayChips"></div></div></div>
+    <div class="mchips qmode" id="qMode" role="group" aria-label="Modo di inserimento"></div>
+    <div id="qProdBox" hidden>
+      <div class="field" style="margin:0"><label for="qProd">Prodotte il</label><input type="date" id="qProd"></div>
+      <div class="spchips" id="qProdChips" style="margin:8px 0 4px"></div>
+    </div>
+    <p class="sub" id="qHint" style="margin:6px 0 8px"></p>
+    <div id="qList"></div>
+    <button class="linkbtn" id="qAll" type="button"></button>
+    <div class="field" style="margin-top:10px"><label for="qNota">Nota (facoltativa)</label><input type="text" class="plain" id="qNota" placeholder="es. ordine, cliente…"></div>
+    <button class="btn qsave" id="qSave" disabled>Salva</button>
+
+    <details class="spdet" id="spDet"><summary>Una alla volta o modifica (date a mano)</summary>
+    <div class="spform">
+      <div class="field"><label for="spVar">Varietà</label><select id="spVar"></select></div>
+      <div class="field"><label for="spProd">Prodotta il</label><input type="date" id="spProd"></div>
+      <div class="spchips" id="spProdChips"></div>
+      <div class="field"><label for="spSped">Venduta e spedita il</label><input type="date" id="spSped"></div>
+      <div class="field"><label for="spQ">Quantità spedita (facoltativa)</label><input type="number" class="plain" id="spQ" inputmode="numeric" min="0" placeholder="es. 20"></div>
+      <div class="field"><label for="spNota">Nota (facoltativa)</label><input type="text" class="plain" id="spNota" placeholder="es. cliente, ordine…"></div>
+    </div>
+    <div class="spdays" id="spDays"></div>
+    <div class="two"><button class="btn ghost" id="spReset" hidden>Annulla modifica</button><button class="btn" id="spSave" disabled>Salva spedizione</button></div>
+    </details>
+    <div class="sec"><button class="btn ghost" id="spRepBtn" style="width:100%;margin-bottom:12px">Scarica report tempi di crescita</button><div class="vtitrow"><h3 class="vtit" style="margin:0">Tempi di crescita per varietà</h3><div class="mchips" id="spScope"></div></div><div id="spRep"></div></div>
+    <div class="sec"><h3>Spedizioni registrate</h3><div id="spList"></div></div>
+  </section>
+
+  <section class="card" id="vPre" hidden>
+    <h3 style="margin:0 0 4px">Previsione: cosa produrre e quando</h3>
+    <p class="sub" style="margin:0 0 10px">L'app calcola per ogni varietà entro quando va fatta, in base ai giorni di crescita, per avere le piante pronte per la vendita.</p>
+    <div class="field" style="margin:0 0 10px"><label for="preDate">Piante pronte per il</label><input type="date" id="preDate"></div>
+    <button class="btn ghost" id="preRepBtn" style="width:100%;margin-bottom:12px">Scarica report previsione (tutti i cicli)</button>
+    <div id="preTop"></div>
+    <div id="preList"></div>
+    <p class="sub cnote">I giorni di crescita vengono presi dalle spedizioni registrate (media). Dove non ci sono ancora spedizioni, scrivi tu una stima: la usa finché non arrivano i dati veri.</p>
   </section>
 
   <section class="card" id="vSto" hidden>
     <div class="mstats" id="stoStats"></div>
+    <div class="mchips" id="stoMode" role="group" aria-label="Vista storico" style="margin-bottom:12px"></div>
     <div id="stoList"></div>
   </section>
 </main>
@@ -248,9 +517,13 @@ textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px soli
 
 <dialog id="expDlg"><div class="dlg">
   <h2>Esporta report</h2>
+  <div class="mchips" id="eType" role="group" aria-label="Tipo di report"><button type="button" data-t="completo" aria-pressed="true">Report produzione</button><button type="button" data-t="persona" aria-pressed="false">Report per persona</button><button type="button" data-t="crescita" aria-pressed="false">Report tempi di crescita</button><button type="button" data-t="previsione" aria-pressed="false">Report previsione</button></div>
+  <p class="sub" style="margin:0" id="eTypeHint">Talee per varietà, cicli, squadra, plateau terriccio e materiale.</p>
+  <div id="eMonthBox">
   <p class="sub" style="margin:0">Spunta uno o più mesi: verranno messi tutti in un unico report.</p>
   <div class="people" id="eMonths" role="group" aria-label="Mesi da esportare"></div>
   <div style="display:flex;gap:16px"><button class="link" id="eAll">Seleziona tutti</button><button class="link" id="eNone">Nessuno</button></div>
+  </div>
   <div class="two">
     <button class="btn" id="ePdf">PDF</button>
     <button class="btn" id="eXls">Excel</button>
@@ -264,11 +537,69 @@ textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px soli
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
 <script>
+/* Collegamento all'archivio comune su Vercel: tutti i dispositivi leggono e scrivono gli stessi dati.
+   Le modifiche fatte da altri compaiono da sole entro pochi secondi. */
+(function(){
+const LS={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+const COLS=['campagne','varieta','registrazioni','giornate','impostazioni','spedizioni'];
+let data=null,loading=null;const subs=[];
+const clone=x=>JSON.parse(JSON.stringify(x));
+const newId=()=>(window.crypto&&crypto.randomUUID)?crypto.randomUUID():('id-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10));
+function pinBox(wrong){
+  if(document.getElementById('pinOv'))return;
+  const ov=document.createElement('div');ov.id='pinOv';
+  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9999;display:grid;place-items:center;padding:20px';
+  ov.innerHTML='<div style="background:#fff;color:#16302f;border-radius:16px;padding:22px;max-width:340px;width:100%;font-family:system-ui,sans-serif"><h2 style="margin:0 0 6px;font-size:20px">Inserisci la password</h2><p style="margin:0 0 12px;color:#5f716f;font-size:14px">'+(wrong?'Password errata, riprova.':'Serve una volta sola su questo dispositivo.')+'</p><input id="pinIn" type="password" autocomplete="current-password" aria-label="Password" style="width:100%;box-sizing:border-box;font-size:18px;padding:10px;border:1px solid #dbe3e0;border-radius:10px"><button id="pinOk" style="margin-top:12px;width:100%;padding:12px;border:0;border-radius:10px;background:#00656b;color:#fff;font-size:16px;font-weight:600">Entra</button></div>';
+  document.body.appendChild(ov);const i=ov.querySelector('#pinIn');i.focus();
+  const go=()=>{LS.set('bdg-pin',i.value.trim());ov.remove();refresh(true)};
+  ov.querySelector('#pinOk').onclick=go;i.onkeydown=e=>{if(e.key==='Enter')go()};
+}
+async function call(method,body){
+  const h={'content-type':'application/json'};const pin=LS.get('bdg-pin');if(pin)h['x-pin']=pin;
+  const r=await fetch('/api/db',{method,headers:h,body:body?JSON.stringify(body):undefined,cache:'no-store'});
+  if(r.status===401){pinBox(!!pin);const e=new Error('pin');throw e}
+  if(!r.ok){let m='';try{m=(await r.json()).error||''}catch(e){}throw new Error(m||('Errore '+r.status))}
+  return r.json();
+}
+const snap=(col,ord)=>{const a=(data&&data[col]||[]).slice();if(ord)a.sort((x,y)=>(x[ord]??0)-(y[ord]??0));return {docs:a.map(d=>{const {id,...rest}=d;return {id,data:()=>clone(rest)}})}};
+function fire(force){for(const s of subs){const j=JSON.stringify(data[s.col]||[]);if(force||j!==s.last){s.last=j;try{s.cb(snap(s.col,s.ord))}catch(e){console.error(e)}}}}
+async function refresh(force){
+  if(loading)return loading;
+  loading=(async()=>{try{const d=await call('GET');data={};for(const c of COLS)data[c]=d[c]||[];fire(force)}
+    catch(e){if(e.message!=='pin'&&!data){for(const s of subs)if(s.err)try{s.err(e)}catch(x){}}}
+    finally{loading=null}})();
+  return loading;
+}
+async function write(op,col,id,d){
+  // aggiorna subito lo schermo, poi salva nell'archivio comune
+  if(data){const a=data[col]=data[col]||[];const i=a.findIndex(x=>x.id===id);
+    if(op==='delete'){if(i>=0)a.splice(i,1)}
+    else if(op==='set'){const n={...clone(d),id};if(i>=0)a[i]=n;else a.push(n)}
+    else if(i>=0)a[i]={...a[i],...clone(d),id};
+    fire()}
+  try{await call('POST',{ops:[{op,col,id,data:d}]})}
+  catch(e){await refresh(true);throw e}
+  setTimeout(()=>refresh(),300);
+}
+const docRef=(col,id)=>({set:d=>write('set',col,id,d),update:d=>write('update',col,id,d),delete:()=>write('delete',col,id)});
+const coll=(col,ord)=>({orderBy:f=>coll(col,f),doc:id=>docRef(col,id||newId()),
+  onSnapshot:(cb,err)=>{const s={col,ord,cb,err,last:null};subs.push(s);if(data){s.last=JSON.stringify(data[col]||[]);setTimeout(()=>cb(snap(col,ord)),0)}else refresh();return ()=>{const i=subs.indexOf(s);if(i>=0)subs.splice(i,1)}}});
+const db={collection:c=>coll(c),doc:p=>{const [c,i]=p.split('/');return docRef(c,i)}};
+window.claude={use:async k=>k==='db'?db:null};
+setInterval(()=>{if(!document.hidden&&data)refresh()},12000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&data)refresh()});
+window.addEventListener('focus',()=>{if(data)refresh()});
+})();
+</script>
+
+<script>
 (function(){
   const $=id=>document.getElementById(id);
-  const PEOPLE=['Liri','Agnese','Giulia','Carlotta','Simona','Costanza'];
-  const S={canWrite:null,campagne:[],varieta:[],reg:[],gio:{},camp:null,tab:'ins',mese:null,busy:false,loaded:false};
-  const LS={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+  const PEOPLE_DEF=['Liri','Agnese','Giulia','Carlotta','Simona','Costanza'];
+  let PEOPLE=[...PEOPLE_DEF];
+  const SENZA='Senza nome';
+  const pers=r=>r.persona||SENZA;
+  const S={allS:[],allC:[],allR:[],allG:{},ready:false,route:'home',who:null,db:null,user:null,canWrite:null,campagne:[],varieta:[],reg:[],gio:{},camp:null,tab:'ins',names:{},uid:null,mese:null};
   const fmt=n=>n==null||isNaN(n)?'—':(Math.round(n*10)/10).toLocaleString('it-IT');
   const fmt1=n=>n==null||!isFinite(n)?'—':n.toLocaleString('it-IT',{minimumFractionDigits:1,maximumFractionDigits:1});
   const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -300,14 +631,15 @@ textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px soli
   function daily(){const m={};for(const r of S.reg){if(r.periodo)continue;(m[r.data]=m[r.data]||{});m[r.data][r.varieta]=(m[r.data][r.varieta]||0)+(+r.qta||0)}return m}
   function stats(dates,D){
     let tal=0,ore=0,talOre=0,pd=0,ps=0,worked=0;
-    for(const d of dates){const t=sumO(D[d]);tal+=t;if(t>0)worked++;const g=S.gio[d];if(!g)continue;
-      const n=(g.taleatori||[]).length;if(n){pd++;ps+=n}if(+g.ore>0){ore+=+g.ore;talOre+=t}}
+    const pp={};for(const r of S.reg){if(!r.periodo&&r.persona&&+r.qta>0)(pp[r.data]=pp[r.data]||new Set()).add(r.persona)}
+    for(const d of dates){const t=sumO(D[d]);tal+=t;if(t>0)worked++;const g=S.gio[d]||{};
+      const n=pp[d]?pp[d].size:(g.taleatori||[]).length;if(n){pd++;ps+=n}if(+g.ore>0){ore+=+g.ore;talOre+=t}}
     return {tal,worked,ore,perOra:ore?talOre/ore:null,persone:pd?ps/pd:null};
   }
   function statsHtml(st,label){return [[fmt(st.tal),label],[st.ore?fmt(st.ore):'—','ore totali'],[fmt1(st.perOra),'talee all\'ora (media)'],[fmt1(st.persone),'persone in media']].map(([b,s])=>`<div><b>${b}</b><span>${s}</span></div>`).join('')}
 
-  function setTab(t){S.tab=t;for(const [k,b,v] of [['ins','tabIns','vIns'],['cal','tabCal','vCal'],['var','tabVar','vVar'],['sto','tabSto','vSto']]){$(b).setAttribute('aria-pressed',k===t);$(v).hidden=k!==t}if(t==='cal'){const w=document.querySelector('.grid-wrap');requestAnimationFrame(()=>{w.scrollLeft=S.mese==='tutto'?w.scrollWidth:0})}}
-  $('tabIns').onclick=()=>setTab('ins');$('tabVar').onclick=()=>setTab('var');$('tabCal').onclick=()=>setTab('cal');$('tabSto').onclick=()=>setTab('sto');
+  function setTab(t){S.tab=t;for(const [k,b,v] of [['ins','tabIns','vIns'],['pla','tabPla','vPla'],['cal','tabCal','vCal'],['var','tabVar','vVar'],['sto','tabSto','vSto'],['spe','tabSpe','vSpe'],['pre','tabPre','vPre']]){$(b).setAttribute('aria-pressed',k===t);$(v).hidden=k!==t}}
+  $('tabIns').onclick=()=>setTab('ins');$('tabSpe').onclick=()=>{setTab('spe');renderSpe()};$('tabPla').onclick=()=>{setTab('pla');renderPla()};$('tabVar').onclick=()=>setTab('var');$('tabCal').onclick=()=>setTab('cal');$('tabSto').onclick=()=>setTab('sto');$('tabPre').onclick=()=>{setTab('pre');renderPre()};
 
   function renderCamps(){
     const box=$('camps');box.innerHTML='';
@@ -337,31 +669,124 @@ textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px soli
   }
 
   /* ---------- INSERISCI ---------- */
-  const sel={taleatori:[],riempitori:[]};let loadedDay=null;
+  /* per ogni varietà: totale + chi le ha fatte (una casella per persona) */
+  let loadedDay=null;S.open=S.open||{};S.tmpP={};
   function insCamp(){return campOfDate($('insDate').value||today())||curCamp()}
+  // talee salvate in un giorno: varietà -> persona -> {q, ids}
+  function dayMap(day){const m={};for(const r of S.reg){if(r.periodo||r.data!==day)continue;const p=pers(r);const v=(m[r.varieta]=m[r.varieta]||{});const o=(v[p]=v[p]||{q:0,ids:[]});o.q+=(+r.qta||0);o.ids.push(r.id)}return m}
+  function dayPeople(day){const s2=new Set();for(const r of S.reg){if(!r.periodo&&r.data===day&&r.persona)s2.add(r.persona)}return [...s2]}
   function loadDay(){
     const d=$('insDate').value||today();loadedDay=d;const g=S.gio[d]||{};
-    sel.taleatori=[...(g.taleatori||[])];sel.riempitori=[...(g.riempitori||[])];
-    $('insOre').value=g.ore??'';$('insNote').value=g.nota||'';
-    renderPeople('Tal',true);renderPeople('Pla',true);
+    setHM('insOre',g.ore);$('insNote').value=g.nota||'';$('noteBox').open=!!g.nota;
+    renderIns();
   }
-  function renderPeople(k,reset){
-    const key=k==='Tal'?'taleatori':'riempitori',a=sel[key];
-    const all=[...PEOPLE,...a.filter(n=>!PEOPLE.includes(n))];
-    $('p'+k).innerHTML=all.map(n=>`<button type="button" class="pchip" data-n="${esc(n)}" aria-pressed="${a.includes(n)}">${a.includes(n)?'✓ ':''}${esc(n)}</button>`).join('');
-    if(reset){$('x'+k).innerHTML='';addField(k,true);addField(k,true)}
-    updLive();
+  /* ---------- PLATEAU TERRICCIO ---------- */
+  // giornata.plateau = {persona: numero}, giornata.orePlateau = ore
+  $('plaDate').value=today();let plaLoaded=null;S.plaTmp=[];
+  // tempo: ore + minuti -> ore decimali (salvate), e ritorno
+  const getHM=id=>{const h=+$(id+'H').value||0,m=+$(id+'M').value||0;const t=Math.round((h*60+m))/60;return t>0?Math.round(t*10000)/10000:null};
+  const setHM=(id,x)=>{if(!(x>0)){$(id+'H').value='';$(id+'M').value='';return}const tm=Math.round(x*60);$(id+'H').value=Math.floor(tm/60)||'';$(id+'M').value=tm%60||''};
+  const durata=x=>{if(!(x>0))return '—';const tm=Math.round(x*60),h=Math.floor(tm/60),m=tm%60;return (h?h+' h':'')+(h&&m?' ':'')+(m?m+' min':'')};
+  const sameT=(a,b)=>Math.abs((a||0)-(b||0))<0.001;
+  const platOf=d=>{const g=S.gio[d]||{};return g.plateau||{}};
+  const PT=['AL60','AL84'];
+  // plateau per tipo: {AL60:{persona:n},AL84:{...},ND:{...}} (ND = salvati prima dei tipi)
+  const platTypes=d=>{const g=S.gio[d]||{};if(g.plateauTipo)return {AL60:g.plateauTipo.AL60||{},AL84:g.plateauTipo.AL84||{},ND:g.plateauTipo.ND||{}};return {AL60:{},AL84:{},ND:g.plateau||{}}};
+  const sumV=o=>Object.values(o||{}).reduce((a,b)=>a+(+b||0),0);
+  const tipoTxt=(a,b,n)=>[a?'AL60 '+fmt(a):'',b?'AL84 '+fmt(b):'',n?'senza tipo '+fmt(n):''].filter(Boolean).join(' · ');
+  const tipoOfDay=d=>{const t=platTypes(d);return tipoTxt(sumV(t.AL60),sumV(t.AL84),sumV(t.ND))};
+  function platStats(dates){let tot=0,ore=0,days=0,pd=0,ps=0,t60=0,t84=0,tnd=0;const per={},per60={},per84={};
+    for(const d of dates){const pl=platOf(d);const t=Object.values(pl).reduce((a,b)=>a+(+b||0),0);if(!t)continue;days++;tot+=t;
+      {const ty=platTypes(d);t60+=sumV(ty.AL60);t84+=sumV(ty.AL84);tnd+=sumV(ty.ND);for(const [p,q] of Object.entries(ty.AL60))if(+q>0)per60[p]=(per60[p]||0)+(+q);for(const [p,q] of Object.entries(ty.AL84))if(+q>0)per84[p]=(per84[p]||0)+(+q)}
+      const n=Object.keys(pl).filter(p=>+pl[p]>0).length;pd++;ps+=n;for(const [p,q] of Object.entries(pl))if(+q>0)per[p]=(per[p]||0)+(+q);
+      const o=+(S.gio[d]||{}).orePlateau||0;ore+=o}
+    return {tot,ore,days,persone:pd?ps/pd:null,perOra:ore?tot/ore:null,per,t60,t84,tnd,per60,per84};}
+  function plaLoad(){const d=$('plaDate').value||today();plaLoaded=d;const g=S.gio[d]||{};S.plaTmp=[];
+    setHM('plaOre',g.orePlateau);const mt=g.materiale||{};S.matSel=[...(mt.persone||[])];S.matTmp=[];setHM('matOre',mt.ore);drawMat();
+    $('plaInfo').innerHTML=isSun(d)?'<div class="sunban">Domenica — giorno di riposo, non si lavora</div>':'';drawPlaGrid({})}
+  function drawPlaGrid(keep){
+    const d=$('plaDate').value||today();const pl=platOf(d);const ty=platTypes(d);const hasND=sumV(ty.ND)>0;const cols=hasND?[...PT,'ND']:PT;
+    const people=[...PEOPLE,...[...Object.keys(pl),...S.plaTmp].filter((p,i,a)=>!PEOPLE.includes(p)&&a.indexOf(p)===i)];
+    const box=$('plaGrid');box.innerHTML='';box.classList.toggle('nd',hasND);
+    const hd=document.createElement('div');hd.className='ptrow ph';hd.innerHTML='<span></span>'+cols.map(t=>`<span>${t==='ND'?'Senza tipo':t}</span>`).join('');box.appendChild(hd);
+    for(const p of people){
+      const row=document.createElement('div');row.className='ptrow';const sp=document.createElement('span');sp.className='ptn';sp.textContent=p;row.appendChild(sp);
+      for(const t of cols){const o=+ty[t][p]||0;const k=p+'|'+t;
+        const inp=document.createElement('input');inp.type='number';inp.inputMode='numeric';inp.min='0';inp.step='1';inp.placeholder='0';inp.dataset.p=p;inp.dataset.t=t;inp.dataset.o=String(o);
+        inp.value=k in keep?keep[k]:(o?String(o):'');inp.setAttribute('aria-label','Plateau '+(t==='ND'?'senza tipo':t)+' riempiti da '+p);inp.oninput=plaUpd;row.appendChild(inp)}
+      box.appendChild(row)}
+    if(hasND){const n=document.createElement('p');n.className='sub';n.style.margin='6px 0 0';n.textContent='"Senza tipo" = plateau salvati prima che ci fossero AL60 e AL84. Se sai il tipo, sposta il numero nella colonna giusta.';box.appendChild(n)}
+    const addb=document.createElement('div');addb.className='addp';const ab=document.createElement('button');ab.type='button';ab.className='link';ab.textContent='+ Altro nome';
+    ab.onclick=()=>{addb.innerHTML='';const ni=document.createElement('input');ni.type='text';ni.placeholder='Nome';ni.setAttribute('aria-label','Nuovo nome');
+      const ok=document.createElement('button');ok.type='button';ok.className='btn ghost';ok.textContent='Aggiungi';
+      const go=()=>{let n=ni.value.trim();if(!n)return;n=n.charAt(0).toUpperCase()+n.slice(1);const ex=people.find(x=>x.toLowerCase()===n.toLowerCase());if(!ex)S.plaTmp.push(n);
+        drawPlaGrid(plaVals(true));const f=document.querySelector(`#plaGrid input[data-p="${CSS.escape(ex||n)}"]`);if(f)f.focus()};
+      ok.onclick=go;ni.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();go()}};addb.append(ni,ok);ni.focus()};
+    addb.appendChild(ab);box.appendChild(addb);plaUpd();
   }
-  function addField(k,quiet){const i=document.createElement('input');i.type='text';i.setAttribute('list','namesList');i.placeholder='Altro nome';i.setAttribute('aria-label','Altro nome');i.dataset.x=k==='Tal'?'taleatori':'riempitori';$('x'+k).appendChild(i);if(!quiet)i.focus()}
-  for(const k of ['Tal','Pla']){const key=k==='Tal'?'taleatori':'riempitori';
-    $('p'+k).onclick=e=>{const b=e.target.closest('[data-n]');if(!b)return;const n=b.dataset.n,a=sel[key],i=a.indexOf(n);if(i>=0)a.splice(i,1);else a.push(n);renderPeople(k,false)};
-    $('add'+k).onclick=()=>addField(k,false);$('x'+k).oninput=updLive}
-  function names(key){const ex=[...document.querySelectorAll(`input[data-x="${key}"]`)].map(i=>i.value.trim()).filter(Boolean).map(s=>s.charAt(0).toUpperCase()+s.slice(1));return [...new Set([...sel[key],...ex])]}
+  function drawMat(){
+    const all=[...new Set([...PEOPLE,...S.matSel,...(S.matTmp||[])])].sort((a,b)=>a.localeCompare(b,'it'));
+    $('matP').innerHTML=all.map(n=>`<button type="button" class="pchip" data-n="${esc(n)}" aria-pressed="${S.matSel.includes(n)}">${S.matSel.includes(n)?'✓ ':''}${esc(n)}</button>`).join('')+'<button type="button" class="pchip add" id="matNew">+ Altro nome</button>';
+    $('matAdd').innerHTML='';plaUpd();
+  }
+  $('matP').onclick=e=>{if(e.target.closest('#matNew')){const box=$('matAdd');box.innerHTML='';const ni=document.createElement('input');ni.type='text';ni.placeholder='Nome';ni.setAttribute('aria-label','Nome');
+      const ok=document.createElement('button');ok.type='button';ok.className='btn ghost';ok.textContent='Aggiungi';
+      const go=()=>{let n=ni.value.trim();if(!n)return;n=n.charAt(0).toUpperCase()+n.slice(1);(S.matTmp=S.matTmp||[]).push(n);if(!S.matSel.includes(n))S.matSel.push(n);drawMat()};
+      ok.onclick=go;ni.onkeydown=e2=>{if(e2.key==='Enter'){e2.preventDefault();go()}};box.append(ni,ok);ni.focus();return}
+    const b=e.target.closest('[data-n]');if(!b)return;const n=b.dataset.n,i=S.matSel.indexOf(n);if(i>=0)S.matSel.splice(i,1);else S.matSel.push(n);drawMat()};
+  $('matOreH').oninput=$('matOreM').oninput=()=>plaUpd();
+  const matOf=d=>((S.gio[d]||{}).materiale)||{};
+  function matStats(dates){let volte=0,ore=0,ps=0;const per={};for(const d of dates){const m=matOf(d);const n=(m.persone||[]).length;if(!n&&!(+m.ore>0))continue;volte++;ore+=+m.ore||0;ps+=n;for(const p of (m.persone||[]))per[p]=(per[p]||0)+1}
+    return {volte,ore,persone:volte?ps/volte:null,per}}
+  // raw: chiave persona|tipo -> testo (per ridisegnare); altrimenti chiave persona|tipo -> numero > 0
+  function plaVals(raw){const m={};document.querySelectorAll('#plaGrid input[data-p]').forEach(i=>{const k=i.dataset.p+'|'+i.dataset.t;if(raw){if(i.value!=='')m[k]=i.value}else{const x=i.value===''?0:+i.value;if(x>0)m[k]=x}});return m}
+  const plaByType=v=>{const o={AL60:{},AL84:{},ND:{}};for(const [k,q] of Object.entries(v)){const [p,t]=k.split('|');o[t][p]=q}return o};
+  function plaUpd(){const d=$('plaDate').value||today();const g=S.gio[d]||{};const now=plaVals(false);const ty=platTypes(d);const old={};for(const t of ['AL60','AL84','ND'])for(const [p,q] of Object.entries(ty[t]))if(+q>0)old[p+'|'+t]=+q;
+    const tot=Object.values(now).reduce((a,b)=>a+b,0);const ore=getHM('plaOre')||0;const bt=plaByType(now);
+    $('plaTot').innerHTML=tot?(`<b>Totale del giorno: ${fmt(tot)} plateau</b> <span class="tipi">${tipoTxt(sumV(bt.AL60),sumV(bt.AL84),sumV(bt.ND))}</span>`+(ore?`<br>${durata(ore)} · ${fmt1(tot/ore)} plateau all'ora`:'')):'Nessun plateau segnato in questo giorno.';
+    const keys=new Set([...Object.keys(now),...Object.keys(old)]);let same=true;for(const k of keys)if((now[k]||0)!==(old[k]||0))same=false;
+    if(!sameT(getHM('plaOre'),g.orePlateau))same=false;
+    {const m0=g.materiale||{};const a=[...(S.matSel||[])].sort().join('|'),b=[...(m0.persone||[])].sort().join('|');if(a!==b)same=false;if(!sameT(getHM('matOre'),m0.ore))same=false}
+    $('plaSave').disabled=same||!S.ready||S.busy||S.canWrite===false;$('plaSave').classList.toggle('pending',!$('plaSave').disabled);if(!S.busy)$('plaSave').textContent='Salva'}
+  $('plaOreH').oninput=$('plaOreM').oninput=plaUpd;
+  function renderPla(){
+    if(plaLoaded!==($('plaDate').value||today()))plaLoad();else drawPlaGrid(plaVals(true));
+    const d0=$('plaDate').value||today();const m=d0.slice(0,7);
+    const md=Object.keys(S.gio).filter(d=>d.startsWith(m));const st=platStats(md);
+    $('plaMonthT').textContent='Riepilogo di '+mLabel(m);
+    $('plaMonth').innerHTML=[[fmt(st.tot),'plateau riempiti'],[fmt(st.t60),'AL60'],[fmt(st.t84),'AL84'],[fmt(st.days),'giorni'],[durata(st.ore),'tempo totale'],[fmt1(st.perOra),'plateau all\'ora'],[fmt1(st.persone),'persone in media']].map(([b,x])=>`<div><b>${b}</b><span>${x}</span></div>`).join('');
+    const pp=Object.entries(st.per).sort((a,b)=>b[1]-a[1]);const ms2=matStats(md);
+    $('plaMonthP').innerHTML=(pp.length?'<h4 class="mini">Plateau per persona</h4>'+pp.map(([p,q])=>`<div class="prow2"><span>${esc(p)} <small class="sub">${tipoTxt(st.per60[p]||0,st.per84[p]||0,q-(st.per60[p]||0)-(st.per84[p]||0))}</small></span><b>${fmt(q)}</b></div>`).join(''):'')+
+      (ms2.volte?`<h4 class="mini">Presa del materiale</h4><div class="prow2"><span>Volte</span><b>${fmt(ms2.volte)}</b></div><div class="prow2"><span>Tempo totale</span><b>${durata(ms2.ore)}</b></div><div class="prow2"><span>Persone in media</span><b>${fmt1(ms2.persone)}</b></div>`+Object.entries(ms2.per).sort((a,b)=>b[1]-a[1]).map(([p,q])=>`<div class="prow2"><span>${esc(p)}</span><b>${q} ${q===1?'volta':'volte'}</b></div>`).join(''):'');
+    const days=Object.keys(S.gio).filter(d=>Object.values(platOf(d)).some(q=>+q>0)||(matOf(d).persone||[]).length||+matOf(d).ore>0).sort().reverse().slice(0,20);
+    $('plaList').innerHTML=days.length?days.map(d=>{const pl=platOf(d);const t=Object.values(pl).reduce((a,b)=>a+(+b||0),0);const o=(S.gio[d]||{}).orePlateau;
+      return `<div class="pday"><div class="pdh"><span class="${isSun(d)?'su':''}">${esc(dLabel(d))}</span><span>${fmt(t)} plateau${o?' · '+durata(o):''}</span></div><div class="sub tipi">${tipoOfDay(d)}</div>`+(()=>{const ty=platTypes(d);return Object.entries(pl).filter(([,q])=>+q>0).sort((a,b)=>b[1]-a[1]).map(([p,q])=>`<div class="prow2"><span>${esc(p)} <small class="sub">${tipoTxt(+ty.AL60[p]||0,+ty.AL84[p]||0,+ty.ND[p]||0)}</small></span><b>${fmt(+q)}</b></div>`).join('')})()+(()=>{const m=matOf(d);return (m.persone||[]).length||+m.ore>0?`<div class="prow2 mat"><span>Materiale: ${esc((m.persone||[]).join(', ')||'—')}</span><b>${m.ore?durata(m.ore):''}</b></div>`:''})()+'</div>'}).join(''):'<p class="sub" style="margin:0">Nessun giorno registrato.</p>';
+  }
+  $('plaDate').onchange=()=>{dayChips('plaDate','plaDayChips');plaLoad();renderPla()};
+  $('manageP2').onclick=()=>openPeople(false);
+  $('plaSave').onclick=async()=>{const day=$('plaDate').value||today();const g0=S.gio[day]||{};
+    const bt=plaByType(plaVals(false));const pl={};for(const t of ['AL60','AL84','ND'])for(const [p,q] of Object.entries(bt[t]))pl[p]=(pl[p]||0)+q;
+    const plateauTipo={AL60:bt.AL60,AL84:bt.AL84};if(sumV(bt.ND))plateauTipo.ND=bt.ND;
+    const giorno={...g0,data:day,plateau:pl,plateauTipo,riempitori:Object.keys(pl),orePlateau:getHM('plaOre'),materiale:{persone:[...S.matSel],ore:getHM('matOre')}};
+    S.busy=true;$('plaSave').disabled=true;$('plaSave').textContent='Salvataggio…';
+    try{await DB.setGiornata(day,giorno);S.allG[day]={...giorno};applySection();toast('Salvato');S.busy=false;if(typeof load==='function')await load(true);plaLoad();renderPla()}
+    catch(e){if(!e||e.message!=='pin')msg('Salvataggio non riuscito. Controlla la connessione e riprova.')}
+    S.busy=false;plaUpd()};
+
+  // valori attuali delle caselle (varietà|persona -> numero)
+  function cells(){const m={};document.querySelectorAll('#insList input[data-v]').forEach(i=>{m[i.dataset.v+'|'+i.dataset.p]={val:i.value===''?0:+i.value,orig:+i.dataset.o||0,v:i.dataset.v,p:i.dataset.p}});return m}
+  function dirty(){return Object.values(cells()).filter(x=>x.val!==x.orig&&!(isNaN(x.val)))}
+  function curDay(){ // totali del giorno considerando quello che si sta scrivendo
+    const day=$('insDate').value||today();const m=dayMap(day);const c=cells();const per={};let tot=0;
+    for(const [v,pp] of Object.entries(m))for(const [p,o] of Object.entries(pp)){if(!c[v+'|'+p]){per[p]=(per[p]||0)+o.q;tot+=o.q}}
+    for(const x of Object.values(c)){if(x.val>0){per[x.p]=(per[x.p]||0)+x.val;tot+=x.val}}
+    return {per,tot};
+  }
   function updLive(){
-    const d=$('insDate').value||today();
-    const typed=[...document.querySelectorAll('#insList input')].reduce((a,i)=>a+(+i.value>0?+i.value:0),0);
-    const saved=sumO(daily()[d]);const tot=saved+typed;const ore=+$('insOre').value||0;const n=names('taleatori').length;
-    $('insLive').innerHTML=`Giornata: <b>${fmt(tot)}</b> talee${typed&&saved?' (di cui '+fmt(typed)+' da salvare)':''} · <b>${ore?fmt(ore):'—'}</b> ore · <b>${n||'—'}</b> persone → <b>${ore?fmt1(tot/ore):'—'}</b> talee all'ora`;
+    const {per,tot}=curDay();const ore=getHM('insOre')||0;const n=Object.keys(per).filter(p=>p!==SENZA&&per[p]>0).length;
+    const ps=Object.entries(per).filter(([,q])=>q>0).sort((a,b)=>a[0]===SENZA?1:b[0]===SENZA?-1:b[1]-a[1]);
+    $('whoDay').innerHTML=tot?('<b>Giornata</b>: '+ps.map(([p,q])=>`${esc(p)} <b>${fmt(q)}</b>`).join(' · ')+` · <b>Totale ${fmt(tot)}</b>`):'';
+    $('insLive').innerHTML=`<b>${fmt(tot)}</b> talee · <b>${n||'—'}</b> ${n===1?'persona':'persone'} · <b>${ore?durata(ore):'—'}</b> → <b>${ore?fmt1(tot/ore):'—'}</b> talee all'ora`;
     updSave();
   }
   function renderInsInfo(){
@@ -371,59 +796,336 @@ textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px soli
     else if(c.id!==S.camp)h+=`<div class="sub" style="margin-top:8px">Questa data appartiene al ciclo <b>${esc(c.titolo)}</b>.</div>`;
     $('insInfo').innerHTML=h;
   }
-  $('insDate').onchange=()=>{const c=insCamp();renderInsInfo();loadDay();renderIns(c)};
-  $('insOre').oninput=updLive;$('insNote').oninput=updSave;
+  function dayChips(id,box){const d=$(id).value,t=today(),y=iso(new Date(dObj(t).getTime()-864e5));$(box).innerHTML=[[t,'Oggi'],[y,'Ieri']].map(([k,l])=>`<button type="button" data-d="${k}" aria-pressed="${k===d}">${l}</button>`).join('')}
+  $('insDayChips').onclick=e=>{const b=e.target.closest('[data-d]');if(!b)return;$('insDate').value=b.dataset.d;$('insDate').onchange()};
+  $('plaDayChips').onclick=e=>{const b=e.target.closest('[data-d]');if(!b)return;$('plaDate').value=b.dataset.d;$('plaDate').onchange()};
+  $('insDate').onchange=()=>{dayChips('insDate','insDayChips');S.open={};S.tmpP={};renderInsInfo();loadDay()};
+  $('insOreH').oninput=$('insOreM').oninput=updLive;$('insNote').oninput=updSave;
 
   function renderIns(){
-    const c=insCamp();if(!c)return;
-    const box=$('insList');const keep={};
-    box.querySelectorAll('input[data-v]').forEach(i=>{if(i.value)keep[i.dataset.v]=i.value});
-    box.innerHTML='';const dn=doneBy(c.id);
-    for(const v of varsOf(c)){
-      const t=tgt(c,v.id),d=dn[v.id]||0;
-      const row=document.createElement('div');row.className='entry';
-      const lab=document.createElement('label');lab.htmlFor='in-'+v.id;lab.textContent=v.nome;
-      const sm=document.createElement('small');sm.textContent=t==null?('non programmata · fatte '+fmt(d)):(fmt(d)+' / '+fmt(t)+(t-d>0?' · rimanenti '+fmt(t-d):' · obiettivo raggiunto'));lab.appendChild(sm);
-      const st=document.createElement('div');st.className='step';
-      const inp=document.createElement('input');inp.type='number';inp.inputMode='decimal';inp.min='0';inp.step='any';inp.id='in-'+v.id;inp.dataset.v=v.id;inp.placeholder='0';
-      if(keep[v.id])inp.value=keep[v.id];
-      inp.oninput=updLive;st.appendChild(inp);
-      row.append(lab,st);box.appendChild(row);
+    const c=insCamp();if(!c)return;dayChips('insDate','insDayChips');dayChips('plaDate','plaDayChips');
+    const day=$('insDate').value||today();const box=$('insList');
+    const keep={};box.querySelectorAll('input[data-v]').forEach(i=>{if(i.value!==i.dataset.o&&!(i.value===''&&i.dataset.o==='0'))keep[i.dataset.v+'|'+i.dataset.p]=i.value});
+    box.innerHTML='';const dn=doneBy(c.id);const m=dayMap(day);
+    const isDone=v=>{const t=tgt(c,v.id);return t!=null&&(dn[v.id]||0)>=t&&!m[v.id]};
+    const ord=[...varsOf(c).filter(v=>!isDone(v)),...varsOf(c).filter(isDone)];let sep=false;
+    for(const v of ord){
+      const t=tgt(c,v.id),d=dn[v.id]||0;const saved=m[v.id]||{};
+      if(isDone(v)&&!sep){sep=true;const h=document.createElement('div');h.className='vsep';h.textContent='Obiettivo già raggiunto';box.appendChild(h)}
+      const extraP=[...Object.keys(saved),...(S.tmpP[v.id]||[])].filter((p,i,a)=>!PEOPLE.includes(p)&&a.indexOf(p)===i);
+      const alpha=[...PEOPLE,...extraP.filter(p=>p!==SENZA)].sort((a,b)=>a.localeCompare(b,'it'));const people=[...alpha,...(extraP.includes(SENZA)?[SENZA]:[])];
+      const card=document.createElement('div');card.className='vcard'+(S.open[v.id]?' open':'')+(isDone(v)?' done':'')+(Object.values(saved).some(x=>x.q>0)?' oggi':'');card.dataset.vid=v.id;
+      const head=document.createElement('button');head.type='button';head.className='vhead';head.setAttribute('aria-expanded',!!S.open[v.id]);
+      const nm=document.createElement('span');nm.className='vn';nm.textContent=v.nome;
+      const sm=document.createElement('small');sm.textContent=t==null?('non programmata · fatte '+fmt(d)):(fmt(d)+' / '+fmt(t)+(t-d>0?' · rimanenti '+fmt(t-d):' · obiettivo raggiunto'));nm.appendChild(sm);
+      const tt=document.createElement('span');tt.className='vt';head.append(nm,tt);
+      head.onclick=()=>{S.open[v.id]=!S.open[v.id];card.classList.toggle('open');head.setAttribute('aria-expanded',!!S.open[v.id]);if(S.open[v.id]){const f=card.querySelector('input');if(f)f.focus()}};
+      const body=document.createElement('div');body.className='vbody';
+      const strip=document.createElement('div');strip.className='pstrip';
+      people.forEach((p,ix)=>{
+        const o=saved[p]?saved[p].q:0;const k=v.id+'|'+p;
+        const col=document.createElement('label');col.className='pcol';
+        const nmx=document.createElement('span');nmx.className='pname';nmx.innerHTML=`${esc(p)}${p!==SENZA?` <i>${ix+1}</i>`:''}`;
+        const inp=document.createElement('input');inp.type='number';inp.inputMode='numeric';inp.min='0';inp.step='1';inp.placeholder='0';
+        inp.dataset.v=v.id;inp.dataset.p=p;inp.dataset.o=String(o);inp.value=k in keep?keep[k]:(o?String(o):'');
+        inp.setAttribute('aria-label',v.nome+' – '+p);
+        inp.oninput=()=>{upd();updLive()};
+        col.append(nmx,inp);strip.appendChild(col);
+      });
+      const addc=document.createElement('div');addc.className='pcol padd';
+      const ab=document.createElement('button');ab.type='button';ab.className='paddb';ab.innerHTML='<span>+</span>Nome';ab.setAttribute('aria-label','Aggiungi un nome per '+v.nome);
+      addc.appendChild(ab);strip.appendChild(addc);body.appendChild(strip);
+      const addb=document.createElement('div');addb.className='addp';addb.hidden=true;
+      ab.onclick=()=>{addb.hidden=false;addb.innerHTML='';const ni=document.createElement('input');ni.type='text';ni.placeholder='Nome';ni.setAttribute('list','namesList');ni.setAttribute('aria-label','Nuovo nome per '+v.nome);
+        const ok=document.createElement('button');ok.type='button';ok.className='btn ghost';ok.textContent='Aggiungi';
+        const go=()=>{let n=ni.value.trim();if(!n)return;n=n.charAt(0).toUpperCase()+n.slice(1);
+          if(!people.some(x=>x.toLowerCase()===n.toLowerCase()))(S.tmpP[v.id]=S.tmpP[v.id]||[]).push(n);
+          S.open[v.id]=true;renderIns();const f=document.querySelector(`#insList input[data-v="${v.id}"][data-p="${CSS.escape(people.find(x=>x.toLowerCase()===n.toLowerCase())||n)}"]`);if(f){f.focus();f.scrollIntoView({block:'nearest',inline:'center'})}};
+        ok.onclick=go;ni.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();go()}};addb.append(ni,ok);ni.focus()};
+      body.appendChild(addb);
+      const upd=()=>{let s2=0,ch=false;body.querySelectorAll('input[data-v]').forEach(i=>{const x=i.value===''?0:+i.value;if(x>0)s2+=x;if(x!==(+i.dataset.o||0))ch=true});
+        tt.innerHTML=s2?`<span class="tl">Totale</span> <b>${fmt(s2)}</b>`:'<span class="tl">Totale</span> <b>—</b>';card.classList.toggle('dirty',ch)};
+      upd();card.append(head,body);box.appendChild(card);
     }
     updLive();
   }
   function dayChanged(){
     const d=$('insDate').value||today();const g=S.gio[d]||{};
     const same=(a,b)=>JSON.stringify([...(a||[])].sort())===JSON.stringify([...(b||[])].sort());
-    const ore=+$('insOre').value>0?+$('insOre').value:null;
-    return !(same(names('taleatori'),g.taleatori)&&same(names('riempitori'),g.riempitori)&&(ore??null)===(g.ore??null)&&$('insNote').value.trim()===(g.nota||''));
+    const ore=getHM('insOre');
+    return !(sameT(ore,g.ore)&&$('insNote').value.trim()===(g.nota||''));
   }
   function updSave(){
-    const any=[...document.querySelectorAll('#insList input')].some(i=>+i.value>0)||dayChanged();
-    $('saveBtn').disabled=!any||!S.loaded||S.busy;
-    if(!S.busy)$('saveBtn').textContent='Salva';
+    const nd=dirty().length;const any=nd||dayChanged();
+    $('saveBtn').disabled=!any||S.canWrite===false||!S.ready||S.busy;
+    $('saveBtn').classList.toggle('pending',!$('saveBtn').disabled);
+    if(!S.busy)$('saveBtn').textContent=S.canWrite===false?'Non hai i permessi per inserire':(nd?'Salva ('+nd+(nd===1?' modifica':' modifiche')+')':'Salva');
   }
 
   $('saveBtn').onclick=async()=>{
-    const c=insCamp();if(!c||S.busy)return;
-    const day=$('insDate').value||today();
-    const rows=[...document.querySelectorAll('#insList input')].filter(i=>+i.value>0);
-    const giorno={data:day,ore:+$('insOre').value>0?+$('insOre').value:null,taleatori:names('taleatori'),riempitori:names('riempitori'),nota:$('insNote').value.trim()};
-    const chg=dayChanged();
-    S.busy=true;$('saveBtn').disabled=true;$('saveBtn').textContent='Salvataggio…';
-    let ok=0,step='';
+    const c=insCamp();if(!c||S.busy||!S.ready)return;
+    const day=$('insDate').value||today();const m=dayMap(day);
+    const ch=dirty();const del=[];const add=[];
+    for(const x of ch){const o=(m[x.v]||{})[x.p];if(o)del.push(...o.ids);if(x.val>0)add.push({campagna:c.id,varieta:x.v,data:day,qta:x.val,nota:'',persona:x.p===SENZA?'':x.p,autore:x.p===SENZA?'':x.p})}
+    // persone del giorno = chi ha talee registrate (dopo le modifiche)
+    const after=curDay().per;const tal=Object.keys(after).filter(p=>p!==SENZA&&after[p]>0);
+    const g0=S.gio[day]||{};
+    const giorno={...g0,data:day,ore:sameT(getHM('insOre'),g0.ore)?(g0.ore??null):getHM('insOre'),taleatori:tal,riempitori:[...(g0.riempitori||[])],nota:$('insNote').value.trim()};const same=(x,y)=>JSON.stringify([...(x||[])].sort())===JSON.stringify([...(y||[])].sort());
+    const chg=!(same(giorno.taleatori,g0.taleatori)&&same(giorno.riempitori,g0.riempitori)&&(giorno.ore??null)===(g0.ore??null)&&giorno.nota===(g0.nota||''));
+    S.busy=true;$('saveBtn').disabled=true;$('saveBtn').textContent='Salvataggio…';msg('');
+    let step='';
     try{
-      if(rows.length){step='talee';
-        const items=rows.map(i=>({campagna:c.id,varieta:i.dataset.v,data:day,qta:+i.value,nota:'',autore:giorno.taleatori.join(', ')}));
-        await api('POST','/api/reg',{items});ok=items.length;rows.forEach(i=>i.value='')}
-      if(chg){step='giornata';await api('POST','/api/giornate',giorno);S.gio[day]={...giorno}}
-      toast(ok?(ok+(ok===1?' riga salvata':' righe salvate')):'Giornata salvata');
-      S.busy=false;await load(true);loadDay();
+      if(del.length||add.length){step='talee';await DB.writeRegs(add,del);
+        const dset=new Set(del);S.allR=S.allR.filter(r=>!dset.has(r.id));for(const it of add)S.allR.push({id:'tmp-'+Math.random(),...it})}
+      if(chg){step='giornata';await DB.setGiornata(day,giorno);S.allG[day]={...giorno}}
+      applySection();
+      toast(ch.length?(ch.length+(ch.length===1?' modifica salvata':' modifiche salvate')):'Giornata salvata');
+      S.busy=false;if(typeof load==='function')await load(true);else render();loadDay();
     }catch(e){
-      if(e.message!=='pin')msg(step==='giornata'&&ok?'Le talee sono state salvate, ma nomi/ore/note no: riprova a premere Salva.':'Salvataggio non riuscito: niente è stato registrato. Controlla la connessione e riprova.');
+      if(e&&e.message==='pin'){}
+      else if(e&&e.code==='invalid_argument'){S.canWrite=false;msg('Non hai i permessi per inserire dati su questa pagina.')}
+      else msg(step==='giornata'?'Le talee sono state salvate, ma ore/note no: riprova a premere Salva.':'Salvataggio non riuscito. Controlla la connessione e riprova.');
     }
     S.busy=false;updSave();
   };
+
+  $('manageP').onclick=()=>openPeople(false);
+  function openPeople(focusAdd){
+    const body=$('dlgBody');
+    const draw=()=>{body.innerHTML='';
+      const h=document.createElement('h2');h.textContent='Gestisci nomi';
+      const p=document.createElement('p');p.className='sub';p.textContent='Togli chi non lavora più qui o aggiungi nuovi nomi. Le talee già registrate restano nei totali.';
+      const list=document.createElement('div');list.className='plist';
+      PEOPLE.forEach(n=>{const r=document.createElement('div');r.className='prow';const t=document.createElement('span');t.textContent=n;
+        const x=document.createElement('button');x.className='btn danger';x.textContent='Elimina';
+        x.onclick=async()=>{if(x.dataset.c!=='1'){x.dataset.c='1';x.textContent='Conferma';return}await savePeople(PEOPLE.filter(y=>y!==n));draw();renderIns();if(S.tab==='pla')renderPla()};
+        r.append(t,x);list.appendChild(r)});
+      const f=document.createElement('div');f.className='row';f.style.marginTop='12px';
+      const fl=document.createElement('div');fl.className='field';fl.style.flex='1';
+      const lb=document.createElement('label');lb.htmlFor='newName';lb.textContent='Nuovo nome';
+      const inp=document.createElement('input');inp.type='text';inp.className='plain';inp.id='newName';inp.placeholder='es. Marta';fl.append(lb,inp);
+      const ad=document.createElement('button');ad.className='btn';ad.textContent='Aggiungi';ad.style.alignSelf='flex-end';
+      const add=async()=>{let n=inp.value.trim();if(!n)return;n=n.charAt(0).toUpperCase()+n.slice(1);if(n===SENZA||PEOPLE.some(y=>y.toLowerCase()===n.toLowerCase())){inp.value='';return}
+        await savePeople([...PEOPLE,n]);draw();renderIns();if(S.tab==='pla')renderPla();const ni=$('newName');if(ni)ni.focus()};
+      ad.onclick=add;inp.onkeydown=e=>{if(e.key==='Enter')add()};
+      f.append(fl,ad);
+      const cl=document.createElement('button');cl.className='btn ghost';cl.textContent='Chiudi';cl.style.marginTop='14px';cl.style.width='100%';cl.onclick=()=>$('dlg').close();
+      body.append(h,p,list,f,cl)};
+    draw();$('dlg').showModal();if(focusAdd){const ni=$('newName');if(ni)ni.focus()}
+  }
+  async function savePeople(list){PEOPLE=list;try{await DB.setPersone(list)}catch(e){if(!e||e.message!=='pin')msg('Non sono riuscito a salvare l\'elenco dei nomi, riprova.')}}
+
+  /* ---------- DB (Claude) ---------- */
+  const DB={
+    async writeRegs(add,del){for(const id of del)await S.db.collection('registrazioni').doc(id).delete();for(const it of add)await S.db.collection('registrazioni').doc().set({...it,creato:new Date().toISOString()})},
+    async setGiornata(day,g){const {data,...rest}=g;await S.db.collection('giornate').doc(day).set({...rest,aggiornato:new Date().toISOString()})},
+    async setPersone(list){await S.db.collection('impostazioni').doc('persone').set({nomi:list})},
+    async saveCampagna(c){const {id,...rest}=c;await S.db.collection('campagne').doc(id).set(rest)},
+    async saveSped(sp){const {id,...rest}=sp;if(id)await S.db.collection('spedizioni').doc(id).set(rest);else await S.db.collection('spedizioni').doc().set(rest)},
+    async delSped(id){await S.db.collection('spedizioni').doc(id).delete()},
+    async setCrescita(id,n){await S.db.doc('varieta/'+id).update({crescitaStimata:n})},
+    async addVarieta(v,cid,qta){if(v.nuova)await S.db.collection('varieta').doc(v.id).set({nome:v.nome,ordine:v.ordine});const c=S.allC.find(x=>x.id===cid);await S.db.doc('campagne/'+cid).update({target:{...(c.target||{}),[v.id]:qta}})}
+  };
+
+  /* ---------- SPEDIZIONI E TEMPI DI CRESCITA ---------- */
+  let spEdit=null;
+  const daysBetween=(a,b)=>Math.round((dObj(b)-dObj(a))/864e5);
+  const spOfSection=()=>{const R=routeOf(S.route)||{};const sez=R.sez||'prati';return S.allS.filter(x=>(x.sezione||'prati')===sez)};
+  function spFill(){
+    const c=curCamp();if(!c)return;const vs=varsOf(c);
+    const cur=$('spVar').value;
+    $('spVar').innerHTML='<option value="">— scegli —</option>'+vs.map(v=>`<option value="${esc(v.id)}">${esc(v.nome)}</option>`).join('');
+    if(cur&&vs.some(v=>v.id===cur))$('spVar').value=cur;
+    if(!$('spSped').value)$('spSped').value=today();
+    spChips();spUpd();
+  }
+  function spChips(){
+    const v=$('spVar').value;if(!v){$('spProdChips').innerHTML='';return}
+    const m={};for(const r of S.allR){if(r.periodo||r.varieta!==v)continue;m[r.data]=(m[r.data]||0)+(+r.qta||0)}
+    const ds=Object.keys(m).sort().reverse().slice(0,8);
+    $('spProdChips').innerHTML=ds.length?'<span class="sub">Giorni in cui è stata prodotta:</span> '+ds.map(d=>`<button type="button" class="pchip sm" data-d="${d}">${dShort(d)} · ${fmt(m[d])}</button>`).join(''):'<span class="sub">Nessuna produzione registrata per questa varietà: scrivi la data a mano.</span>';
+  }
+  function spUpd(){const a=$('spProd').value,b=$('spSped').value;const ok=$('spVar').value&&a&&b;
+    if(a&&b){const g=daysBetween(a,b);$('spDays').innerHTML=g<0?'<span class="neg">La data di spedizione è prima della produzione.</span>':`Tempo di crescita: <b>${g} giorni</b> (circa ${fmt1(g/30.4)} mesi)`}else $('spDays').innerHTML='';
+    $('spSave').disabled=!ok||(a&&b&&daysBetween(a,b)<0)||S.busy||!S.ready;$('spSave').textContent=spEdit?'Salva modifica':'Salva spedizione';$('spReset').hidden=!spEdit}
+  $('spVar').onchange=()=>{spChips();spUpd()};$('spProd').oninput=spUpd;$('spSped').oninput=spUpd;$('spProd').onchange=spUpd;$('spSped').onchange=spUpd;
+  $('spProdChips').onclick=e=>{const b=e.target.closest('[data-d]');if(!b)return;$('spProd').value=b.dataset.d;spUpd()};
+  $('spReset').onclick=()=>{spEdit=null;$('spProd').value='';$('spQ').value='';$('spNota').value='';spUpd()};
+  $('spSave').onclick=async()=>{const R=routeOf(S.route)||{};
+    const sp={varieta:$('spVar').value,prodotta:$('spProd').value,spedita:$('spSped').value,qta:$('spQ').value===''?null:Math.max(0,+$('spQ').value),nota:$('spNota').value.trim(),sezione:R.sez||'prati'};
+    if(spEdit)sp.id=spEdit;S.busy=true;$('spSave').disabled=true;
+    try{await DB.saveSped(sp);if(sp.id){const i=S.allS.findIndex(x=>x.id===sp.id);if(i>=0)S.allS[i]=sp}else S.allS.push({id:'tmp-'+Math.random(),...sp});
+      toast(spEdit?'Spedizione modificata':'Spedizione salvata');spEdit=null;$('spProd').value='';$('spQ').value='';$('spNota').value='';S.busy=false;if(typeof load==='function')await load(true);renderSpe()}
+    catch(e){if(!e||e.message!=='pin')msg('Salvataggio non riuscito, riprova.')}
+    S.busy=false;spUpd()};
+  /* --- spedizioni rapide --- */
+  // qSel[varieta][dataProduzione] = quantità ('' = non indicata)
+  const qSel={};let qShowAll=false,qMode='var',qOpen=null;
+  const prodByDay=v=>{const m={};for(const r of S.allR){if(r.periodo||r.varieta!==v)continue;m[r.data]=(m[r.data]||0)+(+r.qta||0)}return m};
+  const prodDay=(v,d)=>prodByDay(v)[d]||0;
+  const qCount=()=>Object.values(qSel).reduce((a,o)=>a+Object.keys(o).length,0);
+  function qProdChips(){const m={};for(const r of S.allR)if(!r.periodo)m[r.data]=(m[r.data]||0)+(+r.qta||0);
+    const cur=$('qProd').value;const ds=Object.keys(m).sort().reverse().slice(0,8);
+    $('qProdChips').innerHTML=ds.length?'<span class="sub">Ultimi giorni di produzione:</span> '+ds.map(d=>`<button type="button" class="pchip sm" data-d="${d}" aria-pressed="${d===cur}">${dShort(d)} · ${fmt(m[d])}</button>`).join(''):''}
+  const gTxt=(d)=>{const b=$('qDay').value;if(!b)return '';const g=daysBetween(d,b);return g<0?'<span class="neg">dopo la spedizione</span>':`${g} giorni`};
+  function qRowVar(v){ // modo "per varietà"
+    const m=prodByDay(v.id),sel=qSel[v.id]||{},n=Object.keys(sel).length,open=qOpen===v.id;
+    const ds=Object.keys(m).sort().reverse(),day=$('qDay').value;
+    const summ=n?Object.keys(sel).sort().map(d=>`${dShort(d)}${sel[d]?' · '+fmt(+sel[d]):''} → <b>${gTxt(d)}</b>`).join('<br>'):`${ds.length} giorni di produzione`;
+    return `<div class="qrow${n?' on':''}${open?' open':''}" data-v="${esc(v.id)}"><button type="button" class="qtick" aria-expanded="${open}"><span class="qbox">${n?'✓':''}</span><span class="qname"><b>${esc(v.nome)}</b><span class="sub">${summ}</span></span><span class="qarr">${open?'▴':'▾'}</span></button>
+      ${open?`<div class="qdays">${ds.length?'<div class="sub" style="margin-bottom:6px">Tocca il giorno in cui sono state prodotte:</div>'+ds.filter(d=>!day||d<=day).map(d=>`<div class="qdrow${d in sel?' on':''}"><button type="button" class="pchip sm qd" data-d="${d}" aria-pressed="${d in sel}">${dShort(d)} · ${fmt(m[d])}</button>${d in sel?`<input type="number" class="plain qn" data-d="${d}" inputmode="numeric" min="0" placeholder="quante?" value="${sel[d]}"><span class="sub">${gTxt(d)}</span>`:''}</div>`).join(''):'<div class="sub">Nessuna produzione registrata per questa varietà.</div>'}
+        <div class="qdrow"><span class="sub">Altro giorno:</span><input type="date" class="qother" max="${day||''}"></div></div>`:''}</div>`}
+  function qRowDay(v,d){ // modo "per giorno di produzione"
+    const on=!!(qSel[v.id]&&d in qSel[v.id]);const p=prodDay(v.id,d);
+    return `<div class="qrow${on?' on':''}" data-v="${esc(v.id)}" data-pd="${d}"><button type="button" class="qtick"><span class="qbox">${on?'✓':''}</span><span class="qname"><b>${esc(v.nome)}</b>${p?`<span class="sub">prodotte ${fmt(p)}</span>`:''}</span></button>
+      ${on?`<input type="number" class="plain qn" data-d="${d}" inputmode="numeric" min="0" placeholder="quante?" value="${qSel[v.id][d]}">`:''}</div>`}
+  function qRender(){
+    $('qMode').innerHTML=[['var','Per varietà'],['giorno','Per giorno di produzione']].map(([k,l])=>`<button data-k="${k}" aria-pressed="${k===qMode}">${l}</button>`).join('');
+    $('qProdBox').hidden=qMode!=='giorno';
+    const conProd=new Set(S.allR.filter(r=>!r.periodo).map(r=>r.varieta));
+    const byName=(a,b)=>a.nome.localeCompare(b.nome);
+    if(qMode==='var'){
+      const list=(qShowAll?S.varieta:S.varieta.filter(v=>conProd.has(v.id)||qSel[v.id])).slice().sort(byName);
+      $('qHint').textContent='Tocca la varietà spedita, poi il giorno in cui è stata prodotta.';
+      $('qList').innerHTML=list.map(qRowVar).join('');
+      $('qAll').hidden=false;$('qAll').textContent=qShowAll?'Mostra solo le varietà con produzione registrata':'+ Altra varietà (mostra tutte)';
+    }else{
+      const d=$('qProd').value;const prod=S.varieta.filter(v=>d&&prodDay(v.id,d)>0);
+      const list=(qShowAll||!prod.length?S.varieta:prod).slice().sort(byName);
+      $('qHint').innerHTML=d?(!prod.length?'Nessuna talea registrata in questo giorno: scegli tra tutte le varietà.':`Varietà prodotte il ${dShort(d)}: tocca quelle spedite. Crescita: <b>${gTxt(d)}</b>.`):'Scegli il giorno di produzione.';
+      $('qList').innerHTML=d?list.map(v=>qRowDay(v,d)).join(''):'';
+      $('qAll').hidden=!prod.length;$('qAll').textContent=qShowAll?'Mostra solo le varietà prodotte quel giorno':'+ Altra varietà (mostra tutte)';
+    }
+    qBtn()}
+  function qBtn(){const n=qCount();const b=$('qDay').value;
+    const bad=Object.values(qSel).some(o=>Object.keys(o).some(d=>b&&daysBetween(d,b)<0));
+    $('qSave').disabled=!n||!b||bad||S.busy||!S.ready;$('qSave').textContent=n?`Salva ${n} ${n===1?'spedizione':'spedizioni'}`:'Salva'}
+  function qToggle(v,d){const o=qSel[v]=qSel[v]||{};if(d in o)delete o[d];else o[d]='';if(!Object.keys(o).length)delete qSel[v]}
+  function qDayChips(){const d=$('qDay').value,t=today(),y=iso(new Date(dObj(t).getTime()-864e5));$('qDayChips').innerHTML=[[t,'Oggi'],[y,'Ieri']].map(([k,l])=>`<button data-d="${k}" aria-pressed="${k===d}">${l}</button>`).join('')}
+  $('qDayChips').onclick=e=>{const b=e.target.closest('[data-d]');if(!b)return;$('qDay').value=b.dataset.d;qDayChips();qRender()};
+  $('qDay').onchange=()=>{qDayChips();qRender()};
+  $('qMode').onclick=e=>{const b=e.target.closest('[data-k]');if(!b)return;qMode=b.dataset.k;qShowAll=false;qRender()};
+  $('qProdChips').onclick=e=>{const b=e.target.closest('[data-d]');if(!b)return;$('qProd').value=b.dataset.d;qProdChips();qRender()};
+  $('qProd').onchange=()=>{qProdChips();qRender()};
+  $('qAll').onclick=()=>{qShowAll=!qShowAll;qRender()};
+  $('qList').addEventListener('click',e=>{const row=e.target.closest('.qrow');if(!row)return;const v=row.dataset.v;
+    const dd=e.target.closest('.qd');
+    if(dd){qToggle(v,dd.dataset.d);qRender();const inp=document.querySelector(`.qrow[data-v="${v}"] .qn[data-d="${dd.dataset.d}"]`);if(inp)inp.focus();return}
+    if(e.target.closest('.qtick')){
+      if(qMode==='giorno'){qToggle(v,row.dataset.pd);qRender();const inp=document.querySelector(`.qrow[data-v="${v}"] .qn`);if(inp)inp.focus()}
+      else{qOpen=qOpen===v?null:v;qRender()}}});
+  $('qList').addEventListener('input',e=>{if(e.target.classList.contains('qn')){const v=e.target.closest('.qrow').dataset.v;qSel[v][e.target.dataset.d]=e.target.value}});
+  $('qList').addEventListener('change',e=>{if(e.target.classList.contains('qother')&&e.target.value){const v=e.target.closest('.qrow').dataset.v;const o=qSel[v]=qSel[v]||{};if(!(e.target.value in o))o[e.target.value]='';qRender()}});
+  $('qSave').onclick=async()=>{const R=routeOf(S.route)||{};const b=$('qDay').value,nota=$('qNota').value.trim();
+    const it=[];for(const [v,o] of Object.entries(qSel))for(const [d,q] of Object.entries(o))it.push({varieta:v,prodotta:d,spedita:b,qta:q===''?null:Math.max(0,+q),nota,sezione:R.sez||'prati'});
+    if(!it.length)return;S.busy=true;qBtn();
+    try{for(const sp of it){await DB.saveSped(sp);S.allS.push({id:'tmp-'+Math.random(),...sp})}
+      for(const k in qSel)delete qSel[k];qOpen=null;$('qNota').value='';toast(it.length===1?'Spedizione salvata':it.length+' spedizioni salvate');S.busy=false;if(typeof load==='function')await load(true);renderSpe()}
+    catch(e){if(!e||e.message!=='pin')msg('Salvataggio non riuscito, riprova.')}
+    S.busy=false;qBtn()};
+
+  function growthRows(list){const by={};for(const x of list){const g=daysBetween(x.prodotta,x.spedita);if(isNaN(g))continue;(by[x.varieta]=by[x.varieta]||[]).push({g,q:+x.qta||0})}
+    const vn=Object.fromEntries(S.varieta.map(v=>[v.id,v.nome]));
+    return Object.entries(by).map(([v,a])=>{const gs=a.map(x=>x.g);const qt=a.reduce((s2,x)=>s2+x.q,0);
+      // media pesata sulla quantità se presente
+      const wq=a.every(x=>x.q>0)?a.reduce((s2,x)=>s2+x.g*x.q,0)/qt:gs.reduce((s2,x)=>s2+x,0)/gs.length;
+      return {v,nome:vn[v]||v,n:a.length,q:qt,media:wq,min:Math.min(...gs),max:Math.max(...gs)}}).sort((a,b)=>a.nome.localeCompare(b.nome))}
+  function renderSpe(){
+    spFill();if(!$('qDay').value)$('qDay').value=today();qDayChips();
+    if(!$('qProd').value){const ds=S.allR.filter(r=>!r.periodo).map(r=>r.data).sort();$('qProd').value=ds[ds.length-1]||today()}qProdChips();
+    qRender();
+    const all=spOfSection();const c=curCamp();
+    const scope=S.spScope||'tutti';
+    $('spScope').innerHTML=[['tutti','Tutte'],['ciclo','Prodotte in questo ciclo']].map(([k,l])=>`<button data-k="${k}" aria-pressed="${k===scope}">${l}</button>`).join('');
+    const list=scope==='ciclo'&&c?all.filter(x=>x.prodotta>=c.dal&&x.prodotta<=c.al):all;
+    const rows=growthRows(list);
+    $('spRep').innerHTML=rows.length?`<div class="grid-wrap"><table class="grid riep"><thead><tr><th class="v">Varietà</th><th>Spedizioni</th><th>Quantità</th><th>Media giorni</th><th>Min</th><th>Max</th></tr></thead><tbody>`+
+      rows.map(r=>`<tr><th class="v">${esc(r.nome)}</th><td>${r.n}</td><td>${r.q?fmt(r.q):'—'}</td><td class="tot"><b>${fmt(Math.round(r.media))}</b> <span class="sub">(${fmt1(r.media/30.4)} mesi)</span></td><td>${r.min}</td><td>${r.max}</td></tr>`).join('')+'</tbody></table></div><p class="sub cnote">Giorni di crescita = dalla data di produzione alla data di spedizione. Se tutte le spedizioni hanno la quantità, la media tiene conto delle quantità.</p>'
+      :'<p class="sub" style="margin:0">Nessuna spedizione registrata.</p>';
+    const vn=Object.fromEntries(S.varieta.map(v=>[v.id,v.nome]));
+    const ls=list.slice().sort((a,b)=>b.spedita.localeCompare(a.spedita)||a.varieta.localeCompare(b.varieta));
+    $('spList').innerHTML=ls.length?ls.map(x=>`<div class="sprow"><div><b>${esc(vn[x.varieta]||x.varieta)}</b>${x.qta?` · ${fmt(x.qta)}`:''}<div class="meta">prodotta ${dShort(x.prodotta)} → spedita ${dShort(x.spedita)} · <b>${daysBetween(x.prodotta,x.spedita)} giorni</b>${x.nota?' · '+esc(x.nota):''}</div></div><div class="spbtn"><button class="btn ghost sm" data-ed="${esc(x.id)}">Modifica</button><button class="btn danger sm" data-del="${esc(x.id)}">Elimina</button></div></div>`).join(''):'<p class="sub" style="margin:0">Nessuna spedizione.</p>';
+  }
+  $('spScope').onclick=e=>{const b=e.target.closest('[data-k]');if(!b)return;S.spScope=b.dataset.k;renderSpe()};
+  $('spList').onclick=async e=>{const ed=e.target.closest('[data-ed]'),dl=e.target.closest('[data-del]');
+    if(ed){const x=S.allS.find(y=>y.id===ed.dataset.ed);if(!x)return;spEdit=x.id;$('spVar').value=x.varieta;spChips();$('spProd').value=x.prodotta;$('spSped').value=x.spedita;$('spQ').value=x.qta??'';$('spNota').value=x.nota||'';spUpd();$('spDet').open=true;$('spDet').scrollIntoView({block:'start'});return}
+    if(dl){if(dl.dataset.c!=='1'){dl.dataset.c='1';dl.textContent='Conferma';return}
+      try{await DB.delSped(dl.dataset.del);S.allS=S.allS.filter(y=>y.id!==dl.dataset.del);toast('Spedizione eliminata');if(typeof load==='function')await load(true);renderSpe()}catch(err){if(!err||err.message!=='pin')msg('Eliminazione non riuscita.')}}};
+
+  /* ---------- PREVISIONE ---------- */
+  function vendStart(c){const w=(c.vendite||'').toLowerCase();const i=MESI.findIndex(x=>w.startsWith(x));
+    const m1=w.match(/^[a-z]+\s+(20\d\d)/),ys=w.match(/20\d\d/g);let y=m1?+m1[1]:(ys?+ys[ys.length-1]:null);
+    if(i<0)return null;if(!y){y=+c.al.slice(0,4);if(i+1<+c.al.slice(5,7))y++}return `${y}-${String(i+1).padStart(2,'0')}-01`}
+  const addD=(d,n)=>iso(new Date(dObj(d).getTime()+n*864e5));
+  const workDays=(a,b)=>{let n=0;for(let d=a;d<=b;d=addD(d,1))if(!isSun(d))n++;return n};
+  let preCid=null;
+  function preRows(c,ready){const dn=doneBy(c.id);const td=today();
+    const gr=Object.fromEntries(growthRows(spOfSection()).map(r=>[r.v,r]));
+    return varsOf(c).map(v=>{const t=tgt(c,v.id),d=dn[v.id]||0;const rim=t==null?null:t-d;
+      const g=gr[v.id];const days=g?Math.round(g.media):(+v.crescitaStimata||null);const src=g?'dati':(v.crescitaStimata?'stima':null);
+      let entro=null,st='nd',wd=null,perG=null,pronte=null;
+      if(rim!=null&&rim<=0)st='ok';
+      else if(days){entro=addD(ready,-days);const left=daysBetween(td,entro);
+        if(left<0){st='late';pronte=addD(td,days)}else{wd=workDays(td,entro);perG=rim&&wd?Math.ceil(rim/wd):null;st=left<=14?'soon':'fine'}}
+      return {v,t,d,rim,days,src,n:g?g.n:0,entro,st,wd,perG,pronte}})}
+  function renderPre(){const c=curCamp();if(!c)return;
+    if(preCid!==c.id){preCid=c.id;$('preDate').value=vendStart(c)||addD(c.al,60)}
+    const ready=$('preDate').value;if(!ready)return;
+    const rows=preRows(c,ready);const ord={late:0,soon:1,fine:2,nd:3,ok:4};
+    rows.sort((a,b)=>ord[a.st]-ord[b.st]||(a.entro||'9').localeCompare(b.entro||'9')||a.v.nome.localeCompare(b.v.nome));
+    const cnt=k=>rows.filter(r=>r.st===k).length;
+    const urg=rows.filter(r=>r.st==='late'||r.st==='soon').slice(0,3);
+    $('preTop').innerHTML=`<div class="prestat"><div class="ps late"><b>${cnt('late')}</b><span>in ritardo</span></div><div class="ps soon"><b>${cnt('soon')}</b><span>entro 2 settimane</span></div><div class="ps fine"><b>${cnt('fine')}</b><span>c'è tempo</span></div><div class="ps ok"><b>${cnt('ok')}</b><span>completate</span></div></div>`+
+      (urg.length?`<div class="preurg"><b>Da fare per prime:</b> ${urg.map(r=>esc(r.v.nome)+(r.rim?` (${fmt(r.rim)})`:'')).join(' · ')}</div>`:'')+
+      (cnt('nd')?`<div class="preurg nd">${cnt('nd')} varietà senza giorni di crescita: scrivi una stima qui sotto.</div>`:'');
+    $('preList').innerHTML=rows.map(r=>{
+      let msg2='';
+      if(r.st==='ok')msg2='Quantità raggiunta';
+      else if(r.st==='nd')msg2='Scrivi i giorni di crescita per calcolare quando farla';
+      else if(r.st==='late')msg2=`<b>In ritardo</b>: andava fatta entro ${dShort(r.entro)}. Se la fai oggi sarà pronta circa il ${dShort(r.pronte)}/${r.pronte.slice(2,4)}`;
+      else msg2=`Fare entro <b>${dShort(r.entro)}/${r.entro.slice(2,4)}</b>${r.perG?` · circa <b>${fmt(r.perG)} al giorno</b> (${r.wd} giorni lavorativi)`:''}`;
+      const crescita=r.src==='dati'?`<span class="fcc">${r.days} giorni <small>(media di ${r.n} spediz.)</small></span>`:
+        `<label class="fcc">Crescita <input type="number" class="plain pcin" inputmode="numeric" min="1" data-v="${esc(r.v.id)}" value="${r.v.crescitaStimata||''}" placeholder="giorni"> giorni${r.src==='stima'?' <small>(stima)</small>':''}</label>`;
+      return `<div class="fcrow ${r.st}"><div class="fch"><b>${esc(r.v.nome)}</b><span class="fcq">${r.rim==null?'':r.rim>0?fmt(r.rim)+' da fare':'✓ fatte'}</span></div><div class="fcm">${msg2}</div>${r.st==='ok'?'':crescita}</div>`}).join('');
+  }
+  $('preDate').onchange=renderPre;
+  $('preList').addEventListener('change',async e=>{const i=e.target.closest('.pcin');if(!i)return;const id=i.dataset.v;const n=Math.max(0,Math.round(+i.value||0))||null;
+    const v=S.varieta.find(x=>x.id===id);if(v)v.crescitaStimata=n;const v2=S.allV&&S.allV.find?S.allV.find(x=>x.id===id):null;if(v2)v2.crescitaStimata=n;
+    try{await DB.setCrescita(id,n);toast('Stima salvata')}catch(err){if(!err||err.message!=='pin')msg('Salvataggio non riuscito.')}
+    renderPre()});
+
+  /* ---------- AGGIUNGI VARIETÀ ---------- */
+  const slug=t=>t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/'/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  function openAddVar(){
+    const c=curCamp();if(!c)return;const body=$('dlgBody');body.innerHTML='';
+    const inC=new Set(Object.keys(c.target||{}));const others=S.varieta.filter(v=>!inC.has(v.id)).sort((a,b)=>a.nome.localeCompare(b.nome));
+    body.innerHTML=`<h2>Aggiungi varietà</h2><p class="sub">La varietà viene aggiunta al ciclo <b>${esc(c.titolo)}</b>.</p>
+      ${others.length?`<div class="field"><label for="avSel">Varietà già usata in altri cicli</label><select id="avSel"><option value="">— scegli —</option>${others.map(v=>`<option value="${esc(v.id)}">${esc(v.nome)}</option>`).join('')}<option value="__new">Nuova varietà…</option></select></div>`:''}
+      <div class="field" id="avNewF" ${others.length?'hidden':''}><label for="avName">Nome della nuova varietà</label><input type="text" class="plain" id="avName" placeholder="es. Thymus praecox"></div>
+      <div class="field"><label for="avQ">Quantità da produrre in questo ciclo (facoltativa)</label><input type="number" class="plain" id="avQ" inputmode="numeric" min="0" placeholder="es. 200"></div>
+      <div class="sub" id="avMsg"></div>
+      <div class="two"><button class="btn ghost" id="avNo">Annulla</button><button class="btn" id="avOk">Aggiungi</button></div>`;
+    const sel2=$('avSel');if(sel2)sel2.onchange=()=>{$('avNewF').hidden=sel2.value!=='__new';if(sel2.value==='__new')$('avName').focus()};
+    $('avNo').onclick=()=>$('dlg').close();
+    $('avOk').onclick=async()=>{
+      let v=null;const pick=sel2?sel2.value:'__new';
+      if(pick&&pick!=='__new')v=S.varieta.find(x=>x.id===pick);
+      else{const n=$('avName').value.trim();if(!n){$('avMsg').textContent='Scrivi il nome della varietà.';return}
+        const ex=S.varieta.find(x=>x.nome.toLowerCase()===n.toLowerCase());
+        if(ex){if(inC.has(ex.id)){$('avMsg').textContent='Questa varietà è già nel ciclo.';return}v=ex}
+        else{let id=slug(n)||('varieta-'+Date.now());while(S.varieta.some(x=>x.id===id))id+='-2';v={id,nome:n.charAt(0).toUpperCase()+n.slice(1),ordine:Math.max(-1,...S.varieta.map(x=>x.ordine??0))+1,nuova:true}}}
+      if(!v){$('avMsg').textContent='Scegli una varietà o scrivine una nuova.';return}
+      const q=$('avQ').value===''?null:Math.max(0,+$('avQ').value);
+      $('avOk').disabled=true;
+      try{await DB.addVarieta(v,c.id,q);
+        if(v.nuova){const {nuova,...vv}=v;S.varieta.push(vv)}
+        const cc=S.allC.find(x=>x.id===c.id);cc.target={...(cc.target||{}),[v.id]:q};applySection();
+        $('dlg').close();toast(v.nome+' aggiunta');render();if(typeof load==='function')load(true)}
+      catch(e){if(!e||e.message!=='pin')$('avMsg').textContent='Non sono riuscito ad aggiungerla, riprova.';$('avOk').disabled=false}
+    };
+    $('dlg').showModal();
+  }
+  $('addVarBtn').onclick=openAddVar;$('addVarIns').onclick=openAddVar;
 
   /* ---------- VARIETÀ ---------- */
   function renderVar(c){
@@ -441,7 +1143,12 @@ textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px soli
   }
   $('varFilter').oninput=()=>{const c=curCamp();if(c)renderVar(c)};
 
-  const who=a=>(a&&a!=='import')?a:'';
+  async function resolveNames(ids){
+    ids=[...new Set(ids.filter(x=>x&&x!=='import'&&!(x in S.names)))];
+    if(!ids.length||!S.user||!S.user.profiles)return;
+    try{const ps=await S.user.profiles(ids);let ch=false;for(const id of ids){const n=ps&&ps[id]&&ps[id].name;S.names[id]=n||'';ch=true}if(ch)render()}catch(e){}
+  }
+  const who=a=>(a&&a!=='import'&&!/^[0-9a-f-]{20,}$/.test(a))?(S.names[a]||a):(S.names[a]||'');
 
   /* ---------- STORICO ---------- */
   function renderSto(c){
@@ -452,109 +1159,126 @@ textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px soli
     const days=Object.keys(by).filter(k=>!k.startsWith('P|')).sort().reverse();
     const lumps=Object.keys(by).filter(k=>k.startsWith('P|')).sort().reverse();
     $('stoStats').innerHTML=statsHtml(stats(days,D),'talee nei giorni registrati');
+    const mode=S.stoMode||'giorno';
+    $('stoMode').innerHTML=[['giorno','Totale per giorno'],['persona','Per persona']].map(([k,l])=>`<button data-k="${k}" aria-pressed="${k===mode}">${l}</button>`).join('');
     if(!days.length&&!lumps.length){box.innerHTML='<p class="sub">Nessuna registrazione in questo ciclo.</p>';return}
-    const section=(title,sun,list,g)=>{
-      const sec=document.createElement('div');sec.className='day';
+    const sortP=(a,b,m)=>a===SENZA?1:b===SENZA?-1:(m?m[b]-m[a]:a.localeCompare(b));
+    if(mode==='persona'){
+      // totale del ciclo per persona
+      const tot={};for(const r of rs){if(r.periodo)continue;const p=pers(r);tot[p]=(tot[p]||0)+(+r.qta||0)}
+      const tp=Object.keys(tot).sort((a,b)=>sortP(a,b,tot));
+      let h=`<div class="pbox"><h3>Totale del ciclo per persona</h3>`+tp.map(p=>`<div class="prow2"><span>${esc(p)}</span><b>${fmt(tot[p])}</b></div>`).join('')+'</div>';
+      for(const d of days){const list=by[d].filter(r=>!r.periodo);if(!list.length)continue;
+        const m={};for(const r of list){const p=pers(r);m[p]=(m[p]||0)+(+r.qta||0)}
+        const t=Object.values(m).reduce((x,y)=>x+y,0);
+        h+=`<div class="pday"><div class="pdh"><span class="${isSun(d)?'su':''}">${esc(dLabel(d))}${isSun(d)?' · domenica':''}</span><span>${fmt(t)} talee</span></div>`+
+          Object.keys(m).sort((a,b)=>sortP(a,b,m)).map(p=>`<div class="prow2"><span>${esc(p)}</span><b>${fmt(m[p])}</b></div>`).join('')+'</div>'}
+      box.innerHTML=h;return;
+    }
+    // totale per giorno: una riga per giorno, tocca per il dettaglio
+    const row=(title,sun,list,g,extra)=>{
       const tot=list.reduce((x,r)=>x+(+r.qta||0),0);
-      sec.innerHTML=`<h3><span class="${sun?'su':''}">${esc(title)}${sun?' · domenica':''}</span><span>${fmt(tot)} talee</span></h3>`;
+      const det=document.createElement('details');det.className='drow';
+      det.innerHTML=`<summary><span class="${sun?'su':''}">${esc(title)}${sun?' · domenica':''}</span><span class="dt"><b>${fmt(tot)}</b> talee</span></summary>`;
+      const inner=document.createElement('div');inner.className='ddet';
+      let m='';
       if(g){const n=(g.taleatori||[]).length;const bits=[];if(g.ore)bits.push(fmt(g.ore)+' ore');if(n)bits.push(n+(n===1?' persona':' persone'));if(g.ore&&tot)bits.push(fmt1(tot/g.ore)+' talee all\'ora');
-        let m='';if(bits.length)m+=`<div class="meta">${bits.join(' · ')}</div>`;
-        if(n)m+=`<div class="meta">Talee: ${esc(g.taleatori.join(', '))}</div>`;
-        if((g.riempitori||[]).length)m+=`<div class="meta">Plateau: ${esc(g.riempitori.join(', '))}</div>`;
-        if(g.nota)m+=`<div class="meta">Note: ${esc(g.nota)}</div>`;sec.insertAdjacentHTML('beforeend',m)}
+        if(bits.length)m+=`<div class="meta">${bits.join(' · ')}</div>`;
+        {const pl=g.plateau||{};const t=Object.values(pl).reduce((a,b)=>a+(+b||0),0);if(t)m+=`<div class="meta">Plateau terriccio: ${fmt(t)} (${Object.entries(pl).filter(([,q])=>+q>0).map(([p,q])=>esc(p)+' '+fmt(+q)).join(', ')})${g.orePlateau?' · '+durata(g.orePlateau):''}</div>`;else if((g.riempitori||[]).length)m+=`<div class="meta">Plateau: ${esc(g.riempitori.join(', '))}</div>`}
+        if(g.nota)m+=`<div class="meta">Note: ${esc(g.nota)}</div>`}
+      if(extra)m+=`<div class="meta">${esc(extra)}</div>`;
+      inner.innerHTML=m;
       const ul=document.createElement('ul');
       for(const r of list.sort((x,y)=>(vn[x.varieta]||'').localeCompare(vn[y.varieta]||''))){
         const li=document.createElement('li');const l=document.createElement('span');
-        l.textContent=(vn[r.varieta]||r.varieta)+(r.nota?' · '+r.nota:'')+(who(r.autore)?' · '+who(r.autore):'');
+        const w=r.persona||who(r.autore);
+        l.textContent=(vn[r.varieta]||r.varieta)+(w?' · '+w:'')+(r.nota?' · '+r.nota:'');
         const q=document.createElement('span');q.textContent=fmt(+r.qta);li.append(l,q);ul.appendChild(li)}
-      sec.appendChild(ul);box.appendChild(sec);
+      if(list.length)inner.appendChild(ul);det.appendChild(inner);box.appendChild(det);
     };
-    for(const d of days)section(dLabel(d),isSun(d),by[d],S.gio[d]);
-    for(const k of lumps)section(k.split('|')[1],false,by[k],null);
-    if(sumO(c.riporto)){const list=Object.entries(c.riporto).map(([v,q])=>({varieta:v,qta:q,nota:'',autore:'import'}));section('Extra dal ciclo precedente (talee fatte prima, contate in questo ciclo)',false,list,null)}
+    for(const d of days)row(dLabel(d),isSun(d),by[d],S.gio[d]);
+    for(const k of lumps)row(k.split('|')[1],false,by[k],null,'Totale senza dettaglio giorno per giorno.');
+    if(sumO(c.riporto)){const list=Object.entries(c.riporto).map(([v,q])=>({varieta:v,qta:q,nota:'',autore:'import'}));row('Extra dal ciclo precedente',false,list,null,'Talee fatte nel ciclo precedente in più del programmato, contate in questo ciclo.')}
+    if(typeof resolveNames==='function')resolveNames(rs.map(r=>r.autore));
   }
+  $('stoMode').onclick=e=>{const b=e.target.closest('[data-k]');if(!b)return;S.stoMode=b.dataset.k;const c=curCamp();if(c)renderSto(c)};
+
 
   /* ---------- CALENDARIO ---------- */
   function renderCal(c){
-    const ms=campMonths(c);const td=today();
-    if(!S.mese||(S.mese!=='tutto'&&!ms.includes(S.mese)))S.mese=ms.includes(td.slice(0,7))?td.slice(0,7):(ms[ms.length-1]||'tutto');
-    $('monChips').innerHTML=allMonths().map(m=>`<button data-m="${m}" aria-pressed="${m===S.mese}">${mLabel(m)}</button>`).join('')+`<button data-m="tutto" aria-pressed="${S.mese==='tutto'}">Tutto il ciclo ${esc(c.titolo)}</button>`;
-    requestAnimationFrame(()=>{const b=document.querySelector('#monChips [aria-pressed="true"]');if(b)b.scrollIntoView({block:'nearest',inline:'center'})});
-    const D=daily();const rs=regsOf(c.id);const inSel=d=>S.mese==='tutto'?(c.dal<=d&&d<=c.al):d.startsWith(S.mese);
+    const ms=campMonths(c);const td=today();const D=daily();
+    if(!S.mese||(S.mese!=='tutto'&&!ms.includes(S.mese))){const withData=ms.filter(m=>Object.keys(D).some(d=>d.startsWith(m)));S.mese=ms.includes(td.slice(0,7))?td.slice(0,7):(withData[withData.length-1]||ms[0]||'tutto')}
+    if(S.mese==='tutto')S.mese=ms.includes(td.slice(0,7))?td.slice(0,7):ms[0];
+    $('monChips').innerHTML=ms.map(m=>`<button data-m="${m}" aria-pressed="${m===S.mese}">${mLabel(m)}</button>`).join('');
+    const rs=regsOf(c.id);const full=S.mese==='tutto';const inSel=d=>full?(c.dal<=d&&d<=c.al):d.startsWith(S.mese);
     const dates=Object.keys(D).filter(inSel).sort();
     const lumpRegs=rs.filter(r=>r.periodo&&inSel(r.data));const lumpTot=lumpRegs.reduce((a,r)=>a+(+r.qta||0),0);
-    const st=stats(dates,D);const R=sumO(c.riporto);
-    $('monStats').innerHTML=[[fmt(st.tal+lumpTot),S.mese==='tutto'?(R?'talee fatte nel ciclo (senza extra)':'talee fatte nel ciclo'):'talee fatte nel mese'],[fmt(st.worked),'giorni con talee'],[st.ore?fmt(st.ore):'—','ore totali'],[fmt1(st.perOra),'talee all\'ora (media)'],[fmt1(st.persone),'persone in media']].map(([b,s])=>`<div><b>${b}</b><span>${s}</span></div>`).join('');
+    const st=stats(dates,D);const R=sumO(c.riporto);const psM=platStats(Object.keys(S.gio).filter(inSel));
+    const endSel=full?c.al:lastDay(S.mese);const cum={...(c.riporto||{})};for(const r of rs)if(r.data<=endSel)cum[r.varieta]=(cum[r.varieta]||0)+(+r.qta||0);
+    let T=0,F=0,L=0;const rowsV=[];for(const v of varsOf(c)){const t=tgt(c,v.id),f=cum[v.id]||0;F+=f;let l=null;if(t!=null){T+=t;l=t-f;L+=l}rowsV.push([v,t,f,l])}
+    const past=!full&&endSel<td;
+    $('calTot').innerHTML=`<div class="ctot"><div><b>${fmt(T)}</b><span>da produrre</span></div><div><b>${fmt(F)}</b><span>fatte</span></div><div class="${L<0?'neg':''}"><b>${L<0?'+'+fmt(-L):fmt(L)}</b><span>${L<0?'in più':'rimanenti'}</span></div></div>`+
+      (past?`<p class="sub cnote">Situazione del ciclo a fine ${mLabel(S.mese)}.</p>`:'');
+    const vv='barre';const short=n=>n.replace(/^Thymus serpyllum /,'Th. ').replace(/^Lippia nodiflora var\. canescens /,'Lippia ').replace(/^Lippia nodiflora var\. /,'Lippia ').replace(/'/g,'');
+    let vh=`<div class="vtitrow"><h3 class="vtit">Per varietà${past?' · a fine '+esc(mLabel(S.mese)):''}</h3></div>`;
+    if(vv==='griglia'){
+      vh+=`<div class="vgrid">`+rowsV.map(([v,t,f,l])=>{const pct=t?Math.min(100,f/t*100):0;const cl=l==null?'':l<0?'neg':l===0?'zero':'pos';
+        return `<div class="vbox ${cl}"><div class="vbn">${esc(v.nome)}</div><div class="vbb"><i style="width:${pct}%"></i></div><div class="vbr"><span><b>${fmt(f)}</b>/${t==null?'—':fmt(t)}</span><span class="vbl">${l==null?'non progr.':l<0?'+'+fmt(-l):l===0?'✓':fmt(l)}</span></div></div>`}).join('')+
+        `</div><p class="sub vleg"><b>fatte</b>/da produrre · a destra i rimanenti (in viola quelle in più)</p>`;
+    }else if(vv==='riga'){
+      vh+=`<div class="grid-wrap"><table class="grid vtr"><thead><tr><th class="v"></th>`+rowsV.map(([v])=>`<th title="${esc(v.nome)}">${esc(short(v.nome))}</th>`).join('')+`<th class="tot">Totale</th></tr></thead><tbody>`+
+        `<tr><th class="v">Da produrre</th>`+rowsV.map(([,t])=>`<td>${t==null?'—':fmt(t)}</td>`).join('')+`<td class="tot">${fmt(T)}</td></tr>`+
+        `<tr><th class="v">Fatte</th>`+rowsV.map(([,,f])=>`<td>${fmt(f)}</td>`).join('')+`<td class="tot">${fmt(F)}</td></tr>`+
+        `<tr><th class="v">Rimanenti</th>`+rowsV.map(([,,,l])=>`<td class="${l==null?'':l<0?'neg':l===0?'zero':'pos'}">${l==null?'—':l<0?'+'+fmt(-l):l===0?'✓':fmt(l)}</td>`).join('')+`<td class="tot">${L<0?'+'+fmt(-L):fmt(L)}</td></tr>`+
+        `</tbody></table></div><p class="sub vleg">Scorri di lato per vedere tutte le varietà.</p>`;
+    }else{
+      vh+=`<div class="vbars"><div class="vbar vhd"><span>Varietà</span><span></span><span class="vnum">fatte/da produrre</span><span class="vbl">rimanenti</span></div>`+rowsV.map(([v,t,f,l])=>`<div class="vbar"><span class="vbn2">${esc(short(v.nome))}</span><span class="vtrack"><i class="vt" style="width:100%"></i><i class="vf ${l!=null&&l<=0?'ok':''}" style="width:${t?Math.min(100,f/t*100):0}%"></i></span><span class="vnum"><b>${fmt(f)}</b>/${t==null?'—':fmt(t)}</span><span class="vbl ${l==null?'':l<0?'neg':l===0?'zero':'pos'}">${l==null?'—':l<0?'+'+fmt(-l):l===0?'✓':fmt(l)}</span></div>`).join('')+
+        `<div class="vbar vtotr"><span class="vbn2">TOTALE</span><span class="vtrack"><i class="vt" style="width:100%"></i><i class="vf ${L<=0?'ok':''}" style="width:${T?Math.min(100,F/T*100):0}%"></i></span><span class="vnum"><b>${fmt(F)}</b>/${fmt(T)}</span><span class="vbl ${L<0?'neg':L===0?'zero':'pos'}">${L<0?'+'+fmt(-L):L===0?'✓':fmt(L)}</span></div>`+
+        `</div><div class="vtotbox"><div><span>Totale fatte</span><b>${fmt(F)}</b></div><div><span>Totale da produrre</span><b>${fmt(T)}</b></div><div class="${L<0?'neg':''}"><span>${L<0?'Totale in più':'Totale rimanenti'}</span><b>${L<0?'+'+fmt(-L):fmt(L)}</b></div></div>`;
+    }
+    $('calRiep').innerHTML=vh;
+    $('monStats').innerHTML=[[fmt(st.tal+lumpTot),'talee nel mese'],[fmt(st.worked),'giorni lavorati'],[st.ore?fmt(st.ore):'—','ore talee'],[fmt(psM.tot),'plateau terriccio']].map(([b,x])=>`<div><b>${b}</b><span>${x}</span></div>`).join('');
     let notes='';const lumpsByLabel={};for(const r of lumpRegs)lumpsByLabel[r.periodo]=(lumpsByLabel[r.periodo]||0)+(+r.qta||0);
-    for(const [l,q] of Object.entries(lumpsByLabel))notes+=`<div class="note" style="margin-bottom:8px"><b>${esc(l)}:</b> ${fmt(q)} talee. Non c'è il dettaglio giorno per giorno: sono nel totale ma non nel calendario.</div>`;
-    if(R&&(S.mese==='tutto'||S.mese===ms[0]))notes+=`<div class="note" style="margin-bottom:8px">Le <b>${fmt(R)} talee extra</b> dal ciclo precedente sono state fatte prima: contano per questo ciclo ma non come lavoro di ${S.mese==='tutto'?'questo ciclo':mLabel(S.mese)}.</div>`;
-    if(st.worked&&!st.ore)notes+=`<p class="sub" style="margin:0 0 8px">Ore e persone non ancora registrate: le medie compaiono appena le inserisci.</p>`;
+    for(const [l,q] of Object.entries(lumpsByLabel))notes+=`<p class="sub cnote">${esc(l.split(' (')[0])}: ${fmt(q)} talee senza dettaglio giorno per giorno.</p>`;
+    if(R&&(full||S.mese===ms[0]))notes+=`<p class="sub cnote">In più ${fmt(R)} talee extra dal ciclo precedente: contano nel ciclo ma non come lavoro di questo ${full?'ciclo':'mese'}.</p>`;
     $('monNotes').innerHTML=notes;
-    // calendario del mese
-    if(S.mese==='tutto'){$('monCal').innerHTML='';$('monCal').hidden=true}else{
-      $('monCal').hidden=false;const [y,mm]=S.mese.split('-').map(Number);const first=new Date(y,mm-1,1,12),nd=new Date(y,mm,0).getDate();
+    if(full){$('monCal').innerHTML='';$('monCal').hidden=true;$('calHint').textContent=''}
+    else{$('monCal').hidden=false;const [y,mm]=S.mese.split('-').map(Number);const first=new Date(y,mm-1,1,12),nd=new Date(y,mm,0).getDate();
       let h=['lun','mar','mer','gio','ven','sab','dom'].map((x,i)=>`<div class="dh${i===6?' su':''}">${x}</div>`).join('');
       for(let i=0;i<(first.getDay()+6)%7;i++)h+='<div class="mcell e"></div>';
       for(let d=1;d<=nd;d++){const ds=S.mese+'-'+String(d).padStart(2,'0');const t=sumO(D[ds]);const g=S.gio[ds];const su=isSun(ds);
-        const m=[];if(g&&g.ore)m.push(fmt(g.ore)+' h');if(g&&(g.taleatori||[]).length)m.push(g.taleatori.length+' pers.');if(g&&(g.riempitori||[]).length)m.push('plateau');if(su&&!t)m.push('domenica');
+        const tp=g?Object.values(g.plateau||{}).reduce((a,b)=>a+(+b||0),0):0;
+        const nv=Object.values(D[ds]||{}).filter(q=>q>0).length;const m=[];if(nv)m.push(nv+' var.');if(tp)m.push(fmt(tp)+' plat.');if(su&&!t&&!tp)m.push('dom');
         h+=`<button class="mcell${su?' su':''}${t?' has':''}${ds===td?' td':''}" data-d="${ds}" aria-label="${dLabel(ds)}${t?', '+t+' talee':''}"><span class="dn">${d}</span>${t?`<span class="t">${fmt(t)}</span>`:''}<span class="m">${m.join(' · ')}</span></button>`}
-      $('monCal').innerHTML=h}
-    $('calHint').textContent=S.mese==='tutto'?'Talee fatte per varietà e per giorno in tutto il ciclo. Tocca un nome per lo storico della varietà.':'Tocca un giorno del calendario per inserire o correggere. Sotto, le talee per varietà nel mese.';
-    // tabella
-    const tb=$('calTable');tb.innerHTML='';const vs=varsOf(c);
-    const cols=[];
-    const lumpLabels=[...new Set(lumpRegs.map(r=>r.periodo))];
-    for(const l of lumpLabels)cols.push({h:l.split(' (')[0]+' (tot.)',get:v=>lumpRegs.filter(r=>r.periodo===l&&r.varieta===v).reduce((a,r)=>a+(+r.qta||0),0)});
-    for(const d of dates)cols.push({h:dShort(d),su:isSun(d),today:d===td,get:v=>(D[d]&&D[d][v])||0});
-    const full=S.mese==='tutto';
-    const mk=(t,txt,cls)=>{const e=document.createElement(t);if(cls)e.className=cls;e.textContent=txt;return e};
-    const th=document.createElement('thead');const hr=document.createElement('tr');
-    hr.appendChild(mk('th','Varietà','v'));
-    if(full&&R)hr.appendChild(mk('th','Extra ciclo prec.'));
-    for(const x of cols)hr.appendChild(mk('th',x.h,(x.su?'su ':'')+(x.today?'today':'')));
-    for(const h of full?['Da prod.','Fatte','Rimanenti']:['Tot. mese'])hr.appendChild(mk('th',h));
-    th.appendChild(hr);tb.appendChild(th);
-    const tbd=document.createElement('tbody');let T=0,Dd=0,L=0,RR=0,M=0;const colT=cols.map(()=>0);
-    for(const v of vs){
-      const rowVals=cols.map(x=>x.get(v.id));const mt=rowVals.reduce((a,b)=>a+b,0);
-      if(!full&&!mt)continue;
-      const tr=document.createElement('tr');const n=mk('th',v.nome,'v');n.onclick=()=>openVar(v.id);tr.appendChild(n);
-      const rp=(c.riporto||{})[v.id]||0;
-      if(full&&R){RR+=rp;tr.appendChild(mk('td',rp?fmt(rp):'·',rp?'has':'z'))}
-      rowVals.forEach((q,i)=>{colT[i]+=q;tr.appendChild(mk('td',q?fmt(q):'·',q?'has':'z'))});
-      if(full){const t=tgt(c,v.id),d=rp+mt;Dd+=d;
-        tr.appendChild(mk('td',t==null?'—':fmt(t),'tot'));tr.appendChild(mk('td',fmt(d),'tot'));
-        if(t==null)tr.appendChild(mk('td','non progr.','tot left'));
-        else{const l=t-d;T+=t;L+=l;tr.appendChild(mk('td',l<0?'+'+fmt(-l):fmt(l),'tot left '+(l<0?'neg':l===0?'zero':'pos')))}}
-      else{M+=mt;tr.appendChild(mk('td',fmt(mt),'tot'))}
-      tbd.appendChild(tr);
-    }
-    tb.appendChild(tbd);
-    const tf=document.createElement('tfoot');const fr=document.createElement('tr');fr.appendChild(mk('th','Totale','v'));
-    if(full&&R)fr.appendChild(mk('td',fmt(RR)));
-    colT.forEach(q=>fr.appendChild(mk('td',fmt(q))));
-    if(full){fr.appendChild(mk('td',fmt(T),'tot'));fr.appendChild(mk('td',fmt(Dd),'tot'));fr.appendChild(mk('td',L<0?'+'+fmt(-L):fmt(L),'tot left pos'))}
-    else fr.appendChild(mk('td',fmt(M),'tot'));
-    tf.appendChild(fr);tb.appendChild(tf);
-    renderCycBox(c,full);
+      $('monCal').innerHTML=h;$('calHint').textContent='Tocca un giorno per vedere tutto: varietà, chi le ha fatte, ore e plateau.'}
   }
-  /* In fondo al calendario: situazione del ciclo (da produrre, fatte, rimanenti) */
-  function renderCycBox(c,full){
-    const box=$('cycBox');if(full){box.innerHTML='';box.hidden=true;return}box.hidden=false;
-    const dn=doneBy(c.id);let T=0,F=0,L=0;const last=c.al&&c.al<today()?'chiuso il '+dObj(c.al).toLocaleDateString('it-IT'):'situazione al '+dObj(today()).toLocaleDateString('it-IT');
-    let h=`<h3>Ciclo ${esc(c.titolo)} — ${last}</h3><div class="grid-wrap"><table class="grid"><thead><tr><th class="v">Varietà</th><th>Da produrre</th><th>Fatte</th><th>Rimanenti</th></tr></thead><tbody>`;
-    for(const v of varsOf(c)){const t=tgt(c,v.id),d=dn[v.id]||0;F+=d;let cell;
-      if(t==null)cell='<td class="tot left">non progr.</td>';else{const l=t-d;T+=t;L+=l;cell=`<td class="tot left ${l<0?'neg':l===0?'zero':'pos'}">${l<0?'+'+fmt(-l):fmt(l)}</td>`}
-      h+=`<tr><th class="v">${esc(v.nome)}</th><td>${t==null?'—':fmt(t)}</td><td>${fmt(d)}</td>${cell}</tr>`}
-    const R=sumO(c.riporto);
-    h+=`</tbody><tfoot><tr><th class="v">Totale</th><td>${fmt(T)}</td><td>${fmt(F)}</td><td class="tot left ${L<0?'neg':'pos'}">${L<0?'+'+fmt(-L)+' in più':fmt(L)}</td></tr></tfoot></table></div>`;
-    if(R)h+=`<p class="sub" style="margin:8px 0 0">Le fatte comprendono ${fmt(R)} talee extra dal ciclo precedente.</p>`;
-    box.innerHTML=h;
+  $('monChips').onclick=e=>{const b=e.target.closest('[data-m]');if(!b)return;S.mese=b.dataset.m;const c=curCamp();if(c)renderCal(c)};
+  $('monCal').onclick=e=>{const b=e.target.closest('[data-d]');if(b)openDay(b.dataset.d)};
+  $('calRiep').onclick=e=>{const b=e.target.closest('[data-vv]');if(!b)return;S.vview=b.dataset.vv;const c=curCamp();if(c)renderCal(c)};
+  function openDay(d){
+    const vn=Object.fromEntries(S.varieta.map(v=>[v.id,v.nome]));const list=S.reg.filter(r=>!r.periodo&&r.data===d);
+    const byV={};for(const r of list){(byV[r.varieta]=byV[r.varieta]||[]).push(r)}
+    const tot=list.reduce((a,r)=>a+(+r.qta||0),0);const g=S.gio[d]||{};
+    const pl=g.plateau||{};const tp=Object.values(pl).reduce((a,b)=>a+(+b||0),0);
+    let h=`<h2>${esc(dLabel(d))}${isSun(d)?' · domenica':''}</h2><p class="sub"><b>${fmt(tot)}</b> talee${g.ore?' · '+fmt(g.ore)+' ore':''}</p>`;
+    if(list.length){h+='<div class="daydet">'+Object.keys(byV).sort((a,b)=>(vn[a]||'').localeCompare(vn[b]||'')).map(v=>{const rs=byV[v];const t=rs.reduce((a,r)=>a+(+r.qta||0),0);return `<div class="dv"><div class="dvh"><span>${esc(vn[v]||v)}</span><b>${fmt(t)}</b></div><div class="meta">${rs.map(r=>esc(pers(r))+' '+fmt(+r.qta)).join(' · ')}</div></div>`}).join('')+'</div>'}
+    else h+='<p class="sub">Nessuna talea registrata.</p>';
+    if(tp)h+=`<p class="sub" style="margin-top:10px"><b>Plateau terriccio: ${fmt(tp)}</b> (${tipoOfDay(d)})${g.orePlateau?' · '+durata(g.orePlateau):''}<br>${Object.entries(pl).filter(([,q])=>+q>0).map(([p,q])=>esc(p)+' '+fmt(+q)).join(' · ')}</p>`;
+    {const m=g.materiale||{};if((m.persone||[]).length||+m.ore>0)h+=`<p class="sub"><b>Presa del materiale</b>: ${esc((m.persone||[]).join(', ')||'—')}${m.ore?' · '+durata(m.ore):''}</p>`}
+    if(g.nota)h+=`<p class="sub">Note: ${esc(g.nota)}</p>`;
+    h+=`<div class="two" style="margin-top:12px"><button class="btn ghost" id="ddT">Modifica talee</button><button class="btn ghost" id="ddP">Modifica plateau</button></div><button class="btn" id="ddC" style="width:100%;margin-top:8px">Chiudi</button>`;
+    $('dlgBody').innerHTML=h;$('dlg').showModal();
+    $('ddC').onclick=()=>$('dlg').close();
+    $('ddT').onclick=()=>{$('dlg').close();$('insDate').value=d;$('insDate').onchange();setTab('ins');window.scrollTo(0,0)};
+    $('ddP').onclick=()=>{$('dlg').close();$('plaDate').value=d;setTab('pla');plaLoad();renderPla();window.scrollTo(0,0)};
   }
-  $('monChips').onclick=e=>{const b=e.target.closest('[data-m]');if(!b)return;const m=b.dataset.m;
-    if(m!=='tutto'){const own=S.campagne.find(c=>campMonths(c).includes(m));if(own&&own.id!==S.camp){S.camp=own.id;try{localStorage.setItem('bdg-camp',own.id)}catch(e){}}}
-    S.mese=m;render();setTab('cal')};
-  $('monCal').onclick=e=>{const b=e.target.closest('[data-d]');if(!b)return;$('insDate').value=b.dataset.d;$('insDate').onchange();setTab('ins');window.scrollTo(0,0)};
+  function perPerson(dates){
+    const set=new Set(dates);const P={};const days=new Set();
+    for(const r of S.reg){if(r.periodo||!set.has(r.data))continue;const p=pers(r);const o=P[p]=P[p]||{tot:0,day:{},v:{}};const q=+r.qta||0;o.tot+=q;o.day[r.data]=(o.day[r.data]||0)+q;o.v[r.varieta]=(o.v[r.varieta]||0)+q;days.add(r.data)}
+    const people=Object.keys(P).sort((a,b)=>a===SENZA?1:b===SENZA?-1:P[b].tot-P[a].tot);
+    return {P,people,days:[...days].sort()};
+  }
+
 
   function openVar(vid){
     const c=curCamp();const v=S.varieta.find(x=>x.id===vid);if(!c||!v)return;
@@ -571,7 +1295,7 @@ textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px soli
       const ti=document.createElement('input');ti.type='number';ti.className='plain';ti.id='tgt';ti.inputMode='numeric';ti.value=t??'';fl.append(lb,ti);
       const sb=document.createElement('button');sb.className='btn ghost';sb.textContent='Aggiorna';sb.style.alignSelf='flex-end';
       sb.onclick=async()=>{const n=+ti.value;if(!(n>=0)||n===t)return;sb.disabled=true;
-        try{await api('POST','/api/target',{campagna:c.id,varieta:vid,qta:n});toast('Quantità aggiornata');$('dlg').close();load(true)}catch(e){if(e.message!=='pin')msg('Aggiornamento non riuscito, riprova.');sb.disabled=false}};
+        try{await S.db.doc('campagne/'+c.id).update({target:{...c.target,[vid]:n}});toast('Quantità aggiornata');$('dlg').close()}catch(e){msg('Aggiornamento non riuscito: '+(e&&e.message||'riprova'));sb.disabled=false}};
       f.append(fl,sb);body.appendChild(f);
     }
     const rp=(c.riporto||{})[vid];
@@ -587,12 +1311,12 @@ textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px soli
           const qi=document.createElement('input');qi.type='number';qi.className='plain';qi.inputMode='decimal';qi.step='any';qi.min='0';qi.value=r.qta;qi.id='ed-q-'+r.id;qi.style.width='80px';qi.setAttribute('aria-label','Quantità');
           const ok=document.createElement('button');ok.className='btn ghost';ok.style.padding='6px 10px';ok.textContent='Salva';
           ok.onclick=async()=>{const q=+qi.value;if(!(q>=0)||!di.value)return;ok.disabled=true;
-            try{await api('PATCH','/api/reg',{id:r.id,qta:q,data:di.value});toast('Riga corretta');$('dlg').close();load(true)}catch(e){if(e.message!=='pin')msg('Correzione non riuscita, riprova.');ok.disabled=false}};
+            try{await S.db.collection('registrazioni').doc(r.id).update({qta:q,data:di.value});toast('Riga corretta');$('dlg').close()}catch(e){msg('Correzione non riuscita, riprova.');ok.disabled=false}};
           const g=document.createElement('span');g.style.display='flex';g.style.gap='6px';g.style.flexWrap='wrap';g.append(di,qi,ok);row.appendChild(g)};
         row.appendChild(ed);
         const x=document.createElement('button');x.className='btn danger';x.textContent='Elimina';
         x.onclick=async()=>{if(x.dataset.c!=='1'){x.dataset.c='1';x.textContent='Conferma';return}x.disabled=true;
-          try{await api('DELETE','/api/reg?id='+encodeURIComponent(r.id));row.remove();toast('Riga eliminata');load(true)}catch(e){if(e.message!=='pin')msg('Eliminazione non riuscita.');x.disabled=false}};
+          try{await S.db.collection('registrazioni').doc(r.id).delete();row.remove();toast('Riga eliminata')}catch(e){msg('Eliminazione non riuscita.');x.disabled=false}};
         row.appendChild(x)}
       hl.appendChild(row);
     }
@@ -621,14 +1345,14 @@ textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px soli
     return {m,c,first,priorLabel:first?'EXTRA CICLO PREC.':'FATTE MESI PREC.',st,lt,tot:st.tal+lt,notes,cols,rows};
   }
   function teamRows(m){const D=daily();const ds=[...new Set([...Object.keys(D),...Object.keys(S.gio)])].filter(d=>d.startsWith(m)).sort();
-    return ds.map(d=>{const g=S.gio[d]||{},x=sumO(D[d]),n=(g.taleatori||[]).length;return {d,x,ore:+g.ore||null,n:n||null,tal:(g.taleatori||[]).join(', '),pla:(g.riempitori||[]).join(', '),nota:g.nota||''}})}
+    return ds.map(d=>{const g=S.gio[d]||{},x=sumO(D[d]),n=(g.taleatori||[]).length;return {d,x,ore:+g.ore||null,n:n||null,tal:(g.taleatori||[]).join(', '),pla:(()=>{const pl=g.plateau||{};const e=Object.entries(pl).filter(([,q])=>+q>0);return e.length?e.map(([p,q])=>p+' '+q).join(', '):(g.riempitori||[]).join(', ')})(),nota:g.nota||''}})}
   const sumHead=['Mese','Talee fatte','Giorni con talee','Ore totali','Talee/ora (media)','Persone in media'];
-  const teamHead=['Giorno','Talee','Ore','Persone','Talee/ora','Chi ha fatto le talee','Chi ha riempito i plateau','Note'];
+  const teamHead=['Giorno','Talee','Ore','Persone','Talee/ora','Chi ha fatto le talee','Plateau terriccio (chi e quanti)','Note'];
   const eSel=new Set();function periodMonths(){return allMonths().filter(m=>eSel.has(m))}
-  const fileBase=ms=>'Report talee '+(ms.length===1?mLabel(ms[0]):ms.map(m=>MESI[+m.slice(5,7)-1].slice(0,3)).join('-')+' '+ms[ms.length-1].slice(0,4));
+  const fileBase=ms=>'Report produzione '+(ms.length===1?mLabel(ms[0]):ms.map(m=>MESI[+m.slice(5,7)-1].slice(0,3)).join('-')+' '+ms[ms.length-1].slice(0,4));
   const periodLabel=ms=>ms.map(mLabel).join(', ');
   async function deliver(filename,blob){
-    if(!periodMonths().length)return;$('eMsg').textContent='Preparazione…';
+    if(eType!=='crescita'&&eType!=='previsione'&&!periodMonths().length)return;$('eMsg').textContent='Preparazione…';
     let dl=null;try{dl=window.claude&&window.claude.use?await window.claude.use('downloads'):null}catch(e){}
     if(dl){try{await dl.save({filename,data:blob});$('eMsg').textContent='File pronto: '+filename;return}catch(e){if(e&&e.code==='declined'){$('eMsg').textContent='Download annullato.';return}}}
     try{const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);$('eMsg').textContent='File generato: '+filename}
@@ -637,7 +1361,197 @@ textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px soli
 
   /* ---- Excel: tabella vera, con formule, come il foglio originale ---- */
   const XL=(n)=>{let s='';n++;while(n>0){const k=(n-1)%26;s=String.fromCharCode(65+k)+s;n=Math.floor((n-1)/26)}return s};
+  /* ---- Report previsione ---- */
+  const futCycles=()=>{const td=today();return S.campagne.filter(c=>c.al>=td).sort((a,b)=>a.dal.localeCompare(b.dal))};
+  const ST_LBL={late:'In ritardo',soon:'Entro 2 settimane',fine:"C'è tempo",nd:'Manca la crescita',ok:'Completata'};
+  function prevData(){const ord={late:0,soon:1,fine:2,nd:3,ok:4};
+    return futCycles().map(c=>{const ready=(c.id===preCid&&$('preDate').value)||vendStart(c)||addD(c.al,60);
+      const rows=preRows(c,ready).filter(r=>r.t!=null||r.d>0).sort((a,b)=>ord[a.st]-ord[b.st]||(a.entro||'9').localeCompare(b.entro||'9')||a.v.nome.localeCompare(b.v.nome));
+      const T=rows.reduce((a,r)=>a+(r.t||0),0),D=rows.reduce((a,r)=>a+r.d,0),L=rows.reduce((a,r)=>a+Math.max(0,r.rim||0),0);
+      return {c,ready,rows,T,D,L}})}
+  const dFull=d=>d?dShort(d)+'/'+d.slice(2,4):'';
+  async function prevXls(){
+    const P=prevData();const wb=new ExcelJS.Workbook();const F={name:'Arial',size:10};const B={top:{style:'thin'},left:{style:'thin'},bottom:{style:'thin'},right:{style:'thin'}};
+    const fill=c=>({type:'pattern',pattern:'solid',fgColor:{argb:'FF'+c}});
+    const st=(cell,o={})=>{cell.font={...F,...(o.font||{})};cell.border=B;cell.alignment={vertical:'middle',horizontal:o.h||'center',wrapText:!!o.wrap};if(o.fill)cell.fill=fill(o.fill);if(o.fmt)cell.numFmt=o.fmt};
+    const dv=d=>{if(!d)return null;const [y,mo,da]=d.split('-').map(Number);return new Date(Date.UTC(y,mo-1,da))};
+    const COL={late:'F8D7D4',soon:'FDE3C4',fine:'D0E0E3',nd:'EEEEEE',ok:'EEEEEE'};
+    const hdr=(ws,r,hs)=>hs.forEach((h,i)=>{const c=ws.getCell(r,i+1);c.value=h;st(c,{h:i?'center':'left',font:{bold:true},fill:'D9D9D9',wrap:true})});
+    const tit=(ws,t)=>{ws.getCell(1,1).value='Botanical Dry Garden — '+t;ws.getCell(1,1).font={...F,size:14,bold:true};ws.getCell(2,1).value='Aggiornato al '+dFull(today());ws.getCell(2,1).font={...F,italic:true}};
+    // 1 riepilogo cicli
+    const w1=wb.addWorksheet('Prossimi cicli');tit(w1,'previsione produzione talee');
+    hdr(w1,4,['Ciclo','Per vendite','Pronte per il','Da produrre','Fatte','Rimanenti','In ritardo','Entro 2 sett.','Senza crescita']);let r=5;
+    for(const p of P){[p.c.titolo,p.c.vendite||'',dv(p.ready),p.T,p.D,{formula:`D${r}-E${r}`,result:p.T-p.D},p.rows.filter(x=>x.st==='late').length,p.rows.filter(x=>x.st==='soon').length,p.rows.filter(x=>x.st==='nd').length].forEach((v,i)=>{const c=w1.getCell(r,i+1);c.value=v;st(c,{h:i<2?'left':'center',fmt:i===2?'dd/mm/yy':(i>=3&&i<=5?'#,##0':undefined),font:{bold:i===0||i===5}})});r++}
+    if(P.length>1){['TOTALE','','',{formula:`SUM(D5:D${r-1})`,result:P.reduce((a,p)=>a+p.T,0)},{formula:`SUM(E5:E${r-1})`,result:P.reduce((a,p)=>a+p.D,0)},{formula:`SUM(F5:F${r-1})`,result:P.reduce((a,p)=>a+p.T-p.D,0)},'','',''].forEach((v,i)=>{const c=w1.getCell(r,i+1);c.value=v;st(c,{h:i?'center':'left',font:{bold:true},fill:'D0E0E3',fmt:'#,##0'})})}
+    w1.columns=[{width:18},{width:28},{width:13},{width:12},{width:10},{width:12},{width:11},{width:12},{width:13}];w1.getRow(4).height=28;
+    // 2 cosa produrre e quando (tutti i cicli)
+    const w2=wb.addWorksheet('Cosa produrre e quando');tit(w2,'cosa produrre e quando');
+    const H=['Ciclo','Varietà','Da produrre','Fatte','Rimanenti','Giorni crescita','Fonte crescita','Produrre entro','Talee al giorno','Stato'];
+    hdr(w2,4,H);r=5;const all=[];for(const p of P)for(const x of p.rows)all.push({p,x});
+    const ord={late:0,soon:1,fine:2,nd:3,ok:4};all.sort((a,b)=>ord[a.x.st]-ord[b.x.st]||(a.x.entro||'9').localeCompare(b.x.entro||'9'));
+    for(const {p,x} of all){[p.c.titolo,x.v.nome,x.t,x.d,x.t==null?null:{formula:`C${r}-D${r}`,result:x.t-x.d},x.days,x.src==='dati'?`media di ${x.n} spedizioni`:x.src==='stima'?'stima':'—',dv(x.entro),x.perG,ST_LBL[x.st]].forEach((v,i)=>{const c=w2.getCell(r,i+1);c.value=v;st(c,{h:i<2||i===6||i===9?'left':'center',fmt:i===7?'dd/mm/yy':(i>=2&&i<=4?'#,##0':undefined),fill:i===9?COL[x.st]:undefined,font:{bold:i===1||i===7}})});r++}
+    w2.columns=[{width:16},{width:36},{width:11},{width:9},{width:11},{width:11},{width:20},{width:13},{width:11},{width:18}];w2.getRow(4).height=28;w2.views=[{state:'frozen',ySplit:4}];w2.autoFilter={from:'A4',to:'J4'};
+    // 3 un foglio per ciclo
+    for(const p of P){const ws=wb.addWorksheet(p.c.titolo.replace(/[\\/?*\[\]:]/g,'-').slice(0,31));tit(ws,'ciclo '+p.c.titolo);
+      ws.getCell(3,1).value=`Per vendite ${p.c.vendite||'—'} · piante pronte per il ${dFull(p.ready)}`;ws.getCell(3,1).font={...F,italic:true};
+      hdr(ws,5,H.slice(1));let q=6;
+      for(const x of p.rows){[x.v.nome,x.t,x.d,x.t==null?null:{formula:`B${q}-C${q}`,result:x.t-x.d},x.days,x.src==='dati'?`media di ${x.n} spedizioni`:x.src==='stima'?'stima':'—',dv(x.entro),x.perG,ST_LBL[x.st]].forEach((v,i)=>{const c=ws.getCell(q,i+1);c.value=v;st(c,{h:i===0||i===5||i===8?'left':'center',fmt:i===6?'dd/mm/yy':(i>=1&&i<=3?'#,##0':undefined),fill:i===8?COL[x.st]:undefined,font:{bold:i===0||i===6}})});q++}
+      ['TOTALE',{formula:`SUM(B6:B${q-1})`,result:p.T},{formula:`SUM(C6:C${q-1})`,result:p.D},{formula:`B${q}-C${q}`,result:p.T-p.D},'','','','',''].forEach((v,i)=>{const c=ws.getCell(q,i+1);c.value=v;st(c,{h:i?'center':'left',font:{bold:true},fill:'D0E0E3',fmt:'#,##0'})});
+      ws.columns=[{width:36},{width:11},{width:9},{width:11},{width:11},{width:20},{width:13},{width:11},{width:18}];ws.getRow(5).height=28;}
+    const buf=await wb.xlsx.writeBuffer();
+    deliver('Report previsione '+today()+'.xlsx',new Blob([buf],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}));
+  }
+  function prevPdf(){
+    const P=prevData();const doc=new jspdf.jsPDF({orientation:'landscape',unit:'mm',format:'a4'});const cs=s2=>String(s2).replace(/[‘’]/g,"'").replace(/[–—]/g,'-');
+    const nf=x=>x==null||x===''?'':typeof x==='number'?x.toLocaleString('it-IT'):cs(x);
+    const RGB={late:[248,215,212],soon:[253,227,196],fine:[208,224,227],nd:[238,238,238],ok:[238,238,238]};
+    const base={styles:{fontSize:10,cellPadding:2.2,halign:'center'},headStyles:{fillColor:[0,101,107],textColor:255,halign:'center'},margin:{left:10,right:10}};
+    doc.setFontSize(16);doc.text('Botanical Dry Garden - Previsione produzione talee',10,14);doc.setFontSize(10);doc.text(cs('Aggiornato al '+dFull(today())),10,20);
+    doc.autoTable({...base,startY:25,head:[['Ciclo','Per vendite','Pronte per il','Da produrre','Fatte','Rimanenti','In ritardo','Entro 2 sett.']],
+      body:P.map(p=>[p.c.titolo,p.c.vendite||'',dFull(p.ready),p.T,p.D,p.T-p.D,p.rows.filter(x=>x.st==='late').length,p.rows.filter(x=>x.st==='soon').length].map(nf)),columnStyles:{0:{halign:'left'},1:{halign:'left'}}});
+    for(const p of P){doc.addPage();doc.setFontSize(13);doc.text(cs(`Ciclo ${p.c.titolo} - per vendite ${p.c.vendite||'-'} - pronte per il ${dFull(p.ready)}`),10,14);
+      const body=p.rows.map(x=>[x.v.nome,x.t,x.d,x.t==null?'':x.t-x.d,x.days?x.days+(x.src==='stima'?' (stima)':''):'-',dFull(x.entro),x.perG,ST_LBL[x.st]].map(nf));
+      body.push(['TOTALE',p.T,p.D,p.T-p.D,'','','',''].map(nf));
+      doc.autoTable({...base,startY:19,head:[['Varietà','Da produrre','Fatte','Rimanenti','Giorni crescita','Produrre entro','Talee al giorno','Stato']],body,columnStyles:{0:{halign:'left',cellWidth:70},5:{fontStyle:'bold'}},
+        didParseCell:h=>{if(h.section!=='body')return;const x=p.rows[h.row.index];if(!x){h.cell.styles.fontStyle='bold';h.cell.styles.fillColor=[208,224,227];return}if(h.column.index===7)h.cell.styles.fillColor=RGB[x.st]}});}
+    deliver('Report previsione '+today()+'.pdf',doc.output('blob'));
+  }
+
+  /* ---- Report tempi di crescita ---- */
+  function growthData(){
+    const sl=spOfSection().slice().sort((a,b)=>{const na=(S.varieta.find(v=>v.id===a.varieta)||{}).nome||a.varieta,nb=(S.varieta.find(v=>v.id===b.varieta)||{}).nome||b.varieta;return na.localeCompare(nb)||a.prodotta.localeCompare(b.prodotta)||a.spedita.localeCompare(b.spedita)});
+    const vn=Object.fromEntries(S.varieta.map(v=>[v.id,v.nome]));
+    const rows=growthRows(sl).map(r=>{const xs=sl.filter(x=>x.varieta===r.v);return {...r,prima:xs.map(x=>x.spedita).sort()[0],ultima:xs.map(x=>x.spedita).sort().pop()}});
+    const pm=[...new Set(sl.map(x=>x.prodotta.slice(0,7)))].sort();
+    const mat=rows.map(r=>({nome:r.nome,cells:pm.map(m=>{const g=growthRows(sl.filter(x=>x.varieta===r.v&&x.prodotta.slice(0,7)===m))[0];return g?Math.round(g.media):null})}));
+    return {sl,vn,rows,pm,mat}}
+  const mShortLbl=m=>MESI[+m.slice(5,7)-1].slice(0,3)+' '+m.slice(2,4);
+  const gTitle=()=>{const R=routeOf(S.route)||{};return 'Tempi di crescita'+(R.title&&R.sez?' - '+R.title.replace('Talee ','').replace(/^./,c=>c.toUpperCase()):'')};
+  async function growthXls(){
+    const {sl,vn,rows,pm,mat}=growthData();
+    const wb=new ExcelJS.Workbook();const F={name:'Arial',size:10};const B={top:{style:'thin'},left:{style:'thin'},bottom:{style:'thin'},right:{style:'thin'}};
+    const fill=c=>({type:'pattern',pattern:'solid',fgColor:{argb:'FF'+c}});
+    const st=(cell,o={})=>{cell.font={...F,...(o.font||{})};cell.border=B;cell.alignment={vertical:'middle',horizontal:o.h||'center',wrapText:!!o.wrap};if(o.fill)cell.fill=fill(o.fill);if(o.fmt)cell.numFmt=o.fmt};
+    const dv=d=>{const [y,mo,da]=d.split('-').map(Number);return new Date(Date.UTC(y,mo-1,da))};
+    const head=(ws,r,hs)=>hs.forEach((h,i)=>st(ws.getCell(r,i+1),{h:i?'center':'left',font:{bold:true},fill:'D9D9D9',wrap:true}));
+    const hdr=(ws,r,hs)=>{hs.forEach((h,i)=>{ws.getCell(r,i+1).value=h});head(ws,r,hs)};
+    const tit=(ws,t,n)=>{ws.getCell(1,1).value='Botanical Dry Garden — '+t;ws.getCell(1,1).font={...F,size:14,bold:true};ws.getCell(2,1).value='Aggiornato al '+dShort(today())+'/'+today().slice(0,4)+' · '+sl.length+' spedizioni';ws.getCell(2,1).font={...F,italic:true}};
+    // 1 riepilogo
+    const w1=wb.addWorksheet('Riepilogo per varietà');tit(w1,gTitle());
+    hdr(w1,4,['Varietà','Spedizioni','Quantità spedita','Media giorni','Media mesi','Min giorni','Max giorni','Prima spedizione','Ultima spedizione']);
+    let r=5;for(const x of rows){[x.nome,x.n,x.q||null,Math.round(x.media),{formula:`D${r}/30.4`,result:x.media/30.4},x.min,x.max,dv(x.prima),dv(x.ultima)].forEach((v,i)=>{const c=w1.getCell(r,i+1);c.value=v;st(c,{h:i?'center':'left',font:{bold:i===0||i===3},fmt:i===4?'0.0':(i>=7?'dd/mm/yy':undefined)})});r++}
+    w1.getCell(r+1,1).value='Giorni di crescita = dalla data di produzione alla data di spedizione. Se tutte le spedizioni di una varietà hanno la quantità, la media tiene conto delle quantità.';w1.getCell(r+1,1).font={...F,italic:true,size:9};
+    w1.columns=[{width:38},{width:11},{width:12},{width:12},{width:11},{width:11},{width:11},{width:14},{width:14}];w1.getRow(4).height=28;w1.views=[{state:'frozen',ySplit:4}];
+    // 2 per mese di produzione
+    const w2=wb.addWorksheet('Per mese di produzione');tit(w2,gTitle()+' per mese di produzione');
+    w2.getCell(3,1).value='Media dei giorni di crescita in base al mese in cui la talea è stata prodotta';w2.getCell(3,1).font={...F,italic:true};
+    hdr(w2,4,['Varietà',...pm.map(m=>'Prodotte '+mShortLbl(m))]);
+    r=5;for(const x of mat){[x.nome,...x.cells].forEach((v,i)=>{const c=w2.getCell(r,i+1);c.value=v;st(c,{h:i?'center':'left',font:{bold:i===0}})});r++}
+    w2.columns=[{width:38},...pm.map(()=>({width:13}))];w2.getRow(4).height=28;w2.views=[{state:'frozen',xSplit:1,ySplit:4}];
+    // 3 dettaglio
+    const w3=wb.addWorksheet('Dettaglio spedizioni');tit(w3,'dettaglio spedizioni');
+    hdr(w3,4,['Varietà','Prodotta il','Spedita il','Giorni di crescita','Mesi','Quantità','Nota']);
+    r=5;for(const x of sl){[vn[x.varieta]||x.varieta,dv(x.prodotta),dv(x.spedita),{formula:`C${r}-B${r}`,result:daysBetween(x.prodotta,x.spedita)},{formula:`D${r}/30.4`,result:daysBetween(x.prodotta,x.spedita)/30.4},x.qta||null,x.nota||''].forEach((v,i)=>{const c=w3.getCell(r,i+1);c.value=v;st(c,{h:i===0||i===6?'left':'center',fmt:(i===1||i===2)?'dd/mm/yy':(i===3?'0':(i===4?'0.0':undefined))})});r++}
+    w3.columns=[{width:38},{width:13},{width:13},{width:12},{width:9},{width:11},{width:32}];w3.getRow(4).height=28;w3.views=[{state:'frozen',ySplit:4}];w3.autoFilter={from:'A4',to:'G4'};
+    const buf=await wb.xlsx.writeBuffer();
+    deliver('Report tempi di crescita '+today()+'.xlsx',new Blob([buf],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}));
+  }
+  function growthPdf(){
+    const {sl,vn,rows,pm,mat}=growthData();
+    const doc=new jspdf.jsPDF({orientation:'landscape',unit:'mm',format:'a4'});const cs=s2=>String(s2).replace(/[‘’]/g,"'").replace(/[–—]/g,'-');
+    const nf=x=>x==null||x===''?'':typeof x==='number'?x.toLocaleString('it-IT'):cs(x);
+    const base={styles:{fontSize:10.5,cellPadding:2.4,halign:'center'},headStyles:{fillColor:[0,101,107],textColor:255,halign:'center'},margin:{left:10,right:10},columnStyles:{0:{halign:'left',cellWidth:62}}};
+    doc.setFontSize(16);doc.text(cs('Botanical Dry Garden - '+gTitle()),10,14);doc.setFontSize(10);doc.text(cs('Aggiornato al '+dShort(today())+'/'+today().slice(0,4)+' - '+sl.length+' spedizioni'),10,20);
+    doc.autoTable({...base,startY:25,head:[['Varietà','Spedizioni','Quantità','Media giorni','Media mesi','Min','Max','Prima sped.','Ultima sped.']],
+      body:rows.map(x=>[x.nome,x.n,x.q||'',Math.round(x.media),x.media/30.4,x.min,x.max,dShort(x.prima),dShort(x.ultima)].map((v,i)=>i===4?v.toLocaleString('it-IT',{maximumFractionDigits:1,minimumFractionDigits:1}):nf(v))),
+      columnStyles:{0:{halign:'left',cellWidth:62},3:{fontStyle:'bold'}}});
+    if(pm.length){doc.addPage();doc.setFontSize(13);doc.text(cs('Media giorni di crescita per mese di produzione'),10,14);
+      const ch=pm.slice(0,12);
+      doc.autoTable({...base,startY:19,head:[['Varietà',...ch.map(mShortLbl)]],body:mat.map(x=>[x.nome,...x.cells.slice(0,12)].map(nf))});}
+    doc.addPage();doc.setFontSize(13);doc.text(cs('Dettaglio spedizioni'),10,14);
+    doc.autoTable({...base,startY:19,head:[['Varietà','Prodotta il','Spedita il','Giorni','Quantità','Nota']],body:sl.map(x=>[vn[x.varieta]||x.varieta,dShort(x.prodotta)+'/'+x.prodotta.slice(2,4),dShort(x.spedita)+'/'+x.spedita.slice(2,4),daysBetween(x.prodotta,x.spedita),x.qta||'',x.nota||''].map(nf)),columnStyles:{0:{halign:'left',cellWidth:62},5:{halign:'left'}}});
+    deliver('Report tempi di crescita '+today()+'.pdf',doc.output('blob'));
+  }
+
+  /* ---- Report per persona ---- */
+  let eType='completo';
+  function setEType(t){eType=t;$('eType').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.t===eType));
+    $('eTypeHint').textContent=eType==='persona'?'Persona per persona: talee fatte, plateau di terriccio e prese del materiale.':eType==='previsione'?'Il ciclo in corso e quelli futuri: per ogni varietà quante talee fare ed entro quando, per averle pronte per la vendita.':eType==='crescita'?'Tutte le spedizioni registrate: per ogni varietà quanti giorni passano dalla produzione alla spedizione, anche mese per mese.':'Talee per varietà, cicli, squadra, plateau terriccio e materiale.';
+    $('eMonthBox').hidden=eType==='crescita'||eType==='previsione';renderEMonths()}
+  $('eType').onclick=e=>{const b=e.target.closest('[data-t]');if(!b)return;setEType(b.dataset.t)};
+  function personRows(dates){
+    const set=new Set(dates);const P={};const get=p=>P[p]=P[p]||{tal:0,gt:new Set(),pla:0,p60:0,p84:0,gp:new Set(),mat:0,tm:0,v:{}};
+    for(const r of S.reg){if(r.periodo||!set.has(r.data))continue;const o=get(pers(r));const q=+r.qta||0;o.tal+=q;o.gt.add(r.data);o.v[r.varieta]=(o.v[r.varieta]||0)+q}
+    for(const d of dates){const g=S.gio[d];if(!g)continue;for(const [p,q] of Object.entries(g.plateau||{}))if(+q>0){const o=get(p);o.pla+=+q;o.gp.add(d)}
+      {const ty=platTypes(d);for(const [p,q] of Object.entries(ty.AL60))if(+q>0)get(p).p60+=+q;for(const [p,q] of Object.entries(ty.AL84))if(+q>0)get(p).p84+=+q}
+      const m=g.materiale||{};for(const p of (m.persone||[])){const o=get(p);o.mat++;o.tm+=+m.ore||0}}
+    const names=Object.keys(P).sort((a,b)=>a===SENZA?1:b===SENZA?-1:a.localeCompare(b,'it'));
+    return names.map(n=>({n,tal:P[n].tal,gt:P[n].gt.size,pla:P[n].pla,p60:P[n].p60,p84:P[n].p84,gp:P[n].gp.size,mat:P[n].mat,tm:P[n].tm,v:P[n].v}));
+  }
+  const datesOfMonths=ms=>{const s2=new Set();for(const r of S.reg)if(!r.periodo&&ms.includes(r.data.slice(0,7)))s2.add(r.data);for(const d of Object.keys(S.gio))if(ms.includes(d.slice(0,7)))s2.add(d);return [...s2].sort()};
+  const prHead=['Persona','Talee fatte','Giorni talee','Plateau terriccio','di cui AL60','di cui AL84','Giorni plateau','Prese materiale'];
+  async function personXls(ms){
+    const wb=new ExcelJS.Workbook();const F={name:'Arial',size:10};const B={top:{style:'thin'},left:{style:'thin'},bottom:{style:'thin'},right:{style:'thin'}};
+    const fill=c=>({type:'pattern',pattern:'solid',fgColor:{argb:'FF'+c}});
+    const style=(cell,o={})=>{cell.font={...F,...(o.font||{})};cell.border=B;cell.alignment={vertical:'middle',horizontal:o.h||'center',wrapText:!!o.wrap};if(o.fill)cell.fill=fill(o.fill);if(o.fmt)cell.numFmt=o.fmt};
+    const ws=wb.addWorksheet('Per persona');let r=1;
+    ws.getCell(r,1).value='Botanical Dry Garden — Report per persona';ws.getCell(r,1).font={...F,size:14,bold:true};r++;
+    ws.getCell(r,1).value='Mesi: '+ms.map(mLabel).join(', ');ws.getCell(r,1).font=F;r+=2;
+    const block=(title,dates)=>{
+      ws.getCell(r,1).value=title;for(let i=1;i<=8;i++){const c=ws.getCell(r,i);c.fill=fill('CDD9D4');c.font={...F,bold:true}}r++;
+      prHead.forEach((h,i)=>{const c=ws.getCell(r,i+1);c.value=h;style(c,{h:i?'center':'left',font:{bold:true},fill:'D9D9D9',wrap:true})});r++;const r0=r;
+      const rows=personRows(dates);
+      if(!rows.length){ws.getCell(r,1).value='Nessun dato';r+=2;return}
+      for(const x of rows){[x.n,x.tal||null,x.gt||null,x.pla||null,x.p60||null,x.p84||null,x.gp||null,x.mat||null].forEach((v,i)=>{const c=ws.getCell(r,i+1);c.value=v;style(c,{h:i?'center':'left'})});r++}
+      const dT=new Set(S.reg.filter(x=>!x.periodo&&dates.includes(x.data)).map(x=>x.data)).size;const dP=dates.filter(d=>Object.values(((S.gio[d]||{}).plateau)||{}).some(q=>+q>0)).length;
+      const nM=dates.filter(d=>(((S.gio[d]||{}).materiale||{}).persone||[]).length).length;const tM=dates.reduce((a,d)=>{const m=(S.gio[d]||{}).materiale||{};return a+((m.persone||[]).length?(+m.ore||0):0)},0);
+      const tot=['Totale',{formula:`SUM(B${r0}:B${r-1})`,result:rows.reduce((a,x)=>a+x.tal,0)},dT,{formula:`SUM(D${r0}:D${r-1})`,result:rows.reduce((a,x)=>a+x.pla,0)},{formula:`SUM(E${r0}:E${r-1})`,result:rows.reduce((a,x)=>a+x.p60,0)},{formula:`SUM(F${r0}:F${r-1})`,result:rows.reduce((a,x)=>a+x.p84,0)},dP,nM];
+      tot.forEach((v,i)=>{const c=ws.getCell(r,i+1);c.value=v;style(c,{h:i?'center':'left',font:{bold:true},fill:'D0E0E3'})});r+=3;
+    };
+    if(ms.length>1)block('TOTALE DEI MESI SCELTI',datesOfMonths(ms));
+    for(const m of ms)block(mLabel(m).toUpperCase(),datesOfMonths([m]));
+    // talee per varietà e persona nel periodo
+    const rows=personRows(datesOfMonths(ms)).filter(x=>x.tal>0);const vn=Object.fromEntries(S.varieta.map(v=>[v.id,v.nome]));
+    const vids=S.varieta.map(v=>v.id).filter(v=>rows.some(x=>x.v[v]));
+    if(rows.length){ws.getCell(r,1).value='TALEE PER VARIETÀ E PERSONA'+(ms.length>1?' (mesi scelti)':'');for(let i=1;i<=rows.length+2;i++){const c=ws.getCell(r,i);c.fill=fill('CDD9D4');c.font={...F,bold:true}}r++;
+      ['Varietà',...rows.map(x=>x.n),'Totale'].forEach((h,i)=>{const c=ws.getCell(r,i+1);c.value=h;style(c,{h:i?'center':'left',font:{bold:true},fill:'D9D9D9',wrap:true})});r++;const r0=r;
+      for(const v of vids){['Prato di '+(vn[v]||v),...rows.map(x=>x.v[v]||null),{formula:`SUM(B${r}:${XL(rows.length)}${r})`,result:rows.reduce((a,x)=>a+(x.v[v]||0),0)}].forEach((x,i)=>{const c=ws.getCell(r,i+1);c.value=x;style(c,{h:i?'center':'left'})});r++}
+      ['Totale',...rows.map((x,i)=>({formula:`SUM(${XL(i+1)}${r0}:${XL(i+1)}${r-1})`,result:x.tal})),{formula:`SUM(${XL(rows.length+1)}${r0}:${XL(rows.length+1)}${r-1})`,result:rows.reduce((a,x)=>a+x.tal,0)}].forEach((x,i)=>{const c=ws.getCell(r,i+1);c.value=x;style(c,{h:i?'center':'left',font:{bold:true},fill:'D0E0E3'})});r+=2}
+    ws.getCell(r,1).value='Nella riga Totale: giorni diversi lavorati e numero di prese del materiale.';ws.getCell(r,1).font={...F,italic:true,size:9};
+    ws.getColumn(1).width=40;for(let i=2;i<=14;i++)ws.getColumn(i).width=13;
+    ws.pageSetup={orientation:'landscape',paperSize:9,fitToPage:true,fitToWidth:1,fitToHeight:0};
+    const buf=await wb.xlsx.writeBuffer();
+    deliver('Report per persona '+fileBase(ms).replace('Report produzione ','')+'.xlsx',new Blob([buf],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}));
+  }
+  function personPdf(ms){
+    const doc=new jspdf.jsPDF({orientation:'landscape',unit:'mm',format:'a4'});const cs=s2=>String(s2).replace(/[‘’]/g,"'").replace(/[–—]/g,'-');
+    const nf=x=>x==null||x===''?'':typeof x==='number'?x.toLocaleString('it-IT'):cs(x);
+    const base={styles:{fontSize:10.5,cellPadding:2.4,halign:'center'},headStyles:{fillColor:[0,101,107],textColor:255,halign:'center'},margin:{left:10,right:10},columnStyles:{0:{halign:'left',cellWidth:55}},
+      didParseCell:h=>{if(h.section==='body'&&String(h.row.raw[0]).startsWith('TOTALE')){h.cell.styles.fontStyle='bold';h.cell.styles.fillColor=[208,224,227]}}};
+    doc.setFontSize(16);doc.text('Botanical Dry Garden - Report per persona',10,14);doc.setFontSize(10);doc.text(doc.splitTextToSize(cs('Mesi: '+ms.map(mLabel).join(', ')),270),10,20);
+    let y=26;
+    const block=(title,dates)=>{const rows=personRows(dates);if(y>165){doc.addPage();y=14}
+      doc.setFontSize(12);doc.text(cs(title),10,y);
+      const body=rows.map(x=>[x.n,x.tal||'',x.gt||'',x.pla||'',x.p60||'',x.p84||'',x.gp||'',x.mat||'']);
+      const T=k=>rows.reduce((a,x)=>a+x[k],0);
+      const dT=new Set(S.reg.filter(x=>!x.periodo&&dates.includes(x.data)).map(x=>x.data)).size;const dP=dates.filter(d=>Object.values(((S.gio[d]||{}).plateau)||{}).some(q=>+q>0)).length;
+      const nM=dates.filter(d=>(((S.gio[d]||{}).materiale||{}).persone||[]).length).length;const tM=dates.reduce((a,d)=>{const m=(S.gio[d]||{}).materiale||{};return a+((m.persone||[]).length?(+m.ore||0):0)},0);
+      body.push(['TOTALE',T('tal'),dT,T('pla'),T('p60'),T('p84'),dP,nM]);
+      doc.autoTable({...base,startY:y+2,head:[prHead],body:rows.length?body.map(r=>r.map(nf)):[['Nessun dato','','','','','','','']]});y=doc.lastAutoTable.finalY+10};
+    if(ms.length>1)block('Totale dei mesi scelti',datesOfMonths(ms));
+    for(const m of ms)block(mLabel(m),datesOfMonths([m]));
+    const rows=personRows(datesOfMonths(ms)).filter(x=>x.tal>0);
+    if(rows.length){const vn=Object.fromEntries(S.varieta.map(v=>[v.id,v.nome]));const vids=S.varieta.map(v=>v.id).filter(v=>rows.some(x=>x.v[v]));
+      doc.addPage();doc.setFontSize(12);doc.text(cs('Talee per varietà e persona'+(ms.length>1?' (mesi scelti)':'')),10,14);
+      const body=vids.map(v=>[vn[v]||v,...rows.map(x=>x.v[v]||''),rows.reduce((a,x)=>a+(x.v[v]||0),0)]);body.push(['TOTALE',...rows.map(x=>x.tal),rows.reduce((a,x)=>a+x.tal,0)]);
+      doc.autoTable({...base,startY:17,head:[['Varietà',...rows.map(x=>x.n),'Totale'].map(cs)],body:body.map(r=>r.map(nf)),horizontalPageBreak:true,horizontalPageBreakRepeat:0})}
+    doc.setFontSize(8);doc.text('Riga TOTALE: giorni diversi lavorati e numero di prese del materiale.',10,doc.lastAutoTable.finalY+6);
+    deliver('Report per persona '+fileBase(ms).replace('Report produzione ','')+'.pdf',doc.output('blob'));
+  }
   $('eXls').onclick=async()=>{
+    if(eType==='previsione'){if(!window.ExcelJS){$('eMsg').textContent='Libreria Excel non caricata, controlla la connessione.';return}$('eMsg').textContent='Preparazione…';await prevXls();return}
+    if(eType==='crescita'){if(!window.ExcelJS){$('eMsg').textContent='Libreria Excel non caricata, controlla la connessione.';return}$('eMsg').textContent='Preparazione…';await growthXls();return}
+    if(eType==='persona'){if(!window.ExcelJS){$('eMsg').textContent='Libreria Excel non caricata, controlla la connessione.';return}const ms=periodMonths();if(!ms.length)return;$('eMsg').textContent='Preparazione…';await personXls(ms);return}
     if(!window.ExcelJS){$('eMsg').textContent='Libreria Excel non caricata, controlla la connessione.';return}
     const ms=periodMonths();if(!ms.length)return;$('eMsg').textContent='Preparazione…';
     const wb=new ExcelJS.Workbook();const F={name:'Arial',size:10};
@@ -650,7 +1564,7 @@ textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px soli
     /* Riepilogo */
     const ws=wb.addWorksheet('Scheda produzione',{views:[{state:'frozen',xSplit:1}]});
     const s0=wb.addWorksheet('Riepilogo');
-    s0.getCell('A1').value='Botanical Dry Garden — Report talee prati';s0.getCell('A1').font={...F,size:14,bold:true};
+    s0.getCell('A1').value='Botanical Dry Garden — Report produzione prati';s0.getCell('A1').font={...F,size:14,bold:true};
     s0.getCell('A2').value='Mesi: '+periodLabel(ms);s0.getCell('A2').font=F;
     s0.getCell('A3').value='Generato il '+dObj(today()).toLocaleDateString('it-IT');s0.getCell('A3').font={...F,color:{argb:'FF666666'}};
     sumHead.forEach((h,i)=>{const c=s0.getCell(5,i+1);c.value=h;style(c,{h:i?'center':'left',font:{bold:true},fill:'D9D9D9',wrap:true})});
@@ -660,7 +1574,16 @@ textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px soli
     const tv=['TOTALE MESI SCELTI',{formula:`SUM(B6:B${rt-1})`,result:blocks.reduce((a,p)=>a+p.tot,0)},{formula:`SUM(C6:C${rt-1})`,result:all.worked},{formula:`SUM(D6:D${rt-1})`,result:all.ore},all.perOra!=null?r1(all.perOra):null,all.persone!=null?r1(all.persone):null];
     tv.forEach((x,i)=>{const c=s0.getCell(rt,i+1);c.value=x;style(c,{h:i?'center':'left',font:{bold:true},fill:'D0E0E3',fmt:i>=4?'0.0':undefined})});
     s0.getCell(rt+2,1).value='Talee/ora = talee dei giorni con le ore registrate ÷ ore.';s0.getCell(rt+2,1).font={...F,italic:true};
-    s0.columns=[{width:24},{width:13},{width:16},{width:12},{width:17},{width:17}];
+    {const pr=rt+5;const ph=['Mese','Plateau terriccio','Giorni','Tempo (h:mm)','Plateau/ora','Persone in media','Prese materiale','Tempo materiale (h:mm)','di cui AL60','di cui AL84'];
+      s0.getCell(pr-1,1).value='PLATEAU TERRICCIO E PRESA DEL MATERIALE';s0.getCell(pr-1,1).font={...F,bold:true};
+      ph.forEach((h,i)=>{const c=s0.getCell(pr,i+1);c.value=h;style(c,{h:i?'center':'left',font:{bold:true},fill:'D9D9D9',wrap:true})});
+      ms.forEach((m,k)=>{const dm=Object.keys(S.gio).filter(d=>d.startsWith(m));const st=platStats(dm);const mt=matStats(dm);const v=[mLabel(m),st.tot,st.days,st.ore?st.ore/24:null,st.perOra!=null?r1(st.perOra):null,st.persone!=null?r1(st.persone):null,mt.volte,mt.ore?mt.ore/24:null,st.t60||null,st.t84||null];
+        v.forEach((x,i)=>{const c=s0.getCell(pr+1+k,i+1);c.value=x;style(c,{h:i?'center':'left',fmt:(i===3||i===7)?'[h]:mm':(i===4||i===5)?'0.0':undefined})})});
+      const r2=pr+1+ms.length;const sa=platStats(Object.keys(S.gio).filter(d=>ms.includes(d.slice(0,7))));
+      const ma=matStats(Object.keys(S.gio).filter(d=>ms.includes(d.slice(0,7))));
+      ['TOTALE MESI SCELTI',{formula:`SUM(B${pr+1}:B${r2-1})`,result:sa.tot},{formula:`SUM(C${pr+1}:C${r2-1})`,result:sa.days},{formula:`SUM(D${pr+1}:D${r2-1})`,result:sa.ore/24},sa.perOra!=null?r1(sa.perOra):null,sa.persone!=null?r1(sa.persone):null,{formula:`SUM(G${pr+1}:G${r2-1})`,result:ma.volte},{formula:`SUM(H${pr+1}:H${r2-1})`,result:ma.ore/24},{formula:`SUM(I${pr+1}:I${r2-1})`,result:sa.t60},{formula:`SUM(J${pr+1}:J${r2-1})`,result:sa.t84}]
+        .forEach((x,i)=>{const c=s0.getCell(r2,i+1);c.value=x;style(c,{h:i?'center':'left',font:{bold:true},fill:'D0E0E3',fmt:(i===3||i===7)?'[h]:mm':(i===4||i===5)?'0.0':undefined})});}
+    s0.columns=[{width:24},{width:16},{width:16},{width:12},{width:17},{width:17},{width:15},{width:14},{width:12},{width:12}];
 
     /* Scheda produzione: come il foglio Excel originale, blocchi di due settimane (lun-sab) per ciclo */
     const D=daily();const selM=new Set(ms);const td=today();
@@ -734,6 +1657,66 @@ textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px soli
     if(r===1){ws.getCell(1,1).value='Nessun dato per i mesi scelti';}
     ws.getColumn(1).width=40;ws.getColumn(2).width=13;ws.getColumn(3).width=13;for(let i=4;i<=maxC;i++)ws.getColumn(i).width=10.5;
 
+    /* Per persona */
+    const s3=wb.addWorksheet('Per persona');let q3=1;
+    for(const p of blocks){
+      const dd=Object.keys(daily()).filter(d=>d.startsWith(p.m)).sort();const PP=perPerson(dd);
+      s3.getCell(q3,1).value='TALEE PER PERSONA — '+mLabel(p.m).toUpperCase();const w=Math.max(3,PP.people.length+2);for(let i=1;i<=w;i++){const c=s3.getCell(q3,i);c.fill=fill('CDD9D4');c.font={...F,bold:true}}q3++;
+      if(!PP.people.length){s3.getCell(q3,1).value='Nessuna talea registrata';q3+=3;continue}
+      // giorni x persone
+      ['Giorno',...PP.people,'Totale'].forEach((x,i)=>{const c=s3.getCell(q3,i+1);c.value=x;style(c,{h:i?'center':'left',font:{bold:true},fill:'D9D9D9'})});q3++;const a0=q3;
+      for(const d of PP.days){const row=[dateVal(d),...PP.people.map(pp=>PP.P[pp].day[d]||null),{formula:`SUM(B${q3}:${XL(PP.people.length)}${q3})`,result:PP.people.reduce((a,pp)=>a+(PP.P[pp].day[d]||0),0)}];
+        row.forEach((x,i)=>{const c=s3.getCell(q3,i+1);c.value=x;style(c,{h:i?'center':'left',fmt:i===0?'ddd dd/mm/yy':undefined,font:i===0&&isSun(d)?{color:{argb:'FFC62828'}}:{}})});q3++}
+      const tr=['Totale',...PP.people.map((pp,i)=>({formula:`SUM(${XL(i+1)}${a0}:${XL(i+1)}${q3-1})`,result:PP.P[pp].tot})),{formula:`SUM(${XL(PP.people.length+1)}${a0}:${XL(PP.people.length+1)}${q3-1})`,result:PP.people.reduce((a,pp)=>a+PP.P[pp].tot,0)}];
+      tr.forEach((x,i)=>{const c=s3.getCell(q3,i+1);c.value=x;style(c,{h:i?'center':'left',font:{bold:true},fill:'D0E0E3'})});q3++;
+      const gl=['Giorni lavorati',...PP.people.map(pp=>Object.keys(PP.P[pp].day).length),''];gl.forEach((x,i)=>{const c=s3.getCell(q3,i+1);c.value=x;style(c,{h:i?'center':'left'})});q3++;
+      const md=['Media al giorno',...PP.people.map(pp=>r1(PP.P[pp].tot/Object.keys(PP.P[pp].day).length)),''];md.forEach((x,i)=>{const c=s3.getCell(q3,i+1);c.value=x;style(c,{h:i?'center':'left',fmt:i?'0.0':undefined})});q3+=2;
+      // varieta x persone
+      const vids=S.varieta.map(v=>v.id).filter(v=>PP.people.some(pp=>PP.P[pp].v[v]));const vn=Object.fromEntries(S.varieta.map(v=>[v.id,v.nome]));
+      ['Varietà',...PP.people,'Totale'].forEach((x,i)=>{const c=s3.getCell(q3,i+1);c.value=x;style(c,{h:i?'center':'left',font:{bold:true},fill:'D9D9D9'})});q3++;const b0=q3;
+      for(const v of vids){const row=['Prato di '+(vn[v]||v),...PP.people.map(pp=>PP.P[pp].v[v]||null),{formula:`SUM(B${q3}:${XL(PP.people.length)}${q3})`,result:PP.people.reduce((a,pp)=>a+(PP.P[pp].v[v]||0),0)}];
+        row.forEach((x,i)=>{const c=s3.getCell(q3,i+1);c.value=x;style(c,{h:i?'center':'left',font:{bold:i===0}})});q3++}
+      const tv2=['Totale',...PP.people.map((pp,i)=>({formula:`SUM(${XL(i+1)}${b0}:${XL(i+1)}${q3-1})`,result:PP.P[pp].tot})),{formula:`SUM(${XL(PP.people.length+1)}${b0}:${XL(PP.people.length+1)}${q3-1})`,result:PP.people.reduce((a,pp)=>a+PP.P[pp].tot,0)}];
+      tv2.forEach((x,i)=>{const c=s3.getCell(q3,i+1);c.value=x;style(c,{h:i?'center':'left',font:{bold:true},fill:'D0E0E3'})});q3+=4;
+    }
+    s3.getColumn(1).width=40;for(let i=2;i<=12;i++)s3.getColumn(i).width=12;
+
+    /* Plateau terriccio */
+    const s4=wb.addWorksheet('Plateau terriccio');let q4=1;
+    for(const m of ms){
+      const dd=Object.keys(S.gio).filter(d=>d.startsWith(m)&&(Object.values(platOf(d)).some(q=>+q>0)||(matOf(d).persone||[]).length||+matOf(d).ore>0)).sort();
+      const people=[...new Set(dd.flatMap(d=>Object.keys(platOf(d)).filter(p=>+platOf(d)[p]>0)))].sort((a,b)=>a.localeCompare(b,'it'));
+      const w=people.length+8;
+      s4.getCell(q4,1).value='PLATEAU TERRICCIO E PRESA DEL MATERIALE — '+mLabel(m).toUpperCase();for(let i=1;i<=Math.max(w,4);i++){const c=s4.getCell(q4,i);c.fill=fill('CDD9D4');c.font={...F,bold:true}}q4++;
+      if(!dd.length){s4.getCell(q4,1).value='Nessun dato registrato';q4+=3;continue}
+      ['Giorno',...people,'Totale','Tempo (h:mm)','Plateau/ora','Presa materiale (chi)','Tempo materiale (h:mm)','di cui AL60','di cui AL84'].forEach((x,i)=>{const c=s4.getCell(q4,i+1);c.value=x;style(c,{h:i?'center':'left',font:{bold:true},fill:'D9D9D9',wrap:true})});q4++;const a0=q4;
+      const cM=XL(people.length+4);
+      const cT=XL(people.length+1),cO=XL(people.length+2);
+      for(const d of dd){const pl=platOf(d);const t=people.reduce((a,p)=>a+(+pl[p]||0),0);const o=+(S.gio[d]||{}).orePlateau||null;
+        const mt=matOf(d);const row=[dateVal(d),...people.map(p=>+pl[p]||null),{formula:people.length?`SUM(B${q4}:${XL(people.length)}${q4})`:'0',result:t},o?o/24:null,o?{formula:`IF(${cO}${q4}>0,${cT}${q4}/(${cO}${q4}*24),"")`,result:r1(t/o)}:null,(mt.persone||[]).join(', '),+mt.ore?mt.ore/24:null,sumV(platTypes(d).AL60)||null,sumV(platTypes(d).AL84)||null];
+        row.forEach((x,i)=>{const c=s4.getCell(q4,i+1);c.value=x;style(c,{h:i?'center':'left',fmt:i===0?'ddd dd/mm/yy':(i===people.length+3?'0.0':(i===people.length+2||i===people.length+5?'[h]:mm':undefined)),font:i===0&&isSun(d)?{color:{argb:'FFC62828'}}:{}})});q4++}
+      const st=platStats(dd);
+      const msx=matStats(dd);
+      const tr=['Totale',...people.map((p,i)=>({formula:`SUM(${XL(i+1)}${a0}:${XL(i+1)}${q4-1})`,result:st.per[p]||0})),{formula:`SUM(${cT}${a0}:${cT}${q4-1})`,result:st.tot},{formula:`SUM(${cO}${a0}:${cO}${q4-1})`,result:st.ore/24},st.perOra!=null?{formula:`IF(${cO}${q4}>0,SUMIF(${cO}${a0}:${cO}${q4-1},">0",${cT}${a0}:${cT}${q4-1})/(${cO}${q4}*24),"")`,result:r1(st.perOra)}:null,msx.volte?msx.volte+(msx.volte===1?' volta':' volte'):'',{formula:`SUM(${XL(people.length+5)}${a0}:${XL(people.length+5)}${q4-1})`,result:msx.ore/24},{formula:`SUM(${XL(people.length+6)}${a0}:${XL(people.length+6)}${q4-1})`,result:st.t60},{formula:`SUM(${XL(people.length+7)}${a0}:${XL(people.length+7)}${q4-1})`,result:st.t84}];
+      tr.forEach((x,i)=>{const c=s4.getCell(q4,i+1);c.value=x;style(c,{h:i?'center':'left',font:{bold:true},fill:'D0E0E3',fmt:i===people.length+3?'0.0':(i===people.length+2||i===people.length+5?'[h]:mm':undefined)})});q4++;
+      s4.getCell(q4,1).value='Persone in media al giorno (plateau): '+fmt1(st.persone)+(msx.volte?' · Presa materiale: '+Object.entries(msx.per).map(([p,q])=>p+' '+q).join(', '):'');s4.getCell(q4,1).font={...F,italic:true};q4+=3;
+    }
+    s4.getColumn(1).width=18;for(let i=2;i<=14;i++)s4.getColumn(i).width=11;
+
+    /* Tempi di crescita (spedizioni nei mesi scelti) */
+    {const sl=spOfSection().filter(x=>ms.includes(x.spedita.slice(0,7))).sort((a,b)=>a.spedita.localeCompare(b.spedita));
+     const s5=wb.addWorksheet('Tempi di crescita');let q5=1;const vn=Object.fromEntries(S.varieta.map(v=>[v.id,v.nome]));
+     s5.getCell(q5,1).value='TEMPI DI CRESCITA — SPEDIZIONI DEI MESI SCELTI';for(let i=1;i<=6;i++){const c=s5.getCell(q5,i);c.fill=fill('CDD9D4');c.font={...F,bold:true}}q5++;
+     if(!sl.length){s5.getCell(q5,1).value='Nessuna spedizione registrata nei mesi scelti.';s5.getCell(q5,1).font=F}
+     else{
+      ['Varietà','Spedizioni','Quantità','Media giorni','Min giorni','Max giorni'].forEach((h,i)=>{const c=s5.getCell(q5,i+1);c.value=h;style(c,{h:i?'center':'left',font:{bold:true},fill:'D9D9D9'})});q5++;
+      for(const r of growthRows(sl)){[r.nome,r.n,r.q||null,Math.round(r.media),r.min,r.max].forEach((x,i)=>{const c=s5.getCell(q5,i+1);c.value=x;style(c,{h:i?'center':'left',font:{bold:i===0||i===3}})});q5++}
+      q5+=2;s5.getCell(q5,1).value='DETTAGLIO SPEDIZIONI';s5.getCell(q5,1).font={...F,bold:true};q5++;
+      ['Varietà','Prodotta il','Spedita il','Giorni di crescita','Quantità','Nota'].forEach((h,i)=>{const c=s5.getCell(q5,i+1);c.value=h;style(c,{h:i?'center':'left',font:{bold:true},fill:'D9D9D9'})});q5++;
+      for(const x of sl){[vn[x.varieta]||x.varieta,dateVal(x.prodotta),dateVal(x.spedita),{formula:`C${q5}-B${q5}`,result:daysBetween(x.prodotta,x.spedita)},x.qta||null,x.nota||''].forEach((v,i)=>{const c=s5.getCell(q5,i+1);c.value=v;style(c,{h:i===0||i===5?'left':'center',fmt:(i===1||i===2)?'dd/mm/yy':(i===3?'0':undefined)})});q5++}
+     }
+     s5.columns=[{width:40},{width:13},{width:13},{width:16},{width:11},{width:30}];}
+
     /* Squadra e ore */
     const s2=wb.addWorksheet('Squadra e ore');let q=1;
     for(const p of blocks){const tr=teamRows(p.m);
@@ -756,6 +1739,9 @@ textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px soli
 
   /* ---- PDF: solo i mesi spuntati ---- */
   $('ePdf').onclick=()=>{
+    if(eType==='previsione'){if(!window.jspdf){$('eMsg').textContent='Libreria PDF non caricata, controlla la connessione.';return}prevPdf();return}
+    if(eType==='crescita'){if(!window.jspdf){$('eMsg').textContent='Libreria PDF non caricata, controlla la connessione.';return}growthPdf();return}
+    if(eType==='persona'){if(!window.jspdf){$('eMsg').textContent='Libreria PDF non caricata, controlla la connessione.';return}const ms=periodMonths();if(!ms.length)return;personPdf(ms);return}
     if(!window.jspdf){$('eMsg').textContent='Libreria PDF non caricata, controlla la connessione.';return}
     const ms=periodMonths();if(!ms.length)return;const blocks=ms.map(monthBlock);const doc=new jspdf.jsPDF({orientation:'landscape',unit:'mm',format:'a4'});
     const cs=s=>String(s).replace(/[‘’]/g,"'").replace(/[–—]/g,'-');const nf=x=>x==null||x===''?'':typeof x==='number'?x.toLocaleString('it-IT'):cs(x);
@@ -763,10 +1749,14 @@ textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px soli
       columnStyles:{0:{halign:'left',cellWidth:52}},
       didParseCell:h=>{if(h.section==='body'&&String(h.row.raw[0]).startsWith('TOTALE')){h.cell.styles.fontStyle='bold';h.cell.styles.fillColor=[208,224,227]}if(/ DOM$|domenica/.test(String(h.cell.raw)))h.cell.styles.textColor=[198,40,40]}};
     const all=stats(ms.flatMap(m=>Object.keys(daily()).filter(d=>d.startsWith(m))),daily());
-    doc.setFontSize(16);doc.text('Botanical Dry Garden - Report talee prati',10,14);doc.setFontSize(10);
+    doc.setFontSize(16);doc.text('Botanical Dry Garden - Report produzione prati',10,14);doc.setFontSize(10);
     doc.text(doc.splitTextToSize(cs('Mesi: '+periodLabel(ms)+'   ·   generato il '+dObj(today()).toLocaleDateString('it-IT')),270),10,20);
     doc.autoTable({...base,startY:26,head:[sumHead],body:[...blocks.map(p=>[mLabel(p.m),p.tot,p.st.worked,p.st.ore||'',r1(p.st.perOra),r1(p.st.persone)]),['TOTALE MESI SCELTI',blocks.reduce((a,p)=>a+p.tot,0),all.worked,all.ore||'',r1(all.perOra),r1(all.persone)]].map(r=>r.map(nf))});
     doc.setFontSize(8);doc.text('Talee/ora = talee dei giorni con le ore registrate / ore.',10,doc.lastAutoTable.finalY+5);
+    {const rows=ms.map(m=>{const dm=Object.keys(S.gio).filter(d=>d.startsWith(m));const st=platStats(dm);const mt=matStats(dm);return [mLabel(m),st.tot,st.t60,st.t84,st.days,st.ore?durata(st.ore):'',r1(st.perOra),r1(st.persone),mt.volte,mt.ore?durata(mt.ore):'']});
+     const dA=Object.keys(S.gio).filter(d=>ms.includes(d.slice(0,7)));const sa=platStats(dA);const ma=matStats(dA);rows.push(['TOTALE MESI SCELTI',sa.tot,sa.t60,sa.t84,sa.days,sa.ore?durata(sa.ore):'',r1(sa.perOra),r1(sa.persone),ma.volte,ma.ore?durata(ma.ore):'']);
+     doc.setFontSize(11);doc.text('Plateau riempiti di terriccio',10,doc.lastAutoTable.finalY+14);
+     doc.autoTable({...base,startY:doc.lastAutoTable.finalY+17,head:[['Mese','Plateau','AL60','AL84','Giorni','Tempo','Plateau/ora','Persone in media','Prese materiale','Tempo materiale']],body:rows.map(r=>r.map(nf))});}
     for(const p of blocks){
       doc.addPage();doc.setFontSize(14);doc.text(cs('Talee di '+mLabel(p.m)+(p.c?'  ·  ciclo '+p.c.titolo+' (per vendite '+p.c.vendite+')':'')),10,14);let y=19;doc.setFontSize(8.5);
       for(const n of p.notes){const l=doc.splitTextToSize(cs(n),275);doc.text(l,10,y);y+=4.2*l.length}
@@ -782,53 +1772,223 @@ textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px soli
       if(y>170){doc.addPage();y=14}
       doc.setFontSize(11);doc.text(cs('Squadra e ore - '+mLabel(p.m)),10,y);
       doc.autoTable({...base,startY:y+2,head:[teamHead],body:tb.map(r=>r.map(nf)),columnStyles:{0:{halign:'left',cellWidth:30},5:{halign:'left',cellWidth:60},6:{halign:'left',cellWidth:50},7:{halign:'left',cellWidth:60}}});
+      const PP=perPerson(Object.keys(daily()).filter(d=>d.startsWith(p.m)).sort());
+      if(PP.people.length){
+        let yy=doc.lastAutoTable.finalY+8;if(yy>170){doc.addPage();yy=14}
+        doc.setFontSize(11);doc.text(cs('Talee per persona - '+mLabel(p.m)),10,yy);
+        const T=PP.people.reduce((a,pp)=>a+PP.P[pp].tot,0);
+        const body1=PP.days.map(d=>[dShort(d)+(isSun(d)?' (domenica)':''),...PP.people.map(pp=>PP.P[pp].day[d]||''),PP.people.reduce((a,pp)=>a+(PP.P[pp].day[d]||0),0)]);
+        body1.push(['TOTALE',...PP.people.map(pp=>PP.P[pp].tot),T]);
+        body1.push(['Giorni lavorati',...PP.people.map(pp=>Object.keys(PP.P[pp].day).length),'']);
+        body1.push(['Media al giorno',...PP.people.map(pp=>r1(PP.P[pp].tot/Object.keys(PP.P[pp].day).length)),'']);
+        doc.autoTable({...base,startY:yy+2,head:[['Giorno',...PP.people,'Totale'].map(cs)],body:body1.map(r=>r.map(nf)),columnStyles:{0:{halign:'left',cellWidth:40}}});
+        const vn=Object.fromEntries(S.varieta.map(v=>[v.id,v.nome]));const vids=S.varieta.map(v=>v.id).filter(v=>PP.people.some(pp=>PP.P[pp].v[v]));
+        const body2=vids.map(v=>[vn[v]||v,...PP.people.map(pp=>PP.P[pp].v[v]||''),PP.people.reduce((a,pp)=>a+(PP.P[pp].v[v]||0),0)]);body2.push(['TOTALE',...PP.people.map(pp=>PP.P[pp].tot),T]);
+        doc.autoTable({...base,startY:doc.lastAutoTable.finalY+6,head:[['Varietà',...PP.people,'Totale'].map(cs)],body:body2.map(r=>r.map(nf)),columnStyles:{0:{halign:'left',cellWidth:60}}});
+      }
+      {const dd=Object.keys(S.gio).filter(d=>d.startsWith(p.m)&&(Object.values(platOf(d)).some(q=>+q>0)||(matOf(d).persone||[]).length||+matOf(d).ore>0)).sort();
+       if(dd.length){const people=[...new Set(dd.flatMap(d=>Object.keys(platOf(d)).filter(x=>+platOf(d)[x]>0)))];const st=platStats(dd);
+        let yy=doc.lastAutoTable.finalY+8;if(yy>170){doc.addPage();yy=14}
+        doc.setFontSize(11);doc.text(cs('Plateau terriccio e presa del materiale - '+mLabel(p.m)),10,yy);
+        const msx=matStats(dd);
+        const bd=dd.map(d=>{const pl=platOf(d);const t=people.reduce((a,x)=>a+(+pl[x]||0),0);const o=+(S.gio[d]||{}).orePlateau||'';const mt=matOf(d);return [dShort(d)+(isSun(d)?' (domenica)':''),...people.map(x=>+pl[x]||''),t,sumV(platTypes(d).AL60)||'',sumV(platTypes(d).AL84)||'',o?durata(o):'',o?r1(t/o):'',(mt.persone||[]).join(', '),+mt.ore?durata(mt.ore):'']});
+        bd.push(['TOTALE',...people.map(x=>st.per[x]||0),st.tot,st.t60,st.t84,st.ore?durata(st.ore):'',r1(st.perOra),msx.volte?msx.volte+' volte':'',msx.ore?durata(msx.ore):'']);
+        doc.autoTable({...base,startY:yy+2,head:[['Giorno',...people,'Totale','AL60','AL84','Tempo','Plateau/ora','Presa materiale','Tempo mat.'].map(cs)],body:bd.map(r=>r.map(nf)),columnStyles:{0:{halign:'left',cellWidth:40}}});
+        doc.setFontSize(8);doc.text(cs('Persone in media al giorno: '+fmt1(st.persone)),10,doc.lastAutoTable.finalY+5);}}
     }
+    {const sl=spOfSection().filter(x=>ms.includes(x.spedita.slice(0,7))).sort((a,b)=>a.spedita.localeCompare(b.spedita));
+     if(sl.length){const vn=Object.fromEntries(S.varieta.map(v=>[v.id,v.nome]));doc.addPage();doc.setFontSize(14);doc.text('Tempi di crescita - spedizioni dei mesi scelti',10,14);
+      doc.autoTable({...base,startY:19,head:[['Varietà','Spedizioni','Quantità','Media giorni','Min','Max']],body:growthRows(sl).map(r=>[r.nome,r.n,r.q||'',Math.round(r.media),r.min,r.max].map(nf)),columnStyles:{0:{halign:'left',cellWidth:70}}});
+      doc.autoTable({...base,startY:doc.lastAutoTable.finalY+8,head:[['Varietà','Prodotta il','Spedita il','Giorni','Quantità','Nota']],body:sl.map(x=>[vn[x.varieta]||x.varieta,dShort(x.prodotta),dShort(x.spedita),daysBetween(x.prodotta,x.spedita),x.qta||'',x.nota||''].map(nf)),columnStyles:{0:{halign:'left',cellWidth:70},5:{halign:'left'}}});}}
     deliver(fileBase(ms)+'.pdf',doc.output('blob'));
   };
   function renderEMonths(){$('eMonths').innerHTML=allMonths().map(m=>`<button type="button" class="pchip" data-m="${m}" aria-pressed="${eSel.has(m)}">${eSel.has(m)?'✓ ':''}${mLabel(m)}</button>`).join('');
+    if(eType==='previsione'){const k=futCycles().length;$('ePdf').disabled=$('eXls').disabled=!k;$('eMsg').textContent=k?k+(k===1?' ciclo':' cicli')+': '+futCycles().map(c=>c.titolo).join(', '):'Nessun ciclo in corso o futuro';return}
+    if(eType==='crescita'){const k=spOfSection().length;$('ePdf').disabled=$('eXls').disabled=!k;$('eMsg').textContent=k?k+(k===1?' spedizione registrata':' spedizioni registrate'):'Nessuna spedizione registrata';return}
     const n=eSel.size;$('ePdf').disabled=$('eXls').disabled=!n;$('eMsg').textContent=n?(n===1?'1 mese selezionato':n+' mesi selezionati, in un unico report'):'Spunta almeno un mese'}
   $('eMonths').onclick=e=>{const b=e.target.closest('[data-m]');if(!b)return;const m=b.dataset.m;if(eSel.has(m))eSel.delete(m);else eSel.add(m);renderEMonths()};
   $('eAll').onclick=()=>{allMonths().forEach(m=>eSel.add(m));renderEMonths()};
   $('eNone').onclick=()=>{eSel.clear();renderEMonths()};
   $('expBtn').onclick=()=>{const ms=allMonths();if(!ms.length)return;
     if(!eSel.size)eSel.add(S.mese&&S.mese!=='tutto'?S.mese:(ms.includes(today().slice(0,7))?today().slice(0,7):ms[ms.length-1]));
-    renderEMonths();$('expDlg').showModal()};
+    setEType(eType==='crescita'?'completo':eType);$('expDlg').showModal()};
   $('eClose').onclick=()=>$('expDlg').close();
+  $('preRepBtn').onclick=()=>{setEType('previsione');$('expDlg').showModal()};
+  $('spRepBtn').onclick=()=>{setEType('crescita');$('expDlg').showModal()};
 
   function refreshNames(){const s=new Set();for(const g of Object.values(S.gio))for(const n of [...(g.taleatori||[]),...(g.riempitori||[])])if(!PEOPLE.includes(n))s.add(n);$('namesList').innerHTML=[...s].map(n=>`<option value="${esc(n)}">`).join('')}
 
+  /* ---------- NAVIGAZIONE ---------- */
+  const ROUTES={
+    home:{title:'Botanical Dry Garden',brand:'',tiles:[['produzione','Produzione','Piante e prati alternativi'],['trattamenti','Trattamenti / medicazioni','Trattamenti e medicazioni delle colture'],['costi','Costi','Spese e costi di produzione']]},
+    produzione:{title:'Produzione',back:'home',tiles:[['piante','Piante','9×9×20 · 14×14×20 · Flatpot R50'],['prati','Prati alternativi','Talee per cicli di due mesi']]},
+    piante:{title:'Piante',back:'produzione',tiles:[['vaso-9x9x20','9×9×20','Vaso 9×9×20'],['vaso-14x14x20','14×14×20','Vaso 14×14×20'],['flatpot-r50','Flatpot R50','Vaso R50 senza fondo']]},
+    costi:{title:'Costi',back:'home',vuota:true},
+    trattamenti:{title:'Trattamenti / medicazioni',back:'home',vuota:true},
+    prati:{title:'Talee prati alternativi',back:'produzione',sez:'prati'},
+    'vaso-9x9x20':{title:'Piante 9×9×20',back:'piante',sez:'piante-9x9x20'},
+    'vaso-14x14x20':{title:'Piante 14×14×20',back:'piante',sez:'piante-14x14x20'},
+    'flatpot-r50':{title:'Flatpot R50',back:'piante',sez:'flatpot-r50'}
+  };
+  const LEAF='<svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#00656b" stroke-width="3" stroke-linecap="round"><path d="M20 95 C40 70 55 45 85 10"/></g><g fill="#00656b"><path d="M38 72 C25 70 18 58 20 48 C32 52 40 60 38 72Z"/><path d="M40 70 C50 62 62 62 70 68 C60 76 50 76 40 70Z"/><path d="M55 48 C44 44 40 32 44 22 C54 28 58 38 55 48Z"/><path d="M57 46 C66 38 78 38 84 44 C75 52 65 52 57 46Z"/><path d="M74 26 C68 20 68 10 74 4 C80 10 80 20 74 26Z"/></g></svg>';
+  function routeOf(r){
+    if(ROUTES[r])return ROUTES[r];
+    if(r&&r.startsWith('c-')){const id=r.slice(2);const c=S.allC.find(x=>x.id===id);
+      if(!c&&S.ready)return null;const sz=c?(c.sezione||'prati'):'prati';const sk=Object.keys(ROUTES).find(k=>ROUTES[k].sez===sz)||'prati';
+      return {title:ROUTES[sk].title,back:sk,sez:sz,cycle:id}}
+    return null;
+  }
+  function applySection(){
+    const R=routeOf(S.route)||{};const sez=R.sez;
+    S.campagne=sez?S.allC.filter(c=>(c.sezione||'prati')===sez):[];
+    const ids=new Set(S.campagne.map(c=>c.id));
+    S.reg=S.allR.filter(r=>ids.has(r.campagna));
+    S.gio=sez==='prati'?S.allG:{};
+    if(S.camp&&!S.campagne.find(c=>c.id===S.camp))S.camp=null;
+  }
+  function go(route){if(!routeOf(route)&&!route.startsWith('c-'))route='home';if(location.hash.slice(1)!==route)location.hash=route;else showRoute()}
+  function showRoute(){
+    let r=location.hash.slice(1);if(!routeOf(r))r='home';const changed=S.route!==r;S.route=r;const R=routeOf(r);
+    $('pageTitle').textContent=R.title;$('brandLine').hidden=r==='home';
+    $('backBtn').hidden=!R.back;if(R.back)$('backLbl').textContent=ROUTES[R.back].title==='Botanical Dry Garden'?'Home':ROUTES[R.back].title;
+    $('vMenu').hidden=!R.tiles;$('vVuota').hidden=!R.vuota;$('appMain').hidden=!R.cycle;$('vCycles').hidden=!(R.sez&&!R.cycle);
+    $('expBtn').hidden=!R.sez;$('camps').hidden=true;
+    if(R.tiles)$('tiles').innerHTML=R.tiles.map(([k,t,d])=>`<button class="tile" data-go="${k}">${LEAF}${LEAF.replace('<svg','<svg class="l"')}<span class="tt">${esc(t)}</span><span class="td">${esc(d)}</span></button>`).join('');
+    document.body.classList.toggle('menu',!!(R.tiles||R.vuota));requestAnimationFrame(()=>{const h=document.querySelector('header.top');if(h)document.documentElement.style.setProperty('--hh',(h.offsetHeight+(document.querySelector('.prev')?.offsetHeight||0))+'px')});
+    if(R.vuota)$('vuotaTitle').textContent=R.title;
+    renderQuick(r);
+    if(R.cycle){if(changed){S.mese=null;msg('');S.open={};S.tmpP={}}S.camp=R.cycle;}
+    if(R.sez){applySection();if(S.ready)render();else $('campTitle').textContent='Caricamento…'}
+    document.title=R.sez?R.title:'Talee Prati BDG';
+    if(changed)window.scrollTo(0,0);
+  }
+  function renderQuick(r){const q=$('quick');if(!q)return;if(r!=='home'||!S.ready){q.innerHTML='';return}
+    const td=today();const cs=S.allC.filter(c=>(c.sezione||'prati')==='prati').sort((a,b)=>a.dal.localeCompare(b.dal));
+    const c=cs.find(x=>x.dal<=td&&td<=x.al)||cs[cs.length-1];if(!c){q.innerHTML='';return}
+    const n=S.allR.filter(x=>x.campagna===c.id&&x.data===td&&!x.periodo).reduce((a,x)=>a+(+x.qta||0),0);
+    q.innerHTML=`<button class="qbig" id="quickGo"><span class="qbt">Inserisci le talee di oggi</span><span class="qbs">${esc(c.titolo)} · ${dShort(td)}${n?' · già inserite '+fmt(n):''}</span><span class="qba">›</span></button>`;
+    $('quickGo').onclick=()=>{location.hash='c-'+c.id;setTimeout(()=>{setTab('ins');$('insDate').value=td;$('insDate').onchange();render()},0)}}
+  $('tiles').onclick=e=>{const b=e.target.closest('[data-go]');if(b)go(b.dataset.go)};
+  $('backBtn').onclick=()=>{const R=routeOf(S.route);go(R&&R.back||'home')};
+  window.addEventListener('hashchange',showRoute);
+  window.addEventListener('beforeunload',e=>{if(!$('saveBtn').disabled||!$('plaSave').disabled||!$('qSave').disabled){e.preventDefault();e.returnValue=''}});
+  const MSH=['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago','Set','Ott','Nov','Dic'];
+  const lastDay=m=>{const [y,mm]=m.split('-').map(Number);return m+'-'+String(new Date(y,mm,0).getDate()).padStart(2,'0')};
+  function cycTitle(m1,m2){const [y1,a]=m1.split('-').map(Number),[y2,b]=m2.split('-').map(Number);return y1===y2?`${MSH[a-1]}–${MSH[b-1]} ${y1}`:`${MSH[a-1]} ${y1}–${MSH[b-1]} ${y2}`}
+  function cycSummary(c){const dn=doneBy(c.id);let T=0,D=0,L=0;for(const v of varsOf(c)){const t=tgt(c,v.id),d=dn[v.id]||0;D+=d;if(t!=null){T+=t;L+=t-d}}return {T,D,L}}
+  function renderCycles(R){
+    const cs=S.campagne.slice().sort((a,b)=>(a.ordine??0)-(b.ordine??0));const td=today();
+    $('ctiles').innerHTML=cs.map(c=>{const {T,D,L}=cycSummary(c);const now=c.dal<=td&&td<=c.al;const pct=Math.min(100,T?D/T*100:0);
+      return `<button class="ctile${now?' now':''}" data-c="${esc(c.id)}"><span class="cth"><span class="ct">${esc(c.titolo)}</span>${now?'<span class="cnow">in corso</span>':''}</span>${c.vendite?`<span class="cs">Per vendite ${esc(c.vendite)}</span>`:''}<span class="cbar"><i style="width:${pct}%"></i></span><span class="cn"><b>${fmt(D)}</b> fatte su ${fmt(T)} · ${L<0?'+'+fmt(-L)+' in più':L===0&&T?'completato':fmt(L)+' rimanenti'}</span></button>`}).join('')
+      +`<button class="ctile add" id="newCyc"><span class="ct">+ Nuovo ciclo</span><span class="cs">Aggiungi i prossimi due mesi e inserisci le quantità da produrre</span></button>`;
+    if(!cs.length)$('ctiles').insertAdjacentHTML('afterbegin','<p class="sub" style="margin:0 0 6px">Nessun ciclo ancora: crea il primo.</p>');
+  }
+  $('ctiles').onclick=e=>{if(e.target.closest('#newCyc')){openNewCycle();return}const b=e.target.closest('[data-c]');if(b)go('c-'+b.dataset.c)};
+  function sectionVars(){const ids=new Set();for(const c of S.campagne)for(const k of Object.keys(c.target||{}))ids.add(k);return S.varieta.filter(v=>ids.has(v.id)).sort((a,b)=>(a.ordine??0)-(b.ordine??0))}
+  function openNewCycle(){
+    const R=routeOf(S.route);if(!R||!R.sez)return;const sez=R.sez;
+    const cs=S.campagne.slice().sort((a,b)=>(a.ordine??0)-(b.ordine??0));const last=cs[cs.length-1];
+    let start=last?nextM(last.al.slice(0,7)):today().slice(0,7);
+    const opts=[];let m=last?nextM(last.al.slice(0,7)):today().slice(0,7);for(let i=0;i<18;i++){opts.push(m);m=nextM(m)}
+    const vars=sectionVars();
+    const sur={};if(last){const dn=doneBy(last.id);for(const v of varsOf(last)){const t=tgt(last,v.id);const d=dn[v.id]||0;if(t!=null&&d>t)sur[v.id]=d-t}}
+    const surT=sumO(sur);
+    const body=$('dlgBody');
+    body.innerHTML=`<h2>Nuovo ciclo</h2>
+      <div class="two"><div class="field"><label for="ncStart">Mesi del ciclo</label><select id="ncStart">${opts.map(o=>`<option value="${o}">${cycTitle(o,nextM(o))}</option>`).join('')}</select></div>
+      <div class="field"><label for="ncVend">Per vendite</label><input type="text" class="plain" id="ncVend" placeholder="es. maggio–giugno 2027"></div></div>
+      <h3 style="margin:14px 0 4px">Quantità da produrre per varietà</h3>
+      <p class="sub" style="margin:0 0 6px">Lascia vuote le varietà che non vanno prodotte in questo ciclo. Altre varietà le puoi aggiungere dopo.</p>
+      ${last?`<button class="link" id="ncCopy">Copia le quantità di ${esc(last.titolo)}</button>`:''}
+      <div class="tgtlist">${vars.map(v=>`<label class="tgtrow"><span>${esc(v.nome)}</span><input type="number" inputmode="numeric" min="0" data-v="${esc(v.id)}" placeholder="—"></label>`).join('')||'<p class="sub">Nessuna varietà ancora: le aggiungi dopo con "+ Aggiungi varietà".</p>'}</div>
+      ${surT?`<label class="chk"><input type="checkbox" id="ncExtra" ${last.al<today()?'checked':''}> Aggiungi come extra le ${fmt(surT)} talee fatte finora in più nel ciclo ${esc(last.titolo)}</label>`:''}
+      <div class="tgttot" id="ncTot"></div>
+      <div class="sub" id="ncMsg"></div>
+      <div class="two"><button class="btn ghost" id="ncNo">Annulla</button><button class="btn" id="ncOk">Crea ciclo</button></div>`;
+    const upd=()=>{let t=0;body.querySelectorAll('.tgtlist input').forEach(i=>{if(+i.value>0)t+=+i.value});$('ncTot').innerHTML=`Totale da produrre: <b>${fmt(t)}</b>`};
+    // "per vendite": stesso distacco di mesi del ciclo precedente
+    let off=null;if(last&&last.vendite){const w=last.vendite.toLowerCase();const i=MESI.findIndex(x=>w.startsWith(x));
+      const m1=w.match(/^[a-z]+\s+(20\d\d)/),ys=w.match(/20\d\d/g);const y=m1?+m1[1]:(ys?+ys[ys.length-1]:null);
+      if(i>=0&&y)off=(y*12+i)-(+last.dal.slice(0,4)*12+(+last.dal.slice(5,7)-1));}
+    const vend=()=>{if(off==null)return;const [y,m]=$('ncStart').value.split('-').map(Number);const a=y*12+m-1+off,b=a+1;const A=[Math.floor(a/12),a%12],B=[Math.floor(b/12),b%12];
+      $('ncVend').value=A[0]===B[0]?`${MESI[A[1]]}–${MESI[B[1]]} ${A[0]}`:`${MESI[A[1]]} ${A[0]}–${MESI[B[1]]} ${B[0]}`};
+    vend();$('ncStart').onchange=vend;
+    body.querySelector('.tgtlist').oninput=upd;upd();
+    if($('ncCopy'))$('ncCopy').onclick=()=>{body.querySelectorAll('.tgtlist input').forEach(i=>{const t=tgt(last,i.dataset.v);i.value=t==null?'':t});upd()};
+    $('ncNo').onclick=()=>$('dlg').close();
+    $('ncOk').onclick=async()=>{
+      const m1=$('ncStart').value,m2=nextM(m1);const titolo=cycTitle(m1,m2);
+      const pref=sez==='prati'?'':(R.back&&false?'':Object.keys(ROUTES).find(k=>ROUTES[k].sez===sez)+'-');
+      let id=pref+slug(titolo);while(S.allC.some(x=>x.id===id))id+='-2';
+      if(S.campagne.some(x=>x.dal===m1+'-01')){$('ncMsg').textContent='Esiste già un ciclo che inizia in quel mese.';return}
+      const target={};body.querySelectorAll('.tgtlist input').forEach(i=>{if(i.value!=='')target[i.dataset.v]=Math.max(0,+i.value)});
+      const riporto={};if($('ncExtra')&&$('ncExtra').checked)for(const [v,q] of Object.entries(sur)){riporto[v]=q;if(!(v in target))target[v]=null}
+      const c={id,titolo,vendite:$('ncVend').value.trim(),ordine:+m1.replace('-',''),attiva:false,dal:m1+'-01',al:lastDay(m2),target,riporto,sezione:sez};
+      $('ncOk').disabled=true;
+      try{await DB.saveCampagna(c);S.allC.push(c);applySection();$('dlg').close();toast('Ciclo '+titolo+' creato');go('c-'+id);if(typeof load==='function')load(true)}
+      catch(e){if(!e||e.message!=='pin')$('ncMsg').textContent='Non sono riuscito a creare il ciclo, riprova.';$('ncOk').disabled=false}
+    };
+    $('dlg').showModal();
+  }
+  function openTargets(){
+    const c=curCamp();if(!c)return;const vars=varsOf(c);const body=$('dlgBody');
+    body.innerHTML=`<h2>Quantità da produrre</h2><p class="sub">Ciclo ${esc(c.titolo)}. Lascia vuoto per "non programmata".</p>
+      <div class="tgtlist">${vars.map(v=>{const t=tgt(c,v.id);return `<label class="tgtrow"><span>${esc(v.nome)}</span><input type="number" inputmode="numeric" min="0" data-v="${esc(v.id)}" value="${t==null?'':t}" placeholder="—"></label>`}).join('')}</div>
+      <div class="tgttot" id="tgTot"></div><div class="sub" id="tgMsg"></div>
+      <div class="two"><button class="btn ghost" id="tgNo">Annulla</button><button class="btn" id="tgOk">Salva</button></div>`;
+    const upd=()=>{let t=0;body.querySelectorAll('.tgtlist input').forEach(i=>{if(+i.value>0)t+=+i.value});$('tgTot').innerHTML=`Totale da produrre: <b>${fmt(t)}</b>`};
+    body.querySelector('.tgtlist').oninput=upd;upd();
+    $('tgNo').onclick=()=>$('dlg').close();
+    $('tgOk').onclick=async()=>{const target={...(c.target||{})};body.querySelectorAll('.tgtlist input').forEach(i=>{target[i.dataset.v]=i.value===''?null:Math.max(0,+i.value)});
+      const nc={...c,target};$('tgOk').disabled=true;
+      try{await DB.saveCampagna(nc);Object.assign(S.allC.find(x=>x.id===c.id),{target});applySection();$('dlg').close();toast('Quantità salvate');render();if(typeof load==='function')load(true)}
+      catch(e){if(!e||e.message!=='pin')$('tgMsg').textContent='Salvataggio non riuscito, riprova.';$('tgOk').disabled=false}};
+    $('dlg').showModal();
+  }
+  $('tgtBtn').onclick=openTargets;
+  function renderEmpty(R){
+    $('camps').innerHTML='';$('camps').hidden=true;$('expBtn').hidden=true;
+    $('campTitle').textContent=R.title;$('campSub').textContent='Varietà e quantità da produrre non ancora inserite.';
+    $('sDone').textContent='–';$('sTarget').textContent='–';$('sLeft').textContent='–';$('sBar').style.width='0';$('sToday').textContent='';
+    $('insInfo').innerHTML='';$('insHint').hidden=true;$('insExtra').hidden=true;
+    $('insList').innerHTML='<p class="sub">Qui potrai inserire la produzione giorno per giorno, appena aggiungiamo le varietà di questo formato.</p>';
+    $('whoSec').hidden=true;$('addVarIns').hidden=true;$('addVarBtn').hidden=true;$('whoDay').innerHTML='';$('monChips').innerHTML='';$('calTot').innerHTML='';$('monStats').innerHTML='';$('monNotes').innerHTML='';$('monCal').innerHTML='';$('calRiep').innerHTML='';
+    $('calHint').textContent='Il calendario si riempie quando inizierai a registrare la produzione.';
+    $('varList').innerHTML='<p class="sub">Nessuna varietà ancora: le aggiungiamo quando mi dai l\'elenco e le quantità.</p>';
+    $('stoStats').innerHTML='';$('stoMode').innerHTML='';$('stoList').innerHTML='<p class="sub">Nessuna registrazione.</p>';
+  }
+
   function render(){
-    if(!S.campagne.length)return;
+    const R=routeOf(S.route);if(!R){showRoute();return}if(!R.sez)return;
+    if(!R.cycle){renderCycles(R);return}
+    if(!curCamp()){if(S.ready){location.hash=R.back||'home'}return}
+    $('insHint').hidden=false;$('insExtra').hidden=false;$('whoSec').hidden=false;$('addVarIns').hidden=false;$('addVarBtn').hidden=false;$('expBtn').hidden=false;$('camps').hidden=true;
     if(!curCamp()){let saved=null;try{saved=localStorage.getItem('bdg-camp')}catch(e){}
       S.camp=(S.campagne.find(c=>c.id===saved)||S.campagne.find(c=>c.attiva)||S.campagne[S.campagne.length-1]).id}
     const c=curCamp();renderCamps();renderSummary(c);renderInsInfo();renderIns();renderVar(c);renderSto(c);renderCal(c);refreshNames();
     if(loadedDay!==($('insDate').value||today()))loadDay();
+    if(S.tab==='pla')renderPla();
+    if(S.tab==='spe')renderSpe();
+    if(S.tab==='pre')renderPre();
   }
 
-  /* ---------- API (Vercel) ---------- */
-  async function api(method,path,body){
-    const h={'content-type':'application/json'};const pin=LS.get('bdg-pin');if(pin)h['x-pin']=pin;
-    const r=await fetch(path,{method,headers:h,body:body?JSON.stringify(body):undefined,cache:'no-store'});
-    if(r.status===401){askPin();throw new Error('pin')}
-    if(!r.ok){let m='';try{m=(await r.json()).error||''}catch(e){}throw new Error(m||('Errore '+r.status))}
-    return r.json();
+  showRoute();
+  async function start(){
+    const timer=setTimeout(()=>{if(!S.campagne.length)msg('I dati non sono ancora raggiungibili. Controlla la connessione.')},10000);
+    let db=null;try{db=await window.claude.use('db')}catch(e){}
+    if(!db){clearTimeout(timer);$('campTitle').textContent='Dati non disponibili';msg('Per vedere e inserire le talee devi aver fatto l\'accesso a Claude con un account che ha accesso a questa pagina.');return}
+    S.db=db;
+    try{S.user=await window.claude.use('user');if(S.user){S.uid=await S.user.id();const cw=await S.user.can('data.write');S.canWrite=cw}}catch(e){}
+    let got=0;const done=()=>{if(++got>=4){clearTimeout(timer);S.ready=true;msg('');showRoute()}};
+    let seen={c:0,v:0,r:0,g:0};
+    db.collection('campagne').orderBy('ordine').onSnapshot(s=>{S.allC=s.docs.map(d=>({id:d.id,...d.data()}));applySection();if(!seen.c++)done();else render()},e=>msg('Errore nel caricamento dei cicli.'));
+    db.collection('varieta').orderBy('ordine').onSnapshot(s=>{S.varieta=s.docs.map(d=>({id:d.id,...d.data()}));if(!seen.v++)done();else render()},e=>msg('Errore nel caricamento delle varietà.'));
+    db.collection('registrazioni').onSnapshot(s=>{S.allR=s.docs.map(d=>({id:d.id,...d.data()}));applySection();if(!seen.r++)done();else render()},e=>msg('Errore nel caricamento delle registrazioni.'));
+    db.collection('spedizioni').onSnapshot(s=>{S.allS=s.docs.map(d=>({id:d.id,...d.data()}));if(S.ready&&S.tab==='spe')renderSpe()},e=>{});
+    db.collection('impostazioni').onSnapshot(s=>{const d=s.docs.find(x=>x.id==='persone');if(d&&Array.isArray(d.data().nomi)){PEOPLE=d.data().nomi;if(S.ready)render()}},e=>{});
+    db.collection('giornate').onSnapshot(s=>{const g={};for(const d of s.docs)g[d.id]=d.data();S.allG=g;applySection();if(!seen.g++)done();else render()},e=>msg('Errore nel caricamento delle giornate.'));
   }
-  async function load(quiet){
-    try{const d=await api('GET','/api/data');S.campagne=(d.campagne||[]).sort((a,b)=>(a.ordine??0)-(b.ordine??0));S.varieta=d.varieta||[];S.reg=d.registrazioni||[];S.gio=d.giornate||{};S.loaded=true;if(!quiet)msg('');render()}
-    catch(e){if(e.message!=='pin'&&!quiet)msg('Non riesco a caricare i dati. Controlla la connessione e riprova.')}
-  }
-  function askPin(){
-    const body=$('dlgBody');body.innerHTML='';
-    const h=document.createElement('h2');h.textContent='Inserisci la password';
-    const p=document.createElement('p');p.className='sub';p.textContent=LS.get('bdg-pin')?'Password errata, riprova.':'Serve una volta sola su questo dispositivo.';
-    const i=document.createElement('input');i.type='password';i.id='pinIn';i.autocomplete='current-password';i.setAttribute('aria-label','Password');i.className='plain';
-    const b=document.createElement('button');b.className='btn';b.textContent='Entra';
-    b.onclick=()=>{LS.set('bdg-pin',i.value.trim());$('dlg').close();load()};i.onkeydown=e=>{if(e.key==='Enter')b.click()};
-    body.append(h,p,i,b);if(!$('dlg').open)$('dlg').showModal();
-  }
-  load();
-  setInterval(()=>{if(!document.hidden&&!$('dlg').open&&!$('expDlg').open&&!S.busy)load(true)},20000);
-  document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!S.busy)load(true)});
+  if(window.claude&&window.claude.use)start();else{$('campTitle').textContent='Dati non disponibili';msg('Apri questa pagina dal link di Claude per inserire le talee.')}
 })();
 </script>
 </body>
